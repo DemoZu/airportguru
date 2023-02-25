@@ -5,4 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :journeys, dependent: :destroy
+  has_many :meetups, dependent: :destroy
+  has_many :tips, dependent: :destroy
+
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :nickname, presence: true, uniqueness: true
+  validates :bio, presence: true
 end
