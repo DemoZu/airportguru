@@ -1,10 +1,14 @@
 class MeetupsController < ApplicationController
-  def index
-    @meetups = Meetup.all
-    @meetups = Meetup
-    .select('meetups.*, meetup_categories.meetup_type')
-  .joins(:meetup_categories)
-  .find_by('meetups.meetup_category_id = 1 ') # this should be the last
+
+  def new
+    @meetup = Meetup.new
   end
 
+  def index
+    @meetups = Meetup.all
+  end
+
+  def show
+    @meetup = Meetup.find(params[:id])
+  end
 end
