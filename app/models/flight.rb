@@ -1,7 +1,7 @@
 class Flight < ApplicationRecord
   belongs_to :airport
   belongs_to :journey
-  belongs_to :user, through: :journeys
+  # belongs_to :user, through: :journeys
 
   validates :flight_number, presence: true
   validates :flight_destination, presence: true
