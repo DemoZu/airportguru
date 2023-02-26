@@ -1,4 +1,4 @@
 class FacilityCategory < ApplicationRecord
-  has_many :facility
+  has_many :facilities
   validates :name, presence: true
 end

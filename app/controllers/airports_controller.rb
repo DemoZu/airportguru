@@ -9,6 +9,10 @@ class AirportsController < ApplicationController
     @airport = Airport.new
   end
 
+  def show
+    @airport = Airport.find(params[:id])
+  end
+
   private
 
   def set_list

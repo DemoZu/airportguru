@@ -14,6 +14,17 @@ Facility.destroy_all
 
 puts "seeding database with airports and facilities..."
 
+user = User.create!([
+  {
+    first_name: "Banana",
+    last_name: "Banana",
+    nickname: "Bad banana",
+    bio: "banana!",
+    email: "banana@gmail.com",
+    password: "banana"
+  }
+])
+
 airports = Airport.create!([
   {
     name: "London Heathrow",
@@ -107,6 +118,7 @@ airports = Airport.create!([
 ])
 
 puts "Created airports!"
+puts airports
 
 facility_categories = FacilityCategory.create!([
     {
@@ -141,85 +153,85 @@ facility_categories = FacilityCategory.create!([
 facilities = Facility.create!([
   {
     title: "Black Sheep Coffee",
-    airport_id: 21,
+    airport_id: 1,
     facility_category_id: 1
   },
 
   {
     title: "Caffè Nero",
-    airport_id: 21,
+    airport_id: 1,
     facility_category_id: 1
   },
 
   {
     title: "Caffè Nero",
-    airport_id: 21,
+    airport_id: 1,
     facility_category_id: 1
   },
 
   {
     title: "EL&N London",
-    airport_id: 21,
+    airport_id: 1,
     facility_category_id: 1
   },
 
   {
     title: "Hestons The Perfectionists Cafe",
-    airport_id: 21,
+    airport_id: 1,
     facility_category_id: 1
   },
 
   {
     title: "Joe's Coffee House",
-    airport_id: 21,
+    airport_id: 1,
     facility_category_id: 1
   },
 
   {
     title: "Leon",
-    airport_id: 21,
+    airport_id: 1,
     facility_category_id: 1
   },
 
   {
     title: "Starbucks",
-    airport_id: 21,
+    airport_id: 1,
     facility_category_id: 1
   },
 
   {
     title: "Caviar House Oyster Bar",
-    airport_id: 21,
+    airport_id: 1,
     facility_category_id: 3
   },
 
   {
     title: "Co-Pilots Bar & Kitchen",
-    airport_id: 21,
+    airport_id: 1,
     facility_category_id: 3
   },
 
   {
     title: "Fortum & Mason Bar",
-    airport_id: 21,
+    airport_id: 1,
     facility_category_id: 3
   },
 
   {
     title: "Gordon Ramsay Plane Food",
-    airport_id: 21,
+    airport_id: 1,
     facility_category_id: 3
   },
 
   {
     title: "Itsu",
-    airport_id: 21,
+    airport_id: 1,
     facility_category_id: 3
   },
 
   {
     title: "Kanishka Kitchen",
-    airport_id: 21,
+    airport_id: 1,
     facility_category_id: 3
   }
 ])
