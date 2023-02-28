@@ -1,0 +1,19 @@
+.footer {
+  background: $gray;
+}
+
+.footer-link {
+  color: $white;
+  &:hover {
+    color: $white;
+  }
+  &:focus {
+    color: $white;
+  }
+  &:active {
+    color: $white;
+  }
+  &:visited {
+    color: $white;
+  }
+}
