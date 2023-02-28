@@ -1,6 +1,5 @@
 class TipCategory < ApplicationRecord
-  belongs_to :tip
-  # belongs_to :category
+  has_many :tips
 
   validates :name, presence: true
 end

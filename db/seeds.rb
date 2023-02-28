@@ -236,4 +236,43 @@ facilities = Facility.create!([
   }
 ])
 
+
+puts "-----------------"
+puts "Creating tip categories"
+
+tip_categories = TipCategory.create!([
+  { id: 1,
+    name: "Utilities"
+  },
+  { id: 2,
+    name: "Food & Drink"
+  }
+])
+
+puts "Created tip categories"
+puts "-----------------"
+
 puts "Created facilities!"
+
+puts "-----------------"
+puts "Creating tips"
+
+tip = Tip.create!([
+  {
+    title: "Charge your phone",
+    content: "There are charging points in the airport - try the ones next to Gate 12",
+    likes: 1,
+    user_id: 1,
+    tip_category_id: 1,
+  },
+  {
+    title: "Good lunch deal at Caffe Nero",
+    content: "Sandwich and drink for £5.99",
+    likes: 3,
+    user_id: 1,
+    tip_category_id: 2,
+  },
+])
+
+puts "Tips created!"
+puts "-----------------"
