@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_25_172932) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_28_192918) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -79,6 +79,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_25_172932) do
     t.bigint "meetup_category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "airport_id"
     t.index ["meetup_category_id"], name: "index_meetups_on_meetup_category_id"
     t.index ["user_id"], name: "index_meetups_on_user_id"
   end
@@ -110,6 +111,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_25_172932) do
     t.bigint "tip_category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "airport_id"
     t.index ["tip_category_id"], name: "index_tips_on_tip_category_id"
     t.index ["user_id"], name: "index_tips_on_user_id"
   end

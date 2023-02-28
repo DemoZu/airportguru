@@ -1,6 +1,7 @@
 class Tip < ApplicationRecord
   belongs_to :user
   belongs_to :tip_category
+  belongs_to :airport
 
   # has_one :tip_category, dependent: :destroy
 

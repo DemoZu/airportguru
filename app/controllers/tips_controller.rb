@@ -7,8 +7,8 @@ class TipsController < ApplicationController
     # @user = current_user
     # @tips = @user.tips
 
-    @tips = Tip.all
     @airport = Airport.find(params[:airport_id])
+    @tips = @airport.tips
     # raise
     # @user = @tips.find(params[:user_id])
     # raise
