@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
  resources :airports do
   resources :facilities, only: [:index, :show]
+  resources :tips, only: [:index]
  end
 
  resources :meetups
- resources :tips
   # Defines the root path route ("/")
   # root "articles#index"
   resources :meetups

@@ -1,0 +1,8 @@
+<h1>Tips!</h1>
+
+<% @tips.each do |tip| %>
+  <div class="tip">
+    <h2><%= tip.title %></h2>
+    <p><%= tip.content %></p>
+  </div>
+  <% end %>
