@@ -22,6 +22,14 @@ user = User.create!([
     bio: "banana!",
     email: "banana@gmail.com",
     password: "banana"
+  },
+  {
+    first_name: "Tina",
+    last_name: "Turner",
+    nickname: "TinaT",
+    bio: "It's me - TinaT!",
+    email: "tina@turner.com",
+    password: "123456"
   }
 ])
 
@@ -120,12 +128,16 @@ airports = Airport.create!([
 puts "Created airports!"
 puts airports
 
+puts "---------------------------------"
+puts "Creating facility categories..."
+
 facility_categories = FacilityCategory.create!([
     {
       name: "Coffee Shops",
     },
 
     {
+
       name: "Shops",
     },
 
@@ -149,6 +161,11 @@ facility_categories = FacilityCategory.create!([
       name: "Lounges",
     },
   ])
+
+puts "Facility categories created!"
+  puts "---------------------------------"
+
+puts "Creating facilities..."
 
 facilities = Facility.create!([
   {
@@ -236,23 +253,30 @@ facilities = Facility.create!([
   }
 ])
 
+puts "Facilities created!"
+
 
 puts "-----------------"
 puts "Creating tip categories"
 
 tip_categories = TipCategory.create!([
-  { id: 1,
+  {
     name: "Utilities"
   },
-  { id: 2,
+  {
     name: "Food & Drink"
-  }
+  },
+  {
+    name: "Shopping"
+  },
+  {
+    name: "Services"
+  },
 ])
-
-puts "Created tip categories"
+puts tip_categories
+puts "Tip categories created!"
 puts "-----------------"
 
-puts "Created facilities!"
 
 puts "-----------------"
 puts "Creating tips"
@@ -269,10 +293,10 @@ tip = Tip.create!([
     title: "Good lunch deal at Caffe Nero",
     content: "Sandwich and drink for £5.99",
     likes: 3,
-    user_id: 1,
+    user_id: 2,
     tip_category_id: 2,
   },
 ])
-
+puts tip
 puts "Tips created!"
 puts "-----------------"

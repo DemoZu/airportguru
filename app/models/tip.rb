@@ -1,6 +1,8 @@
 class Tip < ApplicationRecord
   belongs_to :user
-  has_one :tip_category, dependent: :destroy
+  belongs_to :tip_category
+
+  # has_one :tip_category, dependent: :destroy
 
   validates :title, presence: true
   validates :content, presence: true
