@@ -1,3 +1,5 @@
 <% @meetups.each do |meetup| %>
 <%=meetup.content%>
+---<%=meetup.meetup_category.meetup_type%>
+---<%=meetup.meetup_category.meetup_topic%>
 <% end%>
