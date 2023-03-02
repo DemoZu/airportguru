@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col col-md-10 col-lg-9">
-    <div class="facilities__intro my-3">
+    <div class="facilities__intro my-5 p-2">
       <h1>
         <%= @airport.name %>
-        <% if @terminal %>
-          terminal <%= @terminal %>
+        <% if @terminal %> <br />
+          Terminal <%= @terminal %>
           facilities (airside)
         <% else %>
           facilities (airside)
