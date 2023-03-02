@@ -1,8 +1,89 @@
-<h1>Tips!</h1>
-
-<% @tips.each do |tip| %>
-  <div class="tip">
-    <h2><%= tip.title %></h2>
-    <p><%= tip.content %></p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+        <div class="mt-5 mb-2 p-2">
+          <h1>
+            <%= @airport.name %>
+            <% if @airport.terminal %> <br />
+              Terminal <%= @airport.terminal %>
+              tips
+            <% else %>
+              tips
+            <% end %>
+          </h1>
+        </div>
+    </div>
   </div>
-  <% end %>
+
+  <div class="row">
+    <div class="col-12 col-md-4 my-3">
+      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option selected>Filter tips by...</option>
+        <option value="1">Utilities</option>
+        <option value="2">Food & drink</option>
+        <option value="3">Good for families</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-md-4 mb-3">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submitTip">
+          Add a tip
+      </button>
+    </div>
+  </div>
+
+    <!-- Modal -->
+  <div class="modal fade" id="submitTip" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add your tip</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Form will go here...</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <% @tips.each do |tip| %>
+      <div class="col-12 col-md-4">
+        <div class="card w-100 border-0 mb-3 p-2 shadow">
+          <div class="card-header pt-4">
+            <p class="category px-3 py-1 mb-3 border-0"><%= tip.tip_category.name %></p>
+            <h2 class="fs-5 mb-1"><%= tip.title %></h2>
+          </div>
+          <div class="card-body py-2">
+            <p class="mb-0"><%= tip.content %></p>
+          </div>
+          <div class="card-footer py-2 mt-3 text-muted border-0">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <p class="mb-0">
+                  <small>
+                    <% if tip.user.photo %>
+                    <%= image_tag tip.user.photo, alt: tip.user.nickname, width: 50 %> <%= tip.user.nickname %></small>
+                    <% else %>
+                    <%= image_tag "https://cdn3.iconfinder.com/data/icons/web-design-and-development-2-6/512/87-1024.png", alt: tip.user.nickname, width: 20 %> <%= tip.user.nickname %></small>
+                    <% end %>
+                  </small>
+                </p>
+              </div>
+              <div>
+                <p class="mb-0"><small class="d-flex align-items-center"><i class="fa-regular fa-heart me-2"></i> <%= tip.likes %></small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+  </div>
+</div>
