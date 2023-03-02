@@ -6,10 +6,11 @@ Rails.application.routes.draw do
  resources :airports do
   resources :facilities, only: [:index, :show]
   resources :tips, only: [:index]
- end
+  resources :meetups
+end
 
- resources :meetups
+
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :meetups
+
 end

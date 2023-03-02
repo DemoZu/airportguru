@@ -1,5 +1,39 @@
+<p>Filter</p>
+<a href> post a new meetup</a>
 <% @meetups.each do |meetup| %>
+<p><br>from <%=meetup.user.nickname%>
+<br>
 <%=meetup.content%>
----<%=meetup.meetup_category.meetup_type%>
----<%=meetup.meetup_category.meetup_topic%>
+<br><%=meetup.meetup_category.meetup_type%>
+<br> For  <%=meetup.meetup_category.meetup_topic%>
+
+<br> I have <%=(meetup.user.journeys.first.flight.gate_open_time.strftime("%H:%M:%S") )%>
+
+</p>
+<button  class="btn btn-primary">Details</button>
+<!-- Button trigger modal -->
+<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#approvalModal">
+  Approve
+</button>
 <% end%>
+
+<div class="modal fade" id="approvalModal" tabindex="-1" role="dialog" aria-labelledby="approvalModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Approval</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_tag approve_leave_request_path(r), method: :get, :class => "form-horizontal" do %>
+              <%= label_tag 'reason', 'Reason for Approval', :class => 'control-label' %>
+              <%= text_field_tag :reason, params[:reason], :class => "form-control" %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+           <%= submit_tag "Submit Approval", name: nil, class: "btn btn-success" %>
+        <% end %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

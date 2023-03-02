@@ -302,3 +302,63 @@ tip = Tip.create!([
 puts tip
 puts "Tips created!"
 puts "-----------------"
+
+puts "Creating Meetup categories..."
+
+meetup_categories = MeetupCategory.create!([
+    {
+      meetup_topic: "Coffee",
+      meetup_type: "One to One",
+    },
+
+    {
+      meetup_topic: "Drinks",
+      meetup_type: "One to One",
+    },
+
+    {
+      meetup_topic: "Food",
+      meetup_type: "One to One",
+    },
+
+    {
+      meetup_topic: "Shopping",
+      meetup_type: "One to One",
+    },
+
+    {
+      meetup_topic: "Kids play",
+      meetup_type: "One to One",
+    },
+
+    {
+      meetup_topic: "Coffee",
+      meetup_type: "Group",
+    },
+
+    {
+      meetup_topic: "Drinks",
+      meetup_type: "Group",
+    },
+  ])
+puts meetup_categories
+puts "Meetup categories created!"
+puts "---------------------------------"
+
+meetup = Meetup.create!([
+  {
+    user_id: 1,
+    meetup_category_id: 1,
+    airport_id: 1,
+    content: "Let's meet together have a coffee chat",
+  },
+  {
+    user_id: 2,
+    meetup_category_id: 2,
+    airport_id: 1,
+    content: "Any people come to have a Drink and music? Free",
+  },
+])
+puts meetup
+puts "Meetup created!"
+puts "-----------------"
