@@ -1,1 +1,5 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+###airportGuru
+
+A web app to make your transit through airport airside terminals more enjoyable. Get tips on what's good to eat, drink or see; meet new friends; learn about the facilities your airport offers.
+
+App created during the final project weeks of Le Wagon part-time development bootcamp.
