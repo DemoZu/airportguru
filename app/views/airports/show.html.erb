@@ -1,18 +1,49 @@
 <div class="container">
+
   <div class="row justify-content-center">
-    <div class="col-12 col-md-6">
-      <h1>Welcome to <%=@airport.name %>
-          <%= @airport.terminal%> </h1>
-          <h3>Flight number: </h3>
-          <h3> Time until gate opens: </h3>
-            <ul class="list-group">
-              <li class="list-group-item"><%= link_to "Meet People", meetups_path(@airport), class: "" %></li>
+    <div class="col-12 col-md-9 my-3 p-3">
+      <p class="fs-4 mb-0">Welcome to</p>
+      <h1><%=@airport.name %></h1>
 
-              <li class="list-group-item"><%= link_to "Top Tips", airport_tips_path(@airport), class: "" %></li>
+      <% if @airport.terminal.present? %>
+      <h2 class="fs-3"><strong>Terminal <%= @airport.terminal%></strong></h2>
+      <% end %>
 
-              <li class="list-group-item"><%= link_to "Facilities", airport_facilities_path(@airport), class: "" %></li>
-
-            </ul>
     </div>
   </div>
-</div>
+
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-9">
+      <div class="flight-information p-3">
+        <p class="fs-6 mb-0">Flight number: </p>
+        <p class="fs-6 mb-0"> Time until gate opens: </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="airport-show__cards row justify-content-center gap-3">
+      <div class="col-12 col-md-3">
+        <div class="airport-show__card card shadow-sm border-0 py-5 text-center">
+          <div class="card-body">
+            <%= link_to "Meet People", meetup_path(@airport), class: "text-decoration-none stretched-link" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3">
+        <div class="airport-show__card card shadow-sm border-0 py-5 text-center">
+          <div class="card-body">
+            <%= link_to "Top Tips", airport_tips_path(@airport), class: "text-decoration-none stretched-link" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3">
+        <div class="airport-show__card card shadow-sm border-0 py-5 text-center">
+          <div class="card-body">
+            <%= link_to "Facilities", airport_facilities_path(@airport), class: "text-decoration-none stretched-link" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
