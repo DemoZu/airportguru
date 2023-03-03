@@ -1,8 +1,12 @@
 <div data-search-airports-target="list">
   <div class="row w-100 justify-content-center">
     <div class="col-12 col-md-6 mb-5">
+    <% if airports.present? %>
+    <ul class="airports-list list-group">
       <% airports.each do |airport| %>
         <%= render "/airports/airport_name", airport: airport %>
+      <% end %>
+      </ul>
       <% end %>
     </div>
   </div>

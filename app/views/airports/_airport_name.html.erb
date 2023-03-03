@@ -1,3 +1,7 @@
-<p><%= airport.name %> <% if airport.terminal.present? %> terminal <%= airport.terminal  %> <% end %></p>
-  <p><%= link_to "go to airport", airport_path(airport.id), class: "btn btn-primary" %>
-</p>
+<li class="list-group-item border-0">
+  <%= link_to airport_path(airport) do %>
+    <%= airport.name %>
+    <% if airport.terminal.present? %> Terminal <%= airport.terminal %>
+    <% end %>
+  <% end %>
+</li>

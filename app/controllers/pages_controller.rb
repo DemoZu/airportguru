@@ -2,7 +2,6 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[home]
 
   def home
-    @airports = Airport.all
     @airports = Airport.where("name ILIKE ?", "%#{params[:query]}%") if params[:query].present?
 
     respond_to do |format|

@@ -1,5 +1,6 @@
 class AirportsController < ApplicationController
   before_action :set_list, only: %i[show]
+  skip_before_action :authenticate_user!, only: %i[home show]
 
   def index
     @airports = Airport.all
