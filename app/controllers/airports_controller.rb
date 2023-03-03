@@ -3,6 +3,7 @@ class AirportsController < ApplicationController
 
   def index
     @airports = Airport.all
+    @airport = Airport.find(params[:id])
   end
 
   def new

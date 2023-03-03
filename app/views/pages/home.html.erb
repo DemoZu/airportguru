@@ -6,6 +6,34 @@
         <p class="h3 text-center">Your holiday starts here</p>
       </div>
     </div>
-    <%= render "airports/form" %>
+
+  <div class="row w-100 justify-content-center" data-controller="search-airports">
+  <div class="col col-md-8 my-5">
+    <h2 class="text-center mb-3">Find your airport</h2>
+    <%= form_with url: root_path,
+                  method: :get,
+                  html: {
+                        class: "input-group mb-3",
+                        data: {
+                          search_airports_target: "form"
+                        }
+                  } do |f| %>
+                  <%= f.text_field :query,
+                                    value: params[:query],
+                                    class: "form-control",
+                                    placeholder: "Find your airport...",
+                                    data: {
+                                      search_airports_target: "input",
+                                      action: "keyup->search-airports#update"
+                                    }
+                  %>
+      <%= submit_tag "Search", class: "btn btn-outline-secondary" %>
+      <% end %>
+
+            <%= render "airports/list", airports: @airports %>
+      </div>
+  </div>
+  </div>
+
   </div>
 </div>
