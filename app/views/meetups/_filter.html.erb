@@ -9,7 +9,7 @@
                 <div class="panel-body">
                   <% meetup_category.each do |category| %>
 
-                  <p><input type="checkbox" id="<%= category.id %>"  data-action='click->search-meetups#filter' />
+                  <p><input type="checkbox" id="<%= category.id %>"  data-action='click->search-meetups#filter' checked />
                   <%= category.meetup_topic %></p>
                   <% end %>
 
