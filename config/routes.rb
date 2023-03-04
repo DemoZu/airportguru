@@ -7,11 +7,15 @@ Rails.application.routes.draw do
   resources :facilities, only: [:index, :show]
   resources :tips, only: [:index]
   resources :meetups
- end
+end
 
- resources :chatrooms, only: :show do
+
+
+
+  resources :chatrooms, only: :show do
   resources :messages, only: :create
 end
   # Defines the root path route ("/")
   # root "articles#index"
+
 end

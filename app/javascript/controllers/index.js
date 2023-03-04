@@ -4,9 +4,14 @@
 
 import { application } from "./application"
 
+import ChatroomSubscriptionController from "./chatroom_subscription_controller"
+application.register("chatroom-subscription", ChatroomSubscriptionController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import SearchMeetupsController from "./search_meetups_controller"
+application.register("search-meetups", SearchMeetupsController)
 import SearchAirportsController from "./search_airports_controller"
 application.register("search-airports", SearchAirportsController)
 
