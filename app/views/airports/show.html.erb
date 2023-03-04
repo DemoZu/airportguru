@@ -1,15 +1,29 @@
+<div class="container">
+  <%= render "shared/airport_show_header" %>
 
-<h1> Welcome to <%=@airport.name %>
-<%= @airport.terminal%> </h1>
+  <div class="airport-show__cards row justify-content-center gap-3">
+      <div class="col-12 col-md-3">
+        <div class="airport-show__card card shadow-sm border-0 py-5 text-center">
+          <div class="card-body">
+            <%= link_to "Meet People", airport_meetups_path(@airport), class: "text-decoration-none stretched-link" %>
+          </div>
+        </div>
+      </div>
 
-<h3> FLIGHT NUMEBER </h3>
-<h3> Time until gate opes </h3>
-<div class="d-flex flex-column w-25">
-<br>
- <%= link_to "Meet People", meetups_path, class: "badge bg-success  rounded-pill text-light text-decoration-none me-1" %>
- <br>
- <%= link_to "Top Tips", tips_path, class: "badge bg-success  rounded-pill text-light text-decoration-none me-1" %>
- <br>
- <%= link_to "Facilities", airport_facilities_path(@airport.id), class: "badge bg-success rounded-pill text-light" %>
+      <div class="col-12 col-md-3">
+        <div class="airport-show__card card shadow-sm border-0 py-5 text-center">
+          <div class="card-body">
+            <%= link_to "Top Tips", airport_tips_path(@airport), class: "text-decoration-none stretched-link" %>
+          </div>
+        </div>
+      </div>
 
-</div>
+      <div class="col-12 col-md-3">
+        <div class="airport-show__card card shadow-sm border-0 py-5 text-center">
+          <div class="card-body">
+            <%= link_to "Facilities", airport_facilities_path(@airport), class: "text-decoration-none stretched-link" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

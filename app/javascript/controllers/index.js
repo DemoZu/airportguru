@@ -4,11 +4,21 @@
 
 import { application } from "./application"
 
+<<<<<<< HEAD
 import FilterMeetupsController from "./filter_meetups_controller"
 application.register("filter-meetups", FilterMeetupsController)
+=======
+import ChatroomSubscriptionController from "./chatroom_subscription_controller"
+application.register("chatroom-subscription", ChatroomSubscriptionController)
+>>>>>>> 36053a79c0953f126d3ef53ca51efd6f52c04cf3
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+<<<<<<< HEAD
 import SearchMeetupsController from "./search_meetups_controller"
 application.register("search-meetups", SearchMeetupsController)
+=======
+import SearchAirportsController from "./search_airports_controller"
+application.register("search-airports", SearchAirportsController)
+>>>>>>> 36053a79c0953f126d3ef53ca51efd6f52c04cf3

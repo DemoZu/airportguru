@@ -1,0 +1,7 @@
+<li class="list-group-item border-0">
+  <%= link_to airport_path(airport) do %>
+    <%= airport.name %>
+    <% if airport.terminal.present? %> Terminal <%= airport.terminal %>
+    <% end %>
+  <% end %>
+</li>

@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :journeys, dependent: :destroy
   has_many :meetups, dependent: :destroy
+  has_many :messages, dependent: :destroy
   has_many :tips, dependent: :destroy
 
   validates :first_name, presence: true

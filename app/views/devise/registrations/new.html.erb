@@ -1,50 +1,51 @@
 <div class="container">
   <div class="row justify-content-center my-3">
-    <div class="col col-md-8">
+    <div class="col col-md-6">
+      <div class="form">
+        <h2>Sign up to airportGuru</h2>
+        <p>Create an account to meet new people and share your airport tips with others.</p>
 
-      <h2>Sign up to airportGuru</h2>
-      <p>Create an account to meet new people and share your airport tips with others.</p>
-
-        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
-        <%= f.error_notification %>
-        <div class="form-inputs my-3">
-          <%= f.input :first_name,
-                      required: true,
-                      autofocus: true,
-                      input_html: { autocomplete: "first_name" }%>
-          <%= f.input :last_name,
-                      required: true,
-                      autofocus: true,
-                      input_html: { autocomplete: "last_name" }%>
-          <%= f.input :nickname,
-                      required: true,
-                      autofocus: true,
-                      input_html: { autocomplete: "nickname" }%>
-          <%= f.input :email,
-                      required: true,
-                      autofocus: true,
-                      input_html: { autocomplete: "email" }%>
-          <%= f.input :bio,
-                      required: true,
-                      autofocus: true,
-                      input_html: { autocomplete: "bio" }%>
-          <%= f.input :photo,
-                      required: false,
-                      autofocus: true,
-                      input_html: { autocomplete: "photo" }%>
-          <%= f.input :password,
-                      required: true,
-                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                      input_html: { autocomplete: "new-password" } %>
-          <%= f.input :password_confirmation,
-                      required: true,
-                      input_html: { autocomplete: "new-password" } %>
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
+          <%= f.error_notification %>
+          <div class="form-inputs my-3">
+            <%= f.input :first_name,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "first_name" }%>
+            <%= f.input :last_name,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "last_name" }%>
+            <%= f.input :nickname,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "nickname" }%>
+            <%= f.input :email,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
+            <%= f.input :bio,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "bio" }%>
+            <%= f.input :photo,
+                        required: false,
+                        autofocus: true,
+                        input_html: { autocomplete: "photo" }%>
+            <%= f.input :password,
+                        required: true,
+                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                        input_html: { autocomplete: "new-password" } %>
+            <%= f.input :password_confirmation,
+                        required: true,
+                        input_html: { autocomplete: "new-password" } %>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Sign up", class: "btn btn-primary my-3" %>
+          </div>
+            <% end %>
+          <%= render "devise/shared/links" %>
         </div>
-        <div class="form-actions">
-          <%= f.button :submit, "Sign up", class: "btn btn-primary my-3" %>
-        </div>
-          <% end %>
-        <%= render "devise/shared/links" %>
       </div>
     </div>
 </div>

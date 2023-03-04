@@ -2,18 +2,33 @@
   <div class="home__content d-flex flex-column justify-content-center align-items-center h-100">
     <div class="row w-100 justify-content-center">
       <div class="col col-md-8 my-5">
-        <h1 class="text-center">airportGuru</h1>
+        <h1 class="text-center app-heading">airportGuru</h1>
         <p class="h3 text-center">Your holiday starts here</p>
       </div>
     </div>
-    <div class="row w-100 justify-content-center">
+
+    <div class="row w-100 justify-content-center" data-controller="search-airports">
       <div class="col col-md-8 my-5">
         <h2 class="text-center mb-3">Find your airport</h2>
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="eg Heathrow..." aria-label="Airport name" aria-describedby="button-addon2">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
-          </div>
-        <%# form goes here %>
+          <%= form_with url: root_path,
+                        method: :get,
+                        html: {
+                              class: "input-group mb-3",
+                              data: {
+                                search_airports_target: "form"
+                              }
+                        } do |f| %>
+                        <%= f.text_field :query,
+                                          value: params[:query],
+                                          class: "form-control text-center border border-4",
+                                          placeholder: "eg London Heathrow",
+                                          data: {
+                                            search_airports_target: "input",
+                                            action: "keyup->search-airports#update"
+                                          }
+                        %>
+          <% end %>
+          <%= render "airports/list", airports: @airports %>
       </div>
     </div>
   </div>

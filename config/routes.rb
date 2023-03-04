@@ -3,13 +3,18 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
- resources :airports do
+  resources :airports do
   resources :facilities, only: [:index, :show]
   resources :tips, only: [:index]
   resources :meetups
 end
 
 
+
+
+  resources :chatrooms, only: :show do
+  resources :messages, only: :create
+end
   # Defines the root path route ("/")
   # root "articles#index"
 
