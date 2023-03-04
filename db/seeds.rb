@@ -30,6 +30,54 @@ user = User.create!([
     bio: "It's me - TinaT!",
     email: "tina@turner.com",
     password: "123456"
+  },
+  {
+    first_name: "Kara",
+    last_name: "Thrace",
+    nickname: "Kara",
+    bio: "Love to travel!",
+    email: "kara@thrace.com",
+    password: "123456"
+  },
+  {
+    first_name: "Lucy",
+    last_name: "Evans",
+    nickname: "LucyE",
+    bio: "Mum to 3 kids. ",
+    email: "lucy@evans.com",
+    password: "123456"
+  },
+  {
+    first_name: "Dan",
+    last_name: "Smith",
+    nickname: "MatrixDan",
+    bio: "Single, 30, enjoys travelling. Environmentally conscious.",
+    email: "dan@smith.com",
+    password: "123456"
+  },
+  {
+    first_name: "Paula",
+    last_name: "Hamilton",
+    nickname: "MarathonPaula",
+    bio: "Fly a lot for work.",
+    email: "paula@hamilton.com",
+    password: "123456"
+  },
+  {
+    first_name: "Ted",
+    last_name: "Parish",
+    nickname: "Ted_Parish",
+    bio: "Enjoy holidays with my wife. Retired civil servant.",
+    email: "ted@parish.com",
+    password: "123456"
+  },
+  {
+    first_name: "Tanya",
+    last_name: "Baker",
+    nickname: "tanya-rocks",
+    bio: "Travelholic LOL",
+    email: "tanya@baker.com",
+    password: "123456"
   }
 ])
 
@@ -69,7 +117,56 @@ airports = Airport.create!([
     iata_name: "STN",
     terminal: ""
   },
-
+  {
+    name: "London City",
+    iata_name: "LCY",
+    terminal: ""
+  },
+  {
+    name: "London Gatwick",
+    iata_name: "LGW",
+    terminal: "North"
+  },
+  {
+    name: "London Gatwick",
+    iata_name: "LCW",
+    terminal: "South"
+  },
+  {
+    name: "Birmingham International",
+    iata_name: "BHX",
+    terminal: ""
+  },
+  {
+    name: "Belfast International",
+    iata_name: "BFS",
+    terminal: ""
+  },
+  {
+    name: "George Best Belfast City",
+    iata_name: "BHD",
+    terminal: ""
+  },
+  {
+    name: "Glasgow International",
+    iata_name: "GLA",
+    terminal: ""
+  },
+  {
+    name: "Bristol International",
+    iata_name: "BRS",
+    terminal: ""
+  },
+  {
+    name: "Cardiff International",
+    iata_name: "CWL",
+    terminal: ""
+  },
+  {
+    name: "East Midlands",
+    iata_name: "EMA",
+    terminal: ""
+  },
   {
     name: "Paris Charles de Gaulle",
     iata_name: "CDG",
@@ -272,6 +369,15 @@ tip_categories = TipCategory.create!([
   {
     name: "Services"
   },
+  {
+    name: "Viewpoints"
+  },
+  {
+    name: "Families"
+  },
+  {
+    name: "Other"
+  }
 ])
 puts tip_categories
 puts "Tip categories created!"
@@ -291,11 +397,67 @@ tip = Tip.create!([
     tip_category_id: 1,
   },
   {
+    title: "Good place to watch the planes",
+    content: "There's a great view of the runway from the top floor, opposite Gate 8",
+    likes: 3,
+    user_id: 1,
+    airport_id: 1,
+    tip_category_id: 5,
+  },
+  {
     title: "Good lunch deal at Caffe Nero",
     content: "Sandwich and drink for £5.99",
     likes: 3,
     airport_id: 2,
     user_id: 2,
+    tip_category_id: 3,
+  },
+  {
+    title: "Great place to pick up a gift",
+    content: "Gifts4All have some really nice gifts, reasonably priced. Good to take with you if you're visiting family or friends.",
+    likes: 8,
+    airport_id: 1,
+    user_id: 3,
+    tip_category_id: 3,
+  },
+  {
+    title: "Kids activities",
+    content: "There's a softplay area not far from the Emirates departure lounge. It's free to use and there's a cafe too",
+    likes: 13,
+    airport_id: 1,
+    user_id: 4,
+    tip_category_id: 6,
+  },
+  {
+    title: "Refill your water bottle",
+    content: "There are water fountains in the airport - try the ones next to Gate 4 or 22",
+    likes: 23,
+    airport_id: 1,
+    user_id: 5,
+    tip_category_id: 2,
+  },
+  {
+    title: "Best food at the terminal without a doubt",
+    content: "Diwans serves amazing felafels and hummus. It's a bit pricey but worth it",
+    likes: 5,
+    airport_id: 1,
+    user_id: 6,
+    tip_category_id: 2,
+  },
+  {
+    title: "If you need to rest, there's a great place to do it",
+    content: "Comfortable chairs and a quiet area. It's a bit hidden so not many go there although they might now I've posted this!",
+    likes: 2,
+    airport_id: 1,
+    user_id: 7,
+    tip_category_id: 7,
+  },
+  {
+    title: "Try the margueritas - take the edge off!",
+    content: "I hate flying but love holidays LOL. Try the cocktails at St Elmo's - they're amazing",
+    likes: 18,
+    airport_id: 1,
+    user_id: 8,
     tip_category_id: 2,
   },
 ])
