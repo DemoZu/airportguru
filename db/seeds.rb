@@ -493,20 +493,13 @@ meetup_categories = MeetupCategory.create!([
       meetup_type: "One to One",
     },
 
-    {
-      meetup_topic: "Coffee",
-      meetup_type: "Group",
-    },
 
-    {
-      meetup_topic: "Drinks",
-      meetup_type: "Group",
-    },
   ])
 puts meetup_categories
 puts "Meetup categories created!"
 puts "---------------------------------"
 
+puts "Creating Meetup........ "
 meetup = Meetup.create!([
   {
     user_id: 1,
@@ -520,7 +513,79 @@ meetup = Meetup.create!([
     airport_id: 1,
     content: "Any people come to have a Drink and music? Free",
   },
+  {
+    user_id: 3,
+    meetup_category_id: 3,
+    airport_id: 1,
+    content: "Any people going to Paris? My fligh is delayed",
+  },
 ])
+
+
 puts meetup
 puts "Meetup created!"
+puts "-----------------"
+
+
+puts "Creating flights...."
+
+flight = Flight.create!([
+  {
+    flight_number: "BA123",
+    departure_time: Time.now + 70000,
+    airport_id: 1,
+    flight_destination: "Paris",
+    flight_status: "On Time",
+    gate_number: "TBC",
+    gate_open_time: Time.now + 50000,
+  },
+  {
+    flight_number: "FL234",
+    departure_time: Time.now + 80000,
+    airport_id: 2,
+    flight_destination: "Italy",
+    flight_status: "On Time",
+    gate_number: "TBC",
+    gate_open_time: Time.now + 60000,
+  },
+  {
+    flight_number: "ZA999",
+    departure_time: Time.now + 75000,
+    airport_id: 1,
+    flight_destination: "South Africa",
+    flight_status: "On Time",
+    gate_number: "TBC",
+    gate_open_time: Time.now + 55000,
+  },
+])
+
+puts flight
+puts "Flight created!"
+puts "-----------------"
+
+
+
+puts "-----------------"
+puts "Creating journeys"
+
+journeys = Journey.create!([
+  {
+    user_id: 1,
+    flight_id: 1,
+  },
+  {
+    user_id: 2,
+    flight_id: 1,
+  },
+  {
+   user_id: 3,
+   flight_id: 2,
+  },
+  {
+    user_id: 4,
+   flight_id: 2,
+  },
+])
+puts journeys
+puts "Journey created!"
 puts "-----------------"
