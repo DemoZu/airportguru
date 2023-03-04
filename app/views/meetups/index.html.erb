@@ -1,7 +1,51 @@
+
+    <!-- Modal -->
+  <div class="modal fade" id="submitMeetup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add your meetup</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Form will go here...</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-12 col-md-6">
-      <h1>Meetup index page</h1>
+  <div class="row">
+    <div class="col">
+      <h1 class="h2 my-3 d-flex justify-content-center">Meetups  🍿</h1>
+
+      <div data-controller="search-meetups">
+        <%= form_with url: airport_meetups_path,
+          method: :get,
+          html: {class: "mb-4", data: {search_meetups_target: "form"}} do |f|
+        %>
+          <%= f.text_field :query,
+            class: "form-control",
+            placeholder: "Type a meetups content",
+            value: params[:query],
+            data: {
+              search_meetups_target: "input",
+              action: "keyup->search-meetups#update"
+            }
+          %>
+        <% end %>
+        <%= render "filter", meetup_category: @meetup_category%>
+
+      <!--  <a href data-bs-toggle="modal" data-bs-target="#filterMeetup"> Filter</a>
+-->
+        <%= render "list", meetups: @meetups, mymeetup: @mymeetup %>
+
+      </div>
     </div>
   </div>
 </div>

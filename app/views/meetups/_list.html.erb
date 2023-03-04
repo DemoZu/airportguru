@@ -1,0 +1,30 @@
+
+<div data-search-meetups-target="list">
+<P class="fs-3 fw-bolder">
+My meetup:</p>
+<p class="card-text">Content:<%= mymeetup.last.content%></p>
+<p class="card-text">Topic:<%= mymeetup.last.meetup_category.meetup_topic%></p>
+
+ <p>
+  <p class="fs-3 fw-bolder">
+    <% if params[:query].blank? %>
+      <%= pluralize meetups.count, "meetup" %> available
+    <% else %>
+      <%= pluralize meetups.count, "result" %> for <code><%= params[:query] %></code>
+    <% end %>
+  </p>
+  <div class="meetups">
+    <% meetups.each do |meetup| %>
+
+<div class="card-body py-3 d-flex align-items-start flex-column">
+                      <h2 class="card-title fs-3"><%= meetup.content %></h2>
+                      <p class="card-text">From: <%= meetup.user.nickname %> </p>
+                      <p class="card-text">Topic: <%= meetup.meetup_category.meetup_topic %> </p>
+
+                      <p class="card-text">Boarding Time:<%= meetup.user.journeys.last.flight.gate_open_time.strftime("%H:%M:%S" )%></p>
+
+                      <%= link_to "Detail","", class: "btn btn-primary w-100 align-self-end" %>
+                    </div>
+    <% end %>
+  </div>
+</div>
