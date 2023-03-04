@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
     # add param Meetup.find(params[:meetup_id])
     @meetup = Meetup.find(1)
     @message = Message.new(message_params)
-    @message.meetup =  @meetup
+    @message.meetup = @meetup
     @message.chatroom = @chatroom
     @message.user = current_user
 

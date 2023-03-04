@@ -19,28 +19,22 @@ export default class extends Controller {
 
 
   filter() {
-    //console.log(this.filterTarget)
-    //var checkedList = document.querySelectorAll("input[name^='item[']:checked")
-    const ckbChecked = document.querySelectorAll("#filterDiv input[type=checkbox]:checked");
-    //console.log(ckbChecked)
-    console.log(ckbChecked.length)
-    const filter_query = "&category_id="
+  const ckbChecked = document.querySelectorAll("#filterDiv input[type=checkbox]:checked");
+
+    var filter_query = "&category_id="
     for (let item of ckbChecked) {
-      if (ckbChecked.length == 1 ) {
-        filter_query = filter_query + item.id
-      }
       filter_query = filter_query + "_" + item.id
-      //... just like an array
-      //console.log(item.value, item.id);
+
     }
-    console.log(this.formTarget.action)
-    console.log(this.inputTarget.value)
-    const url = `${this.formTarget.action}?query=${this.inputTarget.value}`
+
+
+    const url = `${this.formTarget.action}?query=${this.inputTarget.value}` + filter_query
     fetch(url, {headers: {"Accept": "text/plain"}})
       .then(response => response.text())
       .then((data) => {
         this.listTarget.outerHTML = data
       })
+
   }
 
 }
