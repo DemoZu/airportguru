@@ -9,4 +9,9 @@ Rails.application.routes.draw do
   resources :meetups
  end
 
+ resources :chatrooms, only: :show do
+  resources :messages, only: :create
+end
+  # Defines the root path route ("/")
+  # root "articles#index"
 end
