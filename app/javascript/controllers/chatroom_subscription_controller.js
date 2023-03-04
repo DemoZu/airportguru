@@ -7,7 +7,6 @@ export default class extends Controller {
   static targets = ["messages"];
 
   connect() {
-    // createConsumer().subscriptions.create("ChatroomChannel");
     this.channel = createConsumer().subscriptions.create(
       { channel: "ChatroomChannel", id: this.chatroomIdValue },
       { received: (data) => this.#insertMessageAndScrollDown(data) }
@@ -39,17 +38,17 @@ export default class extends Controller {
     `;
   }
   #insertMessageAndScrollDown(data) {
-    //Logic to know if the sender is the current_user
-    // const currentUserIsSender = this.currentUserIdValue === data.sender_id;
+    // Logic to know if the sender is the current_user
+    const currentUserIsSender = this.currentUserIdValue === data.sender_id;
 
-    // // Creating the whole message from the `data.message` String
-    // const messageElement = this.#buildMessageElement(
-    //   currentUserIsSender,
-    //   data.message
-    // );
+    // Creating the whole message from the `data.message` String
+    const messageElement = this.#buildMessageElement(
+      currentUserIsSender,
+      data.message
+    );
 
     // Inserting the `message` in the DOM
-    this.messagesTarget.insertAdjacentHTML("beforeend", data);
+    this.messagesTarget.insertAdjacentHTML("beforeend", messageElement);
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight);
   }
 
