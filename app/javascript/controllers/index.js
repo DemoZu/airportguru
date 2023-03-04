@@ -4,5 +4,11 @@
 
 import { application } from "./application"
 
+import FilterMeetupsController from "./filter_meetups_controller"
+application.register("filter-meetups", FilterMeetupsController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import SearchMeetupsController from "./search_meetups_controller"
+application.register("search-meetups", SearchMeetupsController)

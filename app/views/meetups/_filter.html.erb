@@ -1,0 +1,20 @@
+
+<div id="filterDiv" data-search-meetups-target="filter" >
+            <div class="panel panel-default">
+              <div class="panel-content">
+                <div class="panel-header">
+                  <h5 class="panel-title">Tick the topic(s) you like</h5>
+                </div>
+
+                <div class="panel-body">
+                  <% meetup_category.each do |category| %>
+
+                  <p><input type="checkbox" id="<%= category.id %>"  data-action='click->search-meetups#filter' />
+                  <%= category.meetup_topic %></p>
+                  <% end %>
+
+
+                </div>
+
+            </div>
+</div>
