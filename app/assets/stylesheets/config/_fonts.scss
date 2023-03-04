@@ -1,9 +1,22 @@
 // Import Google fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+// @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
 
+// @font-face {
+//   font-family: 'Skyfont-NonCommercial';
+//   src: font_url('/assets/fonts/Skyfont-NonCommercial') format('otf');
+// }
+@font-face {
+  font-family: 'skyfontregular';
+  src: url('/assets/fonts/skyfont-noncommercial-webfont.woff2') format('woff2'),
+    url('/assets/fonts/skyfont-noncommercial-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
 // Define fonts for body and headers
 $body-font: "Work Sans", "Helvetica", "sans-serif";
 $headers-font: "Nunito", "Helvetica", "sans-serif";
+$display-font: "skyfontregular", "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
