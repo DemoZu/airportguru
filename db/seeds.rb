@@ -10,9 +10,10 @@ Flight.destroy_all
 Airport.destroy_all
 FacilityCategory.destroy_all
 Facility.destroy_all
+# Journey.destroy_all
 
 
-puts "seeding database with airports and facilities..."
+puts "seeding database with airports, facilities, users and journeys..."
 
 user = User.create!([
   {
@@ -463,4 +464,45 @@ tip = Tip.create!([
 ])
 puts tip
 puts "Tips created!"
+puts "-----------------"
+
+puts "-----------------"
+puts "Creating flights"
+
+  flight = Flight.create!([
+    {
+      flight_number: "BA123",
+      departure_time: Time.now,
+      flight_destination: "Paris Charles de Gaulle",
+      flight_status: "On time",
+      gate_number: "G12",
+      gate_open_time: Time.now.to_i - 3600,
+      airport_id: 1,
+    },
+    {
+      flight_number: "LH022",
+      departure_time: Time.now,
+      flight_destination: "Paris Charles de Gaulle",
+      flight_status: "On time",
+      gate_number: "E2",
+      gate_open_time: Time.now.to_i - 3600,
+      airport_id: 1,
+    },
+
+  ])
+puts "Flights created!"
+puts "-----------------"
+
+
+puts "-----------------"
+puts "Creating journeys"
+
+  journey = Journey.create!([
+    {
+      flight_id: 1,
+      user_id: 2
+    }
+  ])
+
+puts "Journeys created!"
 puts "-----------------"

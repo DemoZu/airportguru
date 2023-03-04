@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import SearchAirportsController from "./search_airports_controller"
 application.register("search-airports", SearchAirportsController)
+
+import SearchFlightsController from "./search_flights_controller"
+application.register("search-flights", SearchFlightsController)
