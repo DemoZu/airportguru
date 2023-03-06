@@ -55,8 +55,8 @@
 
   <div class="row">
       <% @tips.each do |tip| %>
-      <div class="col-12 col-md-4">
-        <div class="card w-100 border-0 mb-3 p-2 shadow">
+      <div class="col-12 col-md-4 mb-3">
+        <div class="card w-100 h-100 border-0 p-2 shadow">
           <div class="card-header pt-4">
             <p class="category px-3 py-1 mb-3 border-0"><%= tip.tip_category.name %></p>
             <h2 class="fs-5 mb-1"><%= tip.title %></h2>
