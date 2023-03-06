@@ -1,5 +1,5 @@
 class AirportsController < ApplicationController
-  before_action :set_list, only: %i[show]
+  before_action :set_airport, only: %i[show]
   skip_before_action :authenticate_user!, only: %i[home show]
 
   def index
@@ -13,9 +13,8 @@ class AirportsController < ApplicationController
 
   def show
     @user = current_user
-    # @airport = Airport.find(params[:id])
-    @airport_flights = Flight.where(airport: @airport)
     sql_query = "flight_number ILIKE :query" if params[:query].present?
+    @airport_flights = Flight.where(airport_id: @airport)
     @flights = @airport_flights.where(sql_query, query: "%#{params[:query]}%") if params[:query].present?
 
     respond_to do |format|
@@ -26,7 +25,7 @@ class AirportsController < ApplicationController
 
   private
 
-  def set_list
+  def set_airport
     @airport = Airport.find(params[:id])
   end
 
@@ -35,6 +34,6 @@ class AirportsController < ApplicationController
   end
 
   def airport_params
-    params.require(:airport).permit(:name, :iata_name, :terminal)
+    params.require(:airport).permit(:name, :user, :iata_name, :terminal)
   end
 end

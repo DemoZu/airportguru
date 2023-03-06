@@ -29,11 +29,16 @@
                                             }
                           %>
             <% end %>
-            <%# render "airports/flight_list", flights: @flights %>
             <%= render "airports/flight_list", flights: @flights %>
-            <div data-search-flights-target="list">
 
-            </div>
+            <% if user_signed_in? %>
+              <% @user.flights.each do |flight| %>
+                <% if flight.airport_id == @airport.id %>
+                  Your gate opens at <%= flight.gate_open_time.strftime("%H:%M") %> for flight <%= flight.flight_number %> to <%= flight.flight_destination %>
+                <% end %>
+                <% end %>
+            <% end %>
+
     </div>
   </div>
 </div>
