@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :journeys, dependent: :destroy
+  # has_many :flights
+  has_many :flights, through: :journeys
   has_many :meetups, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :tips, dependent: :destroy

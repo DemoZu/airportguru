@@ -1,0 +1,10 @@
+<li class="list-group-item border-0">
+  <%# link_to airport_path(airport) do %>
+    Flight <%= flight.flight_number %>:
+    <%= flight.flight_destination %> | gate opens
+    <% if flight.gate_open_time.present? %>
+    <%= flight.gate_open_time.strftime("%H:%M") %>
+    <% else %>
+    TBC
+    <% end %>
+</li>
