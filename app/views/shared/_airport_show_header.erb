@@ -9,7 +9,7 @@
 </div>
 <div class="find-flight" data-controller="search-flights">
   <div class="row justify-content-center">
-    <div class="col col-md-8 my-5">
+    <div class="col-12 col-md-9 my-5">
       <%= form_with url: airport_path,
                           method: :get,
                           html: {
@@ -32,12 +32,19 @@
             <%= render "airports/flight_list", flights: @flights %>
 
             <% if user_signed_in? %>
-              <% @user.flights.each do |flight| %>
-                <% if flight.airport_id == @airport.id %>
-                  Your gate opens at <%= flight.gate_open_time.strftime("%H:%M") %> for flight <%= flight.flight_number %> to <%= flight.flight_destination %>
-                <% end %>
-                <% end %>
-            <% end %>
+              <div class="row">
+                <% @user.flights.each do |flight| %>
+                  <div class="col">
+                    <% if flight.airport_id == @airport.id %>
+                    <h2 class="fs-4">Your flight details</h2>
+                    <p><strong>Flight: <%= flight.flight_number %> to <%= flight.flight_destination %></strong></p>
+                        Gate opens at <%= flight.gate_open_time.strftime("%H:%M") %>
+                      <% end %>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+
 
     </div>
   </div>
