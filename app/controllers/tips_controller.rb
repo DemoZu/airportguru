@@ -3,6 +3,6 @@ class TipsController < ApplicationController
 
   def index
     @airport = Airport.find(params[:airport_id])
-    @tips = @airport.tips
+    @tips = @airport.tips.order(likes: :desc)
   end
 end
