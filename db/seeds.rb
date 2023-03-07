@@ -609,7 +609,7 @@ flight = Flight.create!([
     flight_number: "BA123",
     departure_time: Time.new,
     airport_id: 1,
-    flight_destination: "Paris",
+    flight_destination: "Paris Charles de Gaulle",
     flight_status: "On Time",
     gate_number: "TBC",
     gate_open_time: Time.new + 3000
@@ -627,7 +627,7 @@ flight = Flight.create!([
     flight_number: "BA24",
     departure_time: Time.new,
     airport_id: 1,
-    flight_destination: "Paris",
+    flight_destination: "Paris Charles de Gaulle",
     flight_status: "On Time",
     gate_number: "12",
     departure_time: Time.new + 6000
