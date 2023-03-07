@@ -16,6 +16,7 @@ class FacilitiesController < ApplicationController
     #   format.html
     #   format.js
     # end
+    @flights = current_user.flights if current_user.present?
   end
 
   def show

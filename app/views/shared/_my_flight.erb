@@ -1,0 +1,17 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-md-9 my-3 p-3">
+    <% if user_signed_in? %>
+      <div class="row">
+        <% current_user.flights.each do |flight| %>
+          <div class="col">
+            <% if flight.airport_id == @airport.id %>
+            <h2 class="fs-4">Your flight details</h2>
+            <p><strong>Flight: <%= flight.flight_number %> to <%= flight.flight_destination %></strong></p>
+                Gate opens at <%= flight.gate_open_time.strftime("%H:%M") if flight.gate_open_time.present? %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+  </div>
+</div>
