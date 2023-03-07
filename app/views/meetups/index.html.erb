@@ -9,7 +9,6 @@
         </div>
         <div class="modal-body">
           <p>Form will go here...</p>
-
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -18,6 +17,8 @@
       </div>
     </div>
   </div>
+
+
 
 <div class="container">
   <div class="row">
@@ -40,9 +41,6 @@
           %>
         <% end %>
         <%= render "filter", meetup_category: @meetup_category%>
-
-      <!--  <a href data-bs-toggle="modal" data-bs-target="#filterMeetup"> Filter</a>
--->
         <%= render "list", meetups: @meetups, mymeetup: @mymeetup %>
 
       </div>

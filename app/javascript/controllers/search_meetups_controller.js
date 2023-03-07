@@ -24,9 +24,10 @@ export default class extends Controller {
     var filter_query = "&category_id="
     for (let item of ckbChecked) {
       filter_query = filter_query + "_" + item.id
-
     }
-
+    if (ckbChecked.length === 0){
+      filter_query = `${filter_query}_0`
+    }
 
     const url = `${this.formTarget.action}?query=${this.inputTarget.value}` + filter_query
     fetch(url, {headers: {"Accept": "text/plain"}})
