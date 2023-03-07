@@ -730,30 +730,30 @@ puts "-----------------"
 
 
 
-puts "-----------------"
-puts "Creating journeys"
+# puts "-----------------"
+# puts "Creating journeys"
 
-journeys = Journey.create!([
-  {
-    user_id: 1,
-    flight_id: 1,
-  },
-  {
-    user_id: 2,
-    flight_id: 1,
-  },
-  {
-   user_id: 3,
-   flight_id: 2,
-  },
-  {
-    user_id: 4,
-   flight_id: 2,
-  },
-])
-puts journeys
-puts "Journey created!"
-puts "-----------------"
+# journeys = Journey.create!([
+#   {
+#     user_id: 1,
+#     flight_id: 1,
+#   },
+#   {
+#     user_id: 2,
+#     flight_id: 1,
+#   },
+#   {
+#    user_id: 3,
+#    flight_id: 2,
+#   },
+#   {
+#     user_id: 4,
+#    flight_id: 2,
+#   },
+# ])
+# puts journeys
+# puts "Journey created!"
+# puts "-----------------"
 
 puts "-----------------"
 puts "Creating flights"

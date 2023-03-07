@@ -9,6 +9,6 @@
     <% end %>
     | <%= flight.flight_status %>
 
-    | <%= link_to "save your flight", @airport_path %>
+    | <%=button_to "save your flight", add_flight_to_journey_path(flight_id: flight.id), method: :post, class: "btn btn-primary" %>
 
 </li>
