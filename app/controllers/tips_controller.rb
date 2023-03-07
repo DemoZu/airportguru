@@ -4,5 +4,6 @@ class TipsController < ApplicationController
   def index
     @airport = Airport.find(params[:airport_id])
     @tips = @airport.tips.order(likes: :desc)
+    @tip_categories = TipCategory.all
   end
 end
