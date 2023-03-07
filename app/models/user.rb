@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :meetups, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :tips, dependent: :destroy
+  has_one_attached :photo
 
   validates :first_name, presence: true
   validates :last_name, presence: true
