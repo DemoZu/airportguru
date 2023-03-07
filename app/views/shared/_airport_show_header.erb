@@ -7,12 +7,45 @@
       <% end %>
   </div>
 </div>
+<div class="find-flight" data-controller="search-flights">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-9 my-5">
+      <%= form_with url: airport_path,
+                          method: :get,
+                          html: {
+                                class: "input-group mb-3 flex-column",
+                                data: {
+                                  search_flights_target: "form"
+                                }
+                          } do |f| %>
+                          <%= f.label :query, "Find your flight", class: "d-block mb-1" %>
+                          <%= f.text_field :query,
+                                            value: params[:query],
+                                            class: "form-control text-start text-muted border border-4 w-100",
+                                            placeholder: "enter your flight number eg BA123",
+                                            data: {
+                                              search_flights_target: "input",
+                                              action: "keyup->search-flights#update"
+                                            }
+                          %>
+            <% end %>
+            <%= render "airports/flight_list", flights: @flights %>
 
-<div class="row justify-content-center">
-  <div class="col-12 col-md-9">
-    <div class="flight-information p-3">
-      <p class="fs-6 mb-0">Flight number: </p>
-      <p class="fs-6 mb-0"> Time until gate opens: </p>
+            <% if user_signed_in? %>
+              <div class="row">
+                <% @user.flights.each do |flight| %>
+                  <div class="col">
+                    <% if flight.airport_id == @airport.id %>
+                    <h2 class="fs-4">Your flight details</h2>
+                    <p><strong>Flight: <%= flight.flight_number %> to <%= flight.flight_destination %></strong></p>
+                        Gate opens at <%= flight.gate_open_time.strftime("%H:%M") %>
+                      <% end %>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+
+
     </div>
   </div>
 </div>
