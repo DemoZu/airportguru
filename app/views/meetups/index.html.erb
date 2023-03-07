@@ -17,14 +17,20 @@
       </div>
     </div>
   </div>
-<%= render "shared/my_flight", flights: @flights %>
-
 
 <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-9 mt-3 p-3">
+      <h1><%=@airport.name %></h1>
+        <% if @airport.terminal.present? %>
+          <h2 class="fs-3"><strong>Terminal <%= @airport.terminal%></strong></h2>
+          <h3 class="my-3">Meetups  🍿</h3>
+        <% end %>
+    </div>
+  </div>
+  <%= render "shared/my_flight", flights: @flights %>
   <div class="row">
     <div class="col">
-      <h1 class="h2 my-3 d-flex justify-content-center">Meetups  🍿</h1>
-
       <div data-controller="search-meetups">
         <%= form_with url: airport_meetups_path,
           method: :get,
