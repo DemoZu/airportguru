@@ -10,9 +10,10 @@ Flight.destroy_all
 Airport.destroy_all
 FacilityCategory.destroy_all
 Facility.destroy_all
+# Journey.destroy_all
 
 
-puts "seeding database with airports and facilities..."
+puts "seeding database with airports, facilities, users and journeys..."
 
 user = User.create!([
   {
@@ -326,12 +327,6 @@ facilities = Facility.create!([
   },
 
   {
-    title: "Fortum & Mason Bar",
-    airport_id: 1,
-    facility_category_id: 3
-  },
-
-  {
     title: "Gordon Ramsay Plane Food",
     airport_id: 1,
     facility_category_id: 3
@@ -347,7 +342,87 @@ facilities = Facility.create!([
     title: "Kanishka Kitchen",
     airport_id: 1,
     facility_category_id: 3
-  }
+  },
+  {
+    title: "Boots",
+    airport_id: 1,
+    facility_category_id: 2
+  },
+  {
+    title: "Burberry",
+    airport_id: 1,
+    facility_category_id: 2
+  },
+  {
+    title: "Cath Kidson",
+    airport_id: 1,
+    facility_category_id: 2
+  },
+  {
+    title: "Gucci",
+    airport_id: 1,
+    facility_category_id: 2
+  },
+  {
+    title: "Mulberry",
+    airport_id: 1,
+    facility_category_id: 2
+  },
+  {
+    title: "WHSmith",
+    airport_id: 1,
+    facility_category_id: 2
+  },
+  {
+    title: "World Duty Free",
+    airport_id: 1,
+    facility_category_id: 2
+  },
+  {
+    title: "Sunglasses Hut",
+    airport_id: 1,
+    facility_category_id: 2
+  },
+   {
+    title: "Fortum & Mason Bar",
+    airport_id: 1,
+    facility_category_id: 4
+  },
+  {
+    title: "ATM",
+    airport_id: 1,
+    facility_category_id: 6
+  },
+  {
+    title: "Children's Play Area",
+    airport_id: 1,
+    facility_category_id: 6
+  },
+  {
+    title: "Currency Exchange",
+    airport_id: 1,
+    facility_category_id: 6
+  },
+  {
+    title: "Information points",
+    airport_id: 1,
+    facility_category_id: 6
+  },
+  {
+    title: "Multi-faith prayer rooms",
+    airport_id: 1,
+    facility_category_id: 6
+  },
+  {
+    title: "Pharmacy",
+    airport_id: 1,
+    facility_category_id: 6
+  },
+  {
+    title: "Plaza Premium Lounge",
+    airport_id: 1,
+    facility_category_id: 7
+}
 ])
 
 puts "Facilities created!"
@@ -532,30 +607,120 @@ puts "Creating flights...."
 flight = Flight.create!([
   {
     flight_number: "BA123",
-    departure_time: Time.now + 70000,
+    departure_time: Time.new,
     airport_id: 1,
-    flight_destination: "Paris",
+    flight_destination: "Paris Charles de Gaulle",
     flight_status: "On Time",
     gate_number: "TBC",
-    gate_open_time: Time.now + 50000,
+    gate_open_time: Time.new + 3000
   },
   {
     flight_number: "FL234",
-    departure_time: Time.now + 80000,
+    departure_time: Time.new,
     airport_id: 2,
     flight_destination: "Italy",
     flight_status: "On Time",
     gate_number: "TBC",
-    gate_open_time: Time.now + 60000,
+    gate_open_time: Time.new + 3000
+  },
+  {
+    flight_number: "BA24",
+    departure_time: Time.new,
+    airport_id: 1,
+    flight_destination: "Paris Charles de Gaulle",
+    flight_status: "On Time",
+    gate_number: "12",
+    departure_time: Time.new + 6000
   },
   {
     flight_number: "ZA999",
-    departure_time: Time.now + 75000,
+    departure_time: Time.new,
     airport_id: 1,
     flight_destination: "South Africa",
     flight_status: "On Time",
     gate_number: "TBC",
-    gate_open_time: Time.now + 55000,
+    gate_open_time: Time.new + 300
+  },
+  {
+    flight_number: "AC6965",
+    departure_time: Time.new,
+    airport_id: 1,
+    flight_destination: "Dusseldorf",
+    flight_status: "On Time",
+    gate_number: "TBC",
+    gate_open_time: Time.new + 7000
+  },
+  {
+    flight_number: "UA9621",
+    departure_time: Time.new,
+    airport_id: 1,
+    flight_destination: "Dusseldorf",
+    flight_status: "On Time",
+    gate_number: "TBC",
+    gate_open_time: Time.new + 6000
+  },
+  {
+    flight_number: "SQ308",
+    departure_time: Time.new,
+    airport_id: 1,
+    flight_destination: "Singapore",
+    flight_status: "On Time",
+    gate_number: "TBC",
+    gate_open_time: Time.new + 9000,
+  },
+  {
+    flight_number: "EI168",
+    departure_time: Time.new,
+    airport_id: 1,
+    flight_destination: "Dublin",
+    flight_status: "On Time",
+    gate_number: "TBC",
+    gate_open_time: Time.new + 7000,
+  },
+  {
+    flight_number: "LH2476",
+    departure_time: Time.new,
+    airport_id: 1,
+    flight_destination: "Munich",
+    flight_status: "On Time",
+    gate_number: "TBC",
+    gate_open_time: Time.new + 8000,
+  },
+  {
+    flight_number: "SK505",
+    departure_time: Time.new,
+    airport_id: 1,
+    flight_destination: "Copenhagen",
+    flight_status: "On Time",
+    gate_number: "TBC",
+    gate_open_time: Time.new + 9000,
+  },
+  {
+    flight_number: "AC6965",
+    departure_time: Time.new,
+    airport_id: 1,
+    flight_destination: "Dusseldorf",
+    flight_status: "On Time",
+    gate_number: "TBC",
+    gate_open_time: Time.new + 9000,
+  },
+  {
+    flight_number: "TP7444",
+    departure_time: Time.new,
+    airport_id: 1,
+    flight_destination: "Athens",
+    flight_status: "On Time",
+    gate_number: "TBC",
+    gate_open_time: Time.new + 9000,
+  },
+  {
+    flight_number: "UA9762",
+    departure_time: Time.new,
+    airport_id: 1,
+    flight_destination: "Zurich",
+    flight_status: "On Time",
+    gate_number: "TBC",
+    gate_open_time: Time.new + 9000,
   },
 ])
 
@@ -588,4 +753,45 @@ journeys = Journey.create!([
 ])
 puts journeys
 puts "Journey created!"
+puts "-----------------"
+
+puts "-----------------"
+puts "Creating flights"
+
+  flight = Flight.create!([
+    {
+      flight_number: "BA123",
+      departure_time: Time.now,
+      flight_destination: "Paris Charles de Gaulle",
+      flight_status: "On time",
+      gate_number: "G12",
+      gate_open_time: Time.now.to_i - 3600,
+      airport_id: 1,
+    },
+    {
+      flight_number: "LH022",
+      departure_time: Time.now,
+      flight_destination: "Paris Charles de Gaulle",
+      flight_status: "On time",
+      gate_number: "E2",
+      gate_open_time: Time.now.to_i - 3600,
+      airport_id: 1,
+    },
+
+  ])
+puts "Flights created!"
+puts "-----------------"
+
+
+puts "-----------------"
+puts "Creating journeys"
+
+  journey = Journey.create!([
+    {
+      flight_id: 1,
+      user_id: 2
+    }
+  ])
+
+puts "Journeys created!"
 puts "-----------------"
