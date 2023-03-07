@@ -1,10 +1,11 @@
 
 <div data-search-meetups-target="list">
+<% if mymeetup.count > 0 %>
 <P class="fs-3 fw-bolder">
 My meetup:</p>
 <p class="card-text">Content:<%= mymeetup.last.content%></p>
 <p class="card-text">Topic:<%= mymeetup.last.meetup_category.meetup_topic%></p>
-
+<% end %>
  <p>
   <p class="fs-3 fw-bolder">
     <% if params[:query].blank? %>
@@ -13,18 +14,53 @@ My meetup:</p>
       <%= pluralize meetups.count, "result" %> for <code><%= params[:query] %></code>
     <% end %>
   </p>
-  <div class="meetups">
+  <div class="meetups " >
     <% meetups.each do |meetup| %>
-
-<div class="card-body py-3 d-flex align-items-start flex-column">
+    <div class="card border-primary mb-3">
+      <div class="card-body py-3 d-flex align-items-start flex-column card border-primary mb-3">
                       <h2 class="card-title fs-3"><%= meetup.content %></h2>
                       <p class="card-text">From: <%= meetup.user.nickname %> </p>
                       <p class="card-text">Topic: <%= meetup.meetup_category.meetup_topic %> </p>
 
                       <p class="card-text">Boarding Time:<%= meetup.user.journeys.last.flight.gate_open_time.strftime("%H:%M:%S" )%></p>
 
-                      <%= link_to "Detail","", class: "btn btn-primary w-100 align-self-end" %>
+                      <!--<%= link_to "Detail","", class: "btn btn-primary w-100 align-self-end" %>
+                    -->
+                    <div class="row">
+                      <div class="col-12 col-md-4 mb-3">
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submitMeetup<%= meetup.id%>">
+                      Detail
+                      </button>
+                      </div>
                     </div>
+      </div>
+    </div>
+          <!-- Modal -->
+          <div class="modal fade" id="submitMeetup<%= meetup.id%>" tabindex="-1" aria-labelledby="MeetupModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="MeetupModalLabel">Meetup details</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>avatar</p>
+                        <h2 class="card-title fs-3"><%= meetup.content %></h2>
+                      <p class="card-text">From: <%= meetup.user.nickname %> </p>
+                      <p class="card-text">Topic: <%= meetup.meetup_category.meetup_topic %> </p>
+
+                      <p class="card-text">Boarding Time:<%= meetup.user.journeys.last.flight.gate_open_time.strftime("%H:%M:%S" )%></p>
+                      <p><textarea col=5 width=200px></textarea></p>
+                </div>
+                <% if current_user.present? %>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Send request</button>
+                </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
     <% end %>
   </div>
 </div>

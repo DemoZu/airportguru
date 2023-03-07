@@ -1,6 +1,5 @@
 class MeetupsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index]
-
   def new
     @meetup = Meetup.new
   end
@@ -8,8 +7,16 @@ class MeetupsController < ApplicationController
   def index
     @meetup_category = MeetupCategory.all.order("meetup_topic asc")
     @new_meetup = Meetup.new
-    @mymeetup = Meetup.where("user_id = (?)", current_user.id)
-    cat_query =""
+
+    if current_user.present?
+      user_id = current_user.id
+    else
+      user_id = 0
+    end
+
+      @mymeetup = Meetup.where("user_id = (?)", user_id)
+
+      cat_query = ""
     if params[:category_id].present?
       filter_id = params[:category_id].split("_")
       if filter_id.length > 1
@@ -27,14 +34,14 @@ class MeetupsController < ApplicationController
 
     if params[:query].present? && cat_query !=""
       tmp_query = "(#{cat_query}) AND content ILIKE (?) AND user_id <> (?)"
-      @meetups = Meetup.where(tmp_query, "%#{params[:query]}%", current_user.id)
+      @meetups = Meetup.where(tmp_query, "%#{params[:query]}%", user_id)
     elsif params[:query].present? && cat_query ==""
-      @meetups = Meetup.where("content ILIKE (?) AND user_id <> (?)", "%#{params[:query]}%", current_user.id)
+      @meetups = Meetup.where("content ILIKE (?) AND user_id <> (?)", "%#{params[:query]}%", user_id)
     elsif !params[:query].present? && cat_query !=""
       tmp_query = "(#{cat_query}) AND user_id <> (?)"
-      @meetups = Meetup.where(tmp_query, current_user.id)
+      @meetups = Meetup.where(tmp_query, user_id)
     else
-      @meetups = Meetup.where("user_id <> (?)", current_user.id)
+      @meetups = Meetup.where("user_id <> (?)", user_id)
     end
 
 
@@ -47,5 +54,6 @@ class MeetupsController < ApplicationController
 
   def show
     @meetup = Meetup.find(params[:id])
+
   end
 end

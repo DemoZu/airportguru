@@ -1,20 +1,20 @@
-
-<div id="filterDiv" data-search-meetups-target="filter" >
-            <div class="panel panel-default">
-              <div class="panel-content">
-                <div class="panel-header">
-                  <h5 class="panel-title">Tick the topic(s) you like</h5>
-                </div>
-
-                <div class="panel-body">
-                  <% meetup_category.each do |category| %>
+ <div class="accordion" id="filterDiv" data-search-meetups-target="filter">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Filter
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="row row-cols-2 row-cols-lg-3 g-3">
+                 <% meetup_category.each do |category| %>
 
                   <p><input type="checkbox" id="<%= category.id %>"  data-action='click->search-meetups#filter' checked />
                   <%= category.meetup_topic %></p>
                   <% end %>
-
-
-                </div>
-
+              </div>
             </div>
+          </div>
+        </div>
 </div>
