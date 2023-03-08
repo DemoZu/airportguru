@@ -7,17 +7,15 @@
       <% end %>
   </div>
 </div>
-<div class="container">
   <%= render "shared/my_flight" %>
-</div>
 
 <div class="find-flight" data-controller="search-flights">
   <div class="row justify-content-center">
-    <div class="col-12 col-md-9 my-5">
+    <div class="col-12 col-md-9 mt-5">
       <%= form_with url: airport_path,
                           method: :get,
                           html: {
-                                class: "input-group mb-3 flex-column",
+                                class: "input-group flex-column",
                                 data: {
                                   search_flights_target: "form"
                                 }
