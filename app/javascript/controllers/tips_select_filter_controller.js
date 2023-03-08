@@ -24,12 +24,13 @@ export default class extends Controller {
     })
       .then(response => response.text())
       .then(html => {
-        this.tipsTarget.innerHTML = html
+        this.tipsTarget.outerHTML = html
       })
   }
-}
 
-function getMetaValue(name) {
-  const element = document.head.querySelector(`meta[name="${name}"]`)
-  return element.getAttribute("content")
+  // function getMetaValue(name) {
+  //   const element = document.head.querySelector(`meta[name="${name}"]`)
+  //   return element.getAttribute("content")
+  // }
+
 }
