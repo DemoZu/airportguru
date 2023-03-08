@@ -1,5 +1,5 @@
 <div class="row justify-content-center">
-  <div class="col-12 col-md-9 my-3 p-3">
+  <div class="col-12 col-md-9 mt-3 p-3">
     <p class="fs-4 mb-0">Welcome to</p>
     <h1><%=@airport.name %></h1>
       <% if @airport.terminal.present? %>
@@ -7,18 +7,24 @@
       <% end %>
   </div>
 </div>
+<% if user_signed_in? %>
+  <%= render "shared/my_flight" %>
+<% end %>
 <div class="find-flight" data-controller="search-flights">
   <div class="row justify-content-center">
-    <div class="col-12 col-md-9 my-5">
+    <div class="col-12 col-md-9 mt-3">
       <%= form_with url: airport_path,
                           method: :get,
                           html: {
-                                class: "input-group mb-3 flex-column",
+                                class: "input-group flex-column",
                                 data: {
                                   search_flights_target: "form"
                                 }
                           } do |f| %>
-                          <%= f.label :query, "Find your flight", class: "d-block mb-1" %>
+                          <div class="d-flex">
+                            <%= f.label :query, "Find your flight ", class: "d-block mb-1" %>
+                          <%= link_to "login to save your flight details", new_user_session_path, class: "link-primary ms-2" if !user_signed_in?%>
+                          </div>
                           <%= f.text_field :query,
                                             value: params[:query],
                                             class: "form-control text-start text-muted border border-4 w-100",
@@ -31,19 +37,7 @@
             <% end %>
             <%= render "airports/flight_list", flights: @flights %>
 
-            <% if user_signed_in? %>
-              <div class="row">
-                <% @user.flights.each do |flight| %>
-                  <div class="col">
-                    <% if flight.airport_id == @airport.id %>
-                    <h2 class="fs-4">Your flight details</h2>
-                    <p><strong>Flight: <%= flight.flight_number %> to <%= flight.flight_destination %></strong></p>
-                        Gate opens at <%= flight.gate_open_time.strftime("%H:%M") %>
-                      <% end %>
-                    </div>
-                  <% end %>
-                </div>
-              <% end %>
+
 
 
     </div>

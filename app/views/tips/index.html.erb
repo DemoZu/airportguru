@@ -1,22 +1,19 @@
+<%= render "shared/airport_nav" %>
 <div class="container">
-  <div class="row">
-    <div class="col">
-        <div class="mt-5 mb-2 p-2">
-          <h1>
-            <%= @airport.name %>
-            <% if @airport.terminal.present? %> <br />
-              Terminal <%= @airport.terminal %>
-              tips
-            <% else %>
-              tips
-            <% end %>
-          </h1>
-        </div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-9 mt-3 p-3">
+        <h1><%=@airport.name %></h1>
+        <% if @airport.terminal.present? %>
+        <h2 class="fs-3"><strong>Terminal <%= @airport.terminal%></strong></h2>
+        <h3 class="my-3">Top tips</h3>
+        <% end %>
     </div>
   </div>
 
+<%= render "shared/my_flight", flights: @flights %>
+
   <div class="row">
-    <div class="col-12 col-md-4 my-3">
+    <div class="col-12 col-md-4">
       <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
         <option selected>Filter tips by...</option>
         <option value="1">Utilities</option>
@@ -27,7 +24,7 @@
   </div>
 
   <div class="row">
-    <div class="col-12 col-md-4 mb-3">
+    <div class="col-12 col-md-9 my-3 p-3">
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submitTip">
           Add a tip
       </button>
@@ -39,7 +36,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Add your tip</h5>
+          <h2 class="modal-title h5" id="exampleModalLabel">Add your tip</h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
