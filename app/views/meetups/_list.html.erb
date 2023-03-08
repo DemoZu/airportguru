@@ -22,9 +22,9 @@ My meetup:</p>
           <p class="card-text">From: <%= meetup.user.nickname %> </p>
           <p class="card-text">Topic: <%= meetup.meetup_category.meetup_topic %> </p>
         <% if meetup.user.journeys.present? %>
-          <p class="card-text">Boarding Time:<%= meetup.user.journeys.last.flight.gate_open_time.strftime("%H:%M:%S" )%></p>
+          <p class="card-text">I can meet until: <%= meetup.user.journeys.last.flight.gate_open_time.strftime("%H:%M" )%></p>
         <% else%>
-          <p class="card-text">Boarding Time: 23:25:10</p>
+          <%# <p class="card-text">Boarding Time: 23:25:10</p> %>
         <% end %>
           <!--<%= link_to "Detail","", class: "btn btn-primary w-100 align-self-end" %>
         -->
