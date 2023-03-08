@@ -5,5 +5,6 @@ class TipsController < ApplicationController
     @airport = Airport.find(params[:airport_id])
     @tips = @airport.tips.order(likes: :desc)
     @tip_categories = TipCategory.all
+    @flights = current_user.flights if current_user.present?
   end
 end

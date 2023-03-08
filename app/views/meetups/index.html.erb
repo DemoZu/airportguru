@@ -1,30 +1,47 @@
 
     <!-- Modal -->
-  <div class="modal fade" id="submitMeetup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<% if current_user.present? %>
+  <div class="modal fade" id="createMeetup" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Add your meetup</h5>
+          <h5 class="modal-title" id="createModalLabel">Add your meetup</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          <p>Form will go here...</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Create</button>
-        </div>
+          <div class="modal-body">
+            <%= simple_form_for @new_meetup, url: "/airports/#{params[:airport_id]}/meetups", :method => :post do  |f| %>
+            <%= f.input :content %>
+            <%= f.hidden_field :meetup_category_id, value: "2" %>
+            <%= f.hidden_field :airport_id, value: params[:airport_id] %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Create</button>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
-
-
-
+  <% end %>
+<%= render "shared/airport_nav" %>
 <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-9 mt-3 p-3">
+      <h1><%=@airport.name %></h1>
+        <% if @airport.terminal.present? %>
+          <h2 class="fs-3"><strong>Terminal <%= @airport.terminal%></strong></h2>
+          <h3 class="my-3">Meetups  🍿</h3>
+        <% end %>
+    </div>
+  </div>
+  <%= render "shared/my_flight", flights: @flights %>
   <div class="row">
     <div class="col">
-      <h1 class="h2 my-3 d-flex justify-content-center">Meetups  🍿</h1>
-
+      <% if current_user.present?%>
+         <a href  class="" data-bs-toggle="modal" data-bs-target="#createMeetup">
+          Create meetup </a>
+      <% end %>
       <div data-controller="search-meetups">
         <%= form_with url: airport_meetups_path,
           method: :get,
