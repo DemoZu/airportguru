@@ -1,7 +1,12 @@
 import { Controller } from "@hotwired/stimulus"
 
+function getMetaValue(name) {
+  const element = document.head.querySelector(`meta[name="${name}"]`)
+  return element.getAttribute("content")
+}
+
 export default class extends Controller {
-    static targets = [ "tips" ]
+    static targets = [ "tips", "remove"]
 
 
   connect() {
@@ -24,13 +29,7 @@ export default class extends Controller {
     })
       .then(response => response.text())
       .then(html => {
-        this.tipsTarget.outerHTML = html
+        this.tipsTarget.innerHTML = html
       })
   }
-
-  // function getMetaValue(name) {
-  //   const element = document.head.querySelector(`meta[name="${name}"]`)
-  //   return element.getAttribute("content")
-  // }
-
 }

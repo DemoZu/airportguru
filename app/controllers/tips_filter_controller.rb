@@ -1,11 +1,12 @@
 class TipsFilterController < ApplicationController
   def index
     @navbar_disb = true
-    cat = TipCategory.where(name: params[:tip_categories])
-    if params == "All"
-      @airport = Airport.find(params[:airport_id])
-      @tips = @airport.tips.order(likes: :desc)
+    if params[:tip_categories] == "All"
+      @tips = Tip.all
     else
+      cat = TipCategory.where(name: params[:tip_categories])
+      # @airport = Airport.find(params[:airport_id])
+      # @tips = @airport.tips.order(likes: :desc)
       @tips = Tip.where(tip_category_id: cat)
     end
   end
