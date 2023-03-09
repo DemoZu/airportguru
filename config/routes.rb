@@ -12,7 +12,7 @@ end
 post '/journeys/add_flight', to: 'journeys#add_flight', as: 'add_flight_to_journey'
 
 
-  resources :chatrooms, only: :show do
+  resources :chatrooms do
   resources :messages, only: :create
 end
   # Defines the root path route ("/")

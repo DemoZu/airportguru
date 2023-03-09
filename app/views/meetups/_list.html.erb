@@ -57,15 +57,23 @@ My meetup:</p>
                       <% else %>
                         <p class="card-text">Boarding Time: 23:25:10</p>
                       <% end %>
-                      <p><textarea col=5 width=200px></textarea></p>
+
+                      <form action="/chatrooms" accept-charset="UTF-8" method="post">
+                        <input type="text" col=5 name="message" id="message" />
+                        <input value=<%= meetup.id %> autocomplete="off" type="hidden" name="meetup_id" id="meetup_id" />
+                        <input value=<%= meetup.airport_id %> autocomplete="off" type="hidden" name="airport_id" id="airport_id" />
+                        <% if current_user.present? %>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Send message</button>
+                          </div>
+                        <% end %>
+                      </form>
+
+
+                    </p>
+
                 </div>
-                <% if current_user.present? %>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                 <!-- <button type="button" class="btn btn-primary">Send request</button>-->
-                 <a href="/chatrooms/1" class ="btn btn-primary" >Send request</a>
-                </div>
-                <% end %>
               </div>
             </div>
           </div>
