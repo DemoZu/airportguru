@@ -3,7 +3,8 @@ class TipsController < ApplicationController
 
   def index
     @airport = Airport.find(params[:airport_id])
-    @tips = @airport.tips.order(likes: :desc)
+    @tips = @airport.tips.order(likes: :desc) if present?
+    @tip_categories = TipCategory.all
     @flights = current_user.flights if current_user.present?
   end
 end
