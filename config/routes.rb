@@ -7,14 +7,15 @@ Rails.application.routes.draw do
   resources :facilities, only: [:index, :show]
   resources :tips, only: [:index]
   resources :meetups
+  resources :chatrooms do
+    resources :messages, only: :create
+  end
 end
 
 post '/journeys/add_flight', to: 'journeys#add_flight', as: 'add_flight_to_journey'
 
 
-  resources :chatrooms do
-  resources :messages, only: :create
-end
+
   # Defines the root path route ("/")
   # root "articles#index"
 

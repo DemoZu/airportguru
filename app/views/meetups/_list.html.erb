@@ -58,7 +58,7 @@ My meetup:</p>
                         <p class="card-text">Boarding Time: 23:25:10</p>
                       <% end %>
 
-                      <form action="/chatrooms" accept-charset="UTF-8" method="post">
+                      <form action="<%= "/airports/#{meetup.airport_id}/chatrooms" %>" accept-charset="UTF-8" method="post">
                         <input type="text" col=5 name="message" id="message" />
                         <input value=<%= meetup.id %> autocomplete="off" type="hidden" name="meetup_id" id="meetup_id" />
                         <input value=<%= meetup.airport_id %> autocomplete="off" type="hidden" name="airport_id" id="airport_id" />

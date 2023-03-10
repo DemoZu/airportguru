@@ -33,7 +33,10 @@ class ChatroomsController < ApplicationController
         # )
         # head :ok
         #render "/chatrooms/#{@chatroom.id}", status: :unprocessable_entity
-        redirect_to "/chatrooms/#{@chatroom.id}"
+        #raise
+        redirect_to "#{airport_chatrooms_path}/#{@chatroom.id}"
+        # /#{@chatroom.id}"
+
       else
         render "chatrooms/show", status: :unprocessable_entity
       end
