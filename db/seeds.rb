@@ -10,11 +10,13 @@ Flight.destroy_all
 Airport.destroy_all
 FacilityCategory.destroy_all
 Facility.destroy_all
-# Journey.destroy_all
+Journey.destroy_all
+puts "database cleaned!"
 
+puts "Seeding database with users, airports, facilities, tips and journeys..."
 
-puts "seeding database with airports, facilities, users and journeys..."
-
+puts "---------------------------------"
+puts "creating users..."
 user = User.create!([
   {
     first_name: "Banana",
@@ -79,8 +81,30 @@ user = User.create!([
     bio: "Travelholic LOL",
     email: "tanya@baker.com",
     password: "123456"
+  },
+  {
+    first_name: "Harpreet",
+    last_name: "Singh",
+    nickname: "Harps",
+    bio: "Professional 23 year old. Loves to travel.",
+    email: "harpreet@singh.com",
+    password: "123456"
+  },
+  {
+    first_name: "Petra",
+    last_name: "Rebakova",
+    nickname: "PetraR",
+    bio: "Mum to one boy. Work as a teacher.",
+    email: "petra@rebakova.com",
+    password: "123456"
   }
 ])
+
+puts user.pluck(:nickname)
+puts "users created!"
+puts "---------------------------------"
+
+puts "creating airports..."
 
 airports = Airport.create!([
   {
@@ -130,7 +154,7 @@ airports = Airport.create!([
   },
   {
     name: "London Gatwick",
-    iata_name: "LCW",
+    iata_name: "LGW",
     terminal: "South"
   },
   {
@@ -223,8 +247,8 @@ airports = Airport.create!([
   }
 ])
 
-puts "Created airports!"
-puts airports
+puts airports.pluck(:name).uniq
+puts "Airports created!"
 
 puts "---------------------------------"
 puts "Creating facility categories..."
@@ -259,35 +283,293 @@ facility_categories = FacilityCategory.create!([
       name: "Lounges",
     },
   ])
-
+puts facility_categories.pluck(:name).uniq
 puts "Facility categories created!"
-  puts "---------------------------------"
+puts "---------------------------------"
 
 puts "Creating facilities..."
 
 facilities = Facility.create!([
   {
-    title: "Black Sheep Coffee",
+    title: "Caffe Nero",
+    airport_id: 8,
+    facility_category_id: 1
+  },
+  {
+    title: "Costa",
+    airport_id: 8,
+    facility_category_id: 1
+  },
+  {
+    title: "Grain Store",
+    airport_id: 8,
+    facility_category_id: 1
+  },
+  {
+    title: "Joes Coffee House",
+    airport_id: 8,
+    facility_category_id: 1
+  },
+  {
+    title: "Pret A Manger",
+    airport_id: 8,
+    facility_category_id: 1
+  },
+  {
+    title: "Starbucks",
+    airport_id: 8,
+    facility_category_id: 1
+  },
+  {
+    title: "Warrens Bakery",
+    airport_id: 8,
+    facility_category_id: 1
+  },
+  {
+    title: "Juniper & Co Bar & Kitchen",
+    airport_id: 8,
+    facility_category_id: 3
+  },
+  {
+    title: "Pure",
+    airport_id: 8,
+    facility_category_id: 3
+  },
+  {
+    title: "Shake Shack",
+    airport_id: 8,
+    facility_category_id: 3
+  },
+  {
+    title: "Sonama",
+    airport_id: 8,
+    facility_category_id: 3
+  },
+  {
+    title: "The Red Lion",
+    airport_id: 8,
+    facility_category_id: 3
+  },
+  {
+    title: "Tortilla",
+    airport_id: 8,
+    facility_category_id: 3
+  },
+  {
+    title: "Wagamama",
+    airport_id: 8,
+    facility_category_id: 3
+  },
+  {
+    title: "The Red Lion Bar & Restaurant",
+    airport_id: 8,
+    facility_category_id: 4
+  },
+  {
+    title: "Accessorize",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "Aerospa",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "Bobbi Brown",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "Boots",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "Boss",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "Case",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "Change Group",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "Collection",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "Dune",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "Fatface",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "Glorious Britain",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "Hamleys",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "Harrods",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "Havianas",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "Inmotion",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "JD",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "Jo Malone",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "Kids' Stop",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "LEGO",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "Aerospa",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "Ray-Ban",
     airport_id: 1,
     facility_category_id: 1
   },
-
   {
-    title: "Caffè Nero",
-    airport_id: 1,
-    facility_category_id: 1
+    title: "REISS",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "Sunglass Hut",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "Superdry",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "TED BAKER",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "WATCHES OF SWITZERLAND",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "well Pharmacy",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "Whittard of Chelsea",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "Aerospa",
+    airport_id: 8,
+    facility_category_id: 2
   },
 
   {
-    title: "Caffè Nero",
+    title: "WH Smith",
     airport_id: 1,
     facility_category_id: 1
   },
-
   {
-    title: "EL&N London",
-    airport_id: 1,
-    facility_category_id: 1
+    title: "WORLD DUTY FREE",
+    airport_id: 8,
+    facility_category_id: 2
+  },
+  {
+    title: "NO1 Lounge",
+    airport_id: 8,
+    facility_category_id: 7
+  },
+  {
+    title: "Clubrooms",
+    airport_id: 8,
+    facility_category_id: 7
+  },
+  {
+    title: "Plaza Premium Lounge",
+    airport_id: 8,
+    facility_category_id: 7
+  },
+  {
+    title: "The Gateway Lounge",
+    airport_id: 8,
+    facility_category_id: 7
+  },
+  {
+    title: "ATM",
+    airport_id: 8,
+    facility_category_id: 6
+  },
+  {
+    title: "Children's Play Area",
+    airport_id: 8,
+    facility_category_id: 6
+  },
+  {
+    title: "Currency Exchange",
+    airport_id: 8,
+    facility_category_id: 6
+  },
+  {
+    title: "Information points",
+    airport_id: 8,
+    facility_category_id: 6
+  },
+  {
+    title: "Multi-faith prayer rooms",
+    airport_id: 8,
+    facility_category_id: 6
+  },
+  {
+    title: "Pharmacy",
+    airport_id: 8,
+    facility_category_id: 6
   },
 
   {
@@ -425,11 +707,11 @@ facilities = Facility.create!([
 }
 ])
 
+puts facilities.pluck(:title)
 puts "Facilities created!"
+puts "---------------------------------"
 
-
-puts "-----------------"
-puts "Creating tip categories"
+puts "Creating tip categories..."
 
 tip_categories = TipCategory.create!([
   {
@@ -454,13 +736,11 @@ tip_categories = TipCategory.create!([
     name: "Other"
   }
 ])
-puts tip_categories
+puts tip_categories.pluck(:name)
 puts "Tip categories created!"
-puts "-----------------"
+puts "---------------------------------"
 
-
-puts "-----------------"
-puts "Creating tips"
+puts "Creating tips..."
 
 tip = Tip.create!([
   {
@@ -500,7 +780,7 @@ tip = Tip.create!([
     content: "There's a softplay area not far from the Emirates departure lounge. It's free to use and there's a cafe too",
     likes: 13,
     airport_id: 1,
-    user_id: 4,
+    user_id: 10,
     tip_category_id: 6,
   },
   {
@@ -535,10 +815,123 @@ tip = Tip.create!([
     user_id: 8,
     tip_category_id: 2,
   },
+
+
+
+
+
+  {
+    title: "Charge your phone",
+    content: "There are charging points in the airport - try the ones next to Gate 12 or if they're busy the ones by Gate 28B are quiet.",
+    likes: 37,
+    user_id: 1,
+    airport_id: 8,
+    tip_category_id: 1,
+  },
+  {
+    title: "Good place to watch the planes",
+    content: "There's a great view of the runway from the top floor, opposite Gate 8",
+    likes: 3,
+    user_id: 1,
+    airport_id: 8,
+    tip_category_id: 5,
+  },
+  {
+    title: "Wagamama is worth visiting if you need to eat before your flight",
+    content: "Just as good as the one in Leamington Spa that I go to all the time. Try the Katsu curry",
+    likes: 12,
+    airport_id: 8,
+    user_id: 2,
+    tip_category_id: 2,
+  },
+  {
+    title: "Pamper yourself!",
+    content: "Have a quick neck massage for £15 or get your nails done at Aerospa. Staff are great.",
+    likes: 6,
+    airport_id: 8,
+    user_id: 3,
+    tip_category_id: 4,
+  },
+  {
+    title: "Treat yourself to lounge access",
+    content: "So worth doing. Costs from £40 but you get unlimited food and drink and it's much quieter than the terminal! I went to Clubrooms. ",
+    likes: 12,
+    airport_id: 8,
+    user_id: 9,
+    tip_category_id: 4,
+  },
+  {
+    title: "Kids activities",
+    content: "There's a softplay area not far from the Emirates departure lounge. It's free to use and there's a cafe too",
+    likes: 13,
+    airport_id: 8,
+    user_id: 4,
+    tip_category_id: 6,
+  },
+  {
+    title: "Keep your kids entertained on the flight!",
+    content: "Kids' Stop sell lots of toys and colouring books which are great for keeping the kids occupied on the flight or while you're waiting!",
+    likes: 7,
+    airport_id: 8,
+    user_id: 10,
+    tip_category_id: 6,
+  },
+  {
+    title: "Refill your water bottle",
+    content: "There are water fountains in the airport - try the ones next to Gate 4 or 22",
+    likes: 23,
+    airport_id: 8,
+    user_id: 5,
+    tip_category_id: 2,
+  },
+  {
+    title: "Who doesn't love cake?!",
+    content: "Warrens Bakery have the best cakes. Freshly baked each day. Try the carrot cake - they sell out quickly!",
+    likes: 15,
+    airport_id: 8,
+    user_id: 3,
+    tip_category_id: 2,
+  },
+  {
+    title: "If you need to rest, there's a great place to do it",
+    content: "Comfortable chairs and a quiet area. It's a bit hidden so not many go there although they might now I've posted this!",
+    likes: 2,
+    airport_id: 8,
+    user_id: 7,
+    tip_category_id: 7,
+  },
+  {
+    title: "Try the margueritas - take the edge off!",
+    content: "I hate flying but love holidays LOL. Try the cocktails at St Elmo's - they're amazing",
+    likes: 18,
+    airport_id: 8,
+    user_id: 8,
+    tip_category_id: 2,
+  },
+  {
+    title: "Healthy food options",
+    content: "Caters for vegans and those after healthy food. Try the quinoa salad with beet juice.",
+    likes: 8,
+    airport_id: 8,
+    user_id: 6,
+    tip_category_id: 2,
+  },
+  {
+    title: "Currency exchange",
+    content: "There's a currency exchange just as you exit Duty Free. Good if you've forgotted to get currency. Rates aren't too bad",
+    likes: 15,
+    airport_id: 8,
+    user_id: 9,
+    tip_category_id: 4,
+  },
+
+
+
+
 ])
-puts tip
+puts tip.pluck(:title)
 puts "Tips created!"
-puts "-----------------"
+puts "---------------------------------"
 
 puts "Creating Meetup categories..."
 
@@ -570,11 +963,11 @@ meetup_categories = MeetupCategory.create!([
 
 
   ])
-puts meetup_categories
+puts meetup_categories.pluck(:meetup_topic)
 puts "Meetup categories created!"
 puts "---------------------------------"
 
-puts "Creating Meetup........ "
+puts "Creating Meetups... "
 meetup = Meetup.create!([
   {
     user_id: 1,
@@ -597,14 +990,25 @@ meetup = Meetup.create!([
 ])
 
 
-puts meetup
-puts "Meetup created!"
-puts "-----------------"
+puts meetup.pluck(:content)
+puts "Meetups created!"
+puts "---------------------------------"
 
 
 puts "Creating flights...."
 
 flight = Flight.create!([
+
+
+{
+    flight_number: "EZ8324",
+    departure_time: Time.new,
+    airport_id: 18,
+    flight_destination: "London Gatwick",
+    flight_status: "On Time",
+    gate_number: "4",
+    gate_open_time: Time.new + 8000
+  },
   {
     flight_number: "BA123",
     departure_time: Time.new,
@@ -722,11 +1126,186 @@ flight = Flight.create!([
     gate_number: "TBC",
     gate_open_time: Time.new + 9000,
   },
+
+
+
+  {
+    flight_number: "EK012",
+    airport_id: 8,
+    departure_time: Time.new,
+    flight_destination: "Dubai",
+    flight_status: "On Time",
+    gate_number: "25",
+    gate_open_time: Time.new + 3000
+  },
+  {
+    flight_number: "QF8012",
+    airport_id: 8,
+    departure_time: Time.new,
+    flight_destination: "Dubai",
+    flight_status: "On Time",
+    gate_number: "22",
+    gate_open_time: Time.new + 6500
+  },
+  {
+    flight_number: "EZY8915",
+    airport_id: 8,
+    departure_time: Time.new,
+    flight_destination: "Faro",
+    flight_status: "On Time",
+    gate_number: "12",
+    gate_open_time: Time.new + 7500
+  },
+  {
+    flight_number: "EZY8861",
+    airport_id: 8,
+    departure_time: Time.new,
+    flight_destination: "Hurghada",
+    flight_status: "On Time",
+    gate_number: "12",
+    gate_open_time: Time.new + 7500
+  },
+  {
+    flight_number: "EJU8717",
+    airport_id: 8,
+    departure_time: Time.new,
+    flight_destination: "Lisbon",
+    flight_status: "On Time",
+    gate_number: "32",
+    gate_open_time: Time.new + 5500
+  },
+  {
+    flight_number: "EZY8201",
+    airport_id: 8,
+    departure_time: Time.new,
+    flight_destination: "Milan-Linate",
+    flight_status: "On Time",
+    gate_number: "22",
+    gate_open_time: Time.new + 8500
+  },
+  {
+    flight_number: "TS729",
+    airport_id: 8,
+    departure_time: Time.new,
+    flight_destination: "Montreal",
+    flight_status: "On Time",
+    gate_number: "29",
+    gate_open_time: Time.new + 3500
+  },
+  {
+    flight_number: "EZY8663",
+    airport_id: 8,
+    departure_time: Time.new,
+    flight_destination: "Alicante",
+    flight_status: "On Time",
+    gate_number: "24",
+    gate_open_time: Time.new + 6700
+  },
+  {
+    flight_number: "TP1331",
+    airport_id: 8,
+    departure_time: Time.new,
+    flight_destination: "Porto",
+    flight_status: "On Time",
+    gate_number: "20",
+    gate_open_time: Time.new + 6700
+  },
+  {
+    flight_number: "EZY8875",
+    airport_id: 8,
+    departure_time: Time.new,
+    flight_destination: "Amsterdam",
+    flight_status: "Delayed",
+    gate_number: "20",
+    gate_open_time: Time.new + 6700
+  },
+  {
+    flight_number: "EZY8295",
+    airport_id: 8,
+    departure_time: Time.new,
+    flight_destination: "Innsbruck",
+    flight_status: "On Time",
+    gate_number: "18B",
+    gate_open_time: Time.new + 8500
+  },
+  {
+    flight_number: "B6044",
+    airport_id: 8,
+    departure_time: Time.new,
+    flight_destination: "New York",
+    flight_status: "On Time",
+    gate_number: "39",
+    gate_open_time: Time.new + 6600
+  },
+  {
+    flight_number: "EZY8277",
+    airport_id: 8,
+    departure_time: Time.new,
+    flight_destination: "Madrid",
+    flight_status: "Cancelled",
+    gate_number: "39",
+    gate_open_time: Time.new + 4700
+  },
+  {
+    flight_number: "EZY833",
+    airport_id: 8,
+    departure_time: Time.new,
+    flight_destination: "Belfast International",
+    flight_status: "On Time",
+    gate_number: "12",
+    gate_open_time: Time.new + 7500
+  },
+  {
+    flight_number: "EZY8223",
+    airport_id: 8,
+    departure_time: Time.new,
+    flight_destination: "Valencia",
+    flight_status: "On Time",
+    gate_number: "17",
+    gate_open_time: Time.new + 6500
+  },
+  {
+    flight_number: "EZY8355",
+    airport_id: 8,
+    departure_time: Time.new,
+    flight_destination: "Nice",
+    flight_status: "On Time",
+    gate_number: "17",
+    gate_open_time: Time.new + 6200
+  },
+  {
+    flight_number: "EZY8411",
+    airport_id: 8,
+    departure_time: Time.new,
+    flight_destination: "Lyon",
+    flight_status: "On Time",
+    gate_number: "13",
+    gate_open_time: Time.new + 2500
+  },
+  {
+    flight_number: "EZY8343",
+    airport_id: 8,
+    departure_time: Time.new,
+    flight_destination: "Hamburg",
+    flight_status: "Delayed",
+    gate_number: "11",
+    gate_open_time: Time.new + 6570
+  },
+  {
+    flight_number: "EZY8325",
+    airport_id: 8,
+    departure_time: Time.new,
+    flight_destination: "Paris-Charles de Gaulle",
+    flight_status: "On Time",
+    gate_number: "10B",
+    gate_open_time: Time.new + 6580
+  },
+
 ])
 
-puts flight
-puts "Flight created!"
-puts "-----------------"
+puts flight.pluck(:flight_number)
+puts "Flights created!"
+puts "---------------------------------"
 
 
 
@@ -755,35 +1334,9 @@ puts "-----------------"
 # puts "Journey created!"
 # puts "-----------------"
 
-puts "-----------------"
-puts "Creating flights"
-
-  flight = Flight.create!([
-    {
-      flight_number: "BA123",
-      departure_time: Time.now,
-      flight_destination: "Paris Charles de Gaulle",
-      flight_status: "On time",
-      gate_number: "G12",
-      gate_open_time: Time.now.to_i - 3600,
-      airport_id: 1,
-    },
-    {
-      flight_number: "LH022",
-      departure_time: Time.now,
-      flight_destination: "Paris Charles de Gaulle",
-      flight_status: "On time",
-      gate_number: "E2",
-      gate_open_time: Time.now.to_i - 3600,
-      airport_id: 1,
-    },
-
-  ])
-puts "Flights created!"
-puts "-----------------"
 
 
-puts "-----------------"
+
 # puts "Creating journeys"
 
 #   journey = Journey.create!([
