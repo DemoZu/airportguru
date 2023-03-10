@@ -1132,7 +1132,7 @@ flight = Flight.create!([
   {
     flight_number: "EK012",
     airport_id: 8,
-    departure_time: Time.new,
+    departure_time: Time.new + 6180,
     flight_destination: "Dubai",
     flight_status: "On Time",
     gate_number: "25",
@@ -1141,7 +1141,7 @@ flight = Flight.create!([
   {
     flight_number: "QF8012",
     airport_id: 8,
-    departure_time: Time.new,
+    departure_time: Time.new + 9180,
     flight_destination: "Dubai",
     flight_status: "On Time",
     gate_number: "22",
@@ -1150,7 +1150,7 @@ flight = Flight.create!([
   {
     flight_number: "EZY8915",
     airport_id: 8,
-    departure_time: Time.new,
+    departure_time: Time.new + 10180,
     flight_destination: "Faro",
     flight_status: "On Time",
     gate_number: "12",
@@ -1159,7 +1159,7 @@ flight = Flight.create!([
   {
     flight_number: "EZY8861",
     airport_id: 8,
-    departure_time: Time.new,
+    departure_time: Time.new + 10180,
     flight_destination: "Hurghada",
     flight_status: "On Time",
     gate_number: "12",
@@ -1168,7 +1168,7 @@ flight = Flight.create!([
   {
     flight_number: "EJU8717",
     airport_id: 8,
-    departure_time: Time.new,
+    departure_time: Time.new + 9180,
     flight_destination: "Lisbon",
     flight_status: "On Time",
     gate_number: "32",
@@ -1177,7 +1177,7 @@ flight = Flight.create!([
   {
     flight_number: "EZY8201",
     airport_id: 8,
-    departure_time: Time.new,
+    departure_time: Time.new + 10180,
     flight_destination: "Milan-Linate",
     flight_status: "On Time",
     gate_number: "22",
@@ -1186,7 +1186,7 @@ flight = Flight.create!([
   {
     flight_number: "TS729",
     airport_id: 8,
-    departure_time: Time.new,
+    departure_time: Time.new + 6180,
     flight_destination: "Montreal",
     flight_status: "On Time",
     gate_number: "29",
@@ -1195,7 +1195,7 @@ flight = Flight.create!([
   {
     flight_number: "EZY8663",
     airport_id: 8,
-    departure_time: Time.new,
+    departure_time: Time.new + 9180,
     flight_destination: "Alicante",
     flight_status: "On Time",
     gate_number: "24",
@@ -1204,7 +1204,7 @@ flight = Flight.create!([
   {
     flight_number: "TP1331",
     airport_id: 8,
-    departure_time: Time.new,
+    departure_time: Time.new + 9180,
     flight_destination: "Porto",
     flight_status: "On Time",
     gate_number: "20",
@@ -1213,7 +1213,7 @@ flight = Flight.create!([
   {
     flight_number: "EZY8875",
     airport_id: 8,
-    departure_time: Time.new,
+    departure_time: Time.new + 9180,
     flight_destination: "Amsterdam",
     flight_status: "Delayed",
     gate_number: "20",
@@ -1222,7 +1222,7 @@ flight = Flight.create!([
   {
     flight_number: "EZY8295",
     airport_id: 8,
-    departure_time: Time.new,
+    departure_time: Time.new + 10180,
     flight_destination: "Innsbruck",
     flight_status: "On Time",
     gate_number: "18B",
@@ -1231,7 +1231,7 @@ flight = Flight.create!([
   {
     flight_number: "B6044",
     airport_id: 8,
-    departure_time: Time.new,
+    departure_time: Time.new + 9180,
     flight_destination: "New York",
     flight_status: "On Time",
     gate_number: "39",
@@ -1240,7 +1240,7 @@ flight = Flight.create!([
   {
     flight_number: "EZY8277",
     airport_id: 8,
-    departure_time: Time.new,
+    departure_time: Time.new + 6180,
     flight_destination: "Madrid",
     flight_status: "Cancelled",
     gate_number: "39",
@@ -1249,7 +1249,7 @@ flight = Flight.create!([
   {
     flight_number: "EZY833",
     airport_id: 8,
-    departure_time: Time.new,
+    departure_time: Time.new + 9180,
     flight_destination: "Belfast International",
     flight_status: "On Time",
     gate_number: "12",
@@ -1258,7 +1258,7 @@ flight = Flight.create!([
   {
     flight_number: "EZY8223",
     airport_id: 8,
-    departure_time: Time.new,
+    departure_time: Time.new + 8500,
     flight_destination: "Valencia",
     flight_status: "On Time",
     gate_number: "17",
@@ -1267,7 +1267,7 @@ flight = Flight.create!([
   {
     flight_number: "EZY8355",
     airport_id: 8,
-    departure_time: Time.new,
+    departure_time: Time.new+ 7180,
     flight_destination: "Nice",
     flight_status: "On Time",
     gate_number: "17",
@@ -1276,7 +1276,7 @@ flight = Flight.create!([
   {
     flight_number: "EZY8411",
     airport_id: 8,
-    departure_time: Time.new,
+    departure_time: Time.new + 3180,
     flight_destination: "Lyon",
     flight_status: "On Time",
     gate_number: "13",
@@ -1285,7 +1285,7 @@ flight = Flight.create!([
   {
     flight_number: "EZY8343",
     airport_id: 8,
-    departure_time: Time.new,
+    departure_time: Time.new + 8180,
     flight_destination: "Hamburg",
     flight_status: "Delayed",
     gate_number: "11",
@@ -1294,7 +1294,7 @@ flight = Flight.create!([
   {
     flight_number: "EZY8325",
     airport_id: 8,
-    departure_time: Time.new,
+    departure_time: Time.new + 8180,
     flight_destination: "Paris-Charles de Gaulle",
     flight_status: "On Time",
     gate_number: "10B",
