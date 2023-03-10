@@ -1,5 +1,5 @@
 <%= render "shared/airport_nav" %>
-<div class="container">
+<div class="container-fluid">
  <div class="row justify-content-center">
     <div class="col-12 col-md-9 mt-3 p-3">
         <h1><%=@airport.name %></h1>
@@ -10,7 +10,7 @@
     </div>
   </div>
     <%= render "shared/my_flight", flights: @flights %>
-      <div class="accordion" id="accordionExample">
+      <div class="accordion mb-5" id="accordionExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -19,12 +19,12 @@
           </h2>
           <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-              <div class="row row-cols-2 row-cols-lg-3 g-3">
+              <div class="row ">
                 <% @facilities.where(facility_category_id: 1).each do |facility|%>
-                  <div class="col">
-                    <div class="card h-100 facilities__card border-0 shadow-sm">
-                      <div class="card-body facilities__card--body p-3 d-flex flex-column justify-content-center align-items-center align-content-center">
-                        <h3 class="card-title text-center m-0 text-wrap word-break w-100 fs-5"><%= facility.title%></h3>
+                  <div class="facilities__card col-6 col-sm-6 col-m-3 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                      <div class="card-body facilities__card--body d-flex flex-column justify-content-center align-items-center align-content-center">
+                        <h3 class="card-title text-center m-0 text-wrap word-break w-100 fs-6"><%= facility.title%></h3>
                       </div>
                     </div>
                   </div>
@@ -41,12 +41,12 @@
           </h2>
           <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-              <div class="row row-cols-2 row-cols-lg-3 g-3">
+              <div class="row">
                 <% @facilities.where(facility_category_id: 2).each do |facility|%>
-                  <div class="col">
-                    <div class="card h-100 facilities__card border-0 shadow-sm">
-                      <div class="card-body facilities__card--body p-3 d-flex flex-column justify-content-center align-items-center align-content-center">
-                        <h3 class="card-title text-center m-0 text-wrap word-break w-100 fs-5"><%= facility.title%></h3>
+                  <div class="facilities__card col-6 col-sm-6 col-m-3 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                      <div class="card-body facilities__card--body d-flex flex-column justify-content-center align-items-center align-content-center">
+                        <h3 class="card-title text-center m-0 text-wrap word-break w-100 fs-6"><%= facility.title%></h3>
                       </div>
                     </div>
                   </div>
@@ -63,12 +63,12 @@
           </h2>
           <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-                <div class="row row-cols-2 row-cols-lg-3 g-3">
+                <div class="row">
                 <% @facilities.where(facility_category_id: 3).each do |facility|%>
-                  <div class="col">
-                    <div class="card h-100 facilities__card border-0 shadow-sm">
-                      <div class="card-body facilities__card--body p-3 d-flex flex-column justify-content-center align-items-center align-content-center">
-                        <h3 class="card-title text-center m-0 text-wrap word-break w-100 fs-5"><%= facility.title%></h3>
+                  <div class="facilities__card col-6 col-sm-6 col-m-3 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                      <div class="card-body facilities__card--body d-flex flex-column justify-content-center align-items-center align-content-center">
+                        <h3 class="card-title text-center m-0 text-wrap word-break w-100 fs-6"><%= facility.title%></h3>
                       </div>
                     </div>
                   </div>
@@ -85,12 +85,12 @@
           </h2>
           <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-                <div class="row row-cols-2 row-cols-lg-3 g-3">
+                <div class="row">
                 <% @facilities.where(facility_category_id: 4).each do |facility|%>
-                  <div class="col">
-                    <div class="card h-100 facilities__card border-0 shadow-sm">
-                      <div class="card-body facilities__card--body p-3 d-flex flex-column justify-content-center align-items-center align-content-center">
-                        <h3 class="card-title text-center m-0 text-wrap word-break w-100 fs-5"><%= facility.title%></h3>
+                  <div class="facilities__card col-6 col-sm-6 col-m-3 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                      <div class="card-body facilities__card--body d-flex flex-column justify-content-center align-items-center align-content-center">
+                        <h3 class="card-title text-center m-0 text-wrap word-break w-100 fs-6"><%= facility.title%></h3>
                       </div>
                     </div>
                   </div>
@@ -107,12 +107,12 @@
           </h2>
           <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-                <div class="row row-cols-2 row-cols-lg-3 g-3">
+                <div class="row">
                 <% @facilities.where(facility_category_id: 5).each do |facility|%>
-                  <div class="col">
-                    <div class="card h-100 facilities__card border-0 shadow-sm">
-                      <div class="card-body facilities__card--body p-3 d-flex flex-column justify-content-center align-items-center align-content-center">
-                        <h3 class="card-title text-center m-0 text-wrap word-break w-100 fs-5"><%= facility.title%></h3>
+                  <div class="facilities__card col-6 col-sm-6 col-m-3 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                      <div class="card-body facilities__card--body d-flex flex-column justify-content-center align-items-center align-content-center">
+                        <h3 class="card-title text-center m-0 text-wrap word-break w-100 fs-6"><%= facility.title%></h3>
                       </div>
                     </div>
                   </div>
@@ -129,12 +129,12 @@
           </h2>
           <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-                <div class="row row-cols-2 row-cols-lg-3 g-3">
+                <div class="row">
                 <% @facilities.where(facility_category_id: 6).each do |facility|%>
-                  <div class="col">
-                    <div class="card h-100 facilities__card border-0 shadow-sm">
-                      <div class="card-body facilities__card--body p-3 d-flex flex-column justify-content-center align-items-center align-content-center">
-                        <h3 class="card-title text-center m-0 text-wrap word-break w-100 fs-5"><%= facility.title%></h3>
+                  <div class="facilities__card col-6 col-sm-6 col-m-3 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                      <div class="card-body facilities__card--body d-flex flex-column justify-content-center align-items-center align-content-center">
+                        <h3 class="card-title text-center m-0 text-wrap word-break w-100 fs-6"><%= facility.title%></h3>
                       </div>
                     </div>
                   </div>
@@ -151,12 +151,12 @@
           </h2>
           <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-                <div class="row row-cols-2 row-cols-lg-3 g-3">
+                <div class="row">
                 <% @facilities.where(facility_category_id: 7).each do |facility|%>
-                  <div class="col">
-                    <div class="card h-100 facilities__card border-0 shadow-sm">
-                      <div class="card-body facilities__card--body p-3 d-flex flex-column justify-content-center align-items-center align-content-center">
-                        <h3 class="card-title text-center m-0 text-wrap word-break w-100 fs-5"><%= facility.title%></h3>
+                  <div class="facilities__card col-6 col-sm-6 col-m-3 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                      <div class="card-body facilities__card--body d-flex flex-column justify-content-center align-items-center align-content-center">
+                        <h3 class="card-title text-center m-0 text-wrap word-break w-100 fs-6"><%= facility.title%></h3>
                       </div>
                     </div>
                   </div>
