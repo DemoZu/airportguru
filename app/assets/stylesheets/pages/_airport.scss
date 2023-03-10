@@ -6,3 +6,8 @@
   max-width: 300px;
   margin: auto;
 }
+
+
+.flight-list__item {
+ border-bottom: 1px solid $gray-300 !important;
+}
