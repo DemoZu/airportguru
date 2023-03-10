@@ -10,6 +10,164 @@
     </div>
   </div>
     <%= render "shared/my_flight", flights: @flights %>
+    <div class="container">
+      <div class="accordion mb-5" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <%= @facility_categories.find(1).name%>
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="row ">
+                <% @facilities.where(facility_category_id: 1).each do |facility|%>
+                  <div class="facilities__card col-6 col-sm-6 col-m-3 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                      <div class="card-body facilities__card--body d-flex flex-column justify-content-center align-items-center align-content-center">
+                        <h3 class="card-title text-center m-0 text-wrap word-break w-100 fs-6"><%= facility.title%></h3>
+                      </div>
+                    </div>
+                  </div>
+                <%end%>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <%= @facility_categories.find(2).name%>
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="row">
+                <% @facilities.where(facility_category_id: 2).each do |facility|%>
+                  <div class="facilities__card col-6 col-sm-6 col-m-3 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                      <div class="card-body facilities__card--body d-flex flex-column justify-content-center align-items-center align-content-center">
+                        <h3 class="card-title text-center m-0 text-wrap word-break w-100 fs-6"><%= facility.title%></h3>
+                      </div>
+                    </div>
+                  </div>
+                <%end%>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              <%= @facility_categories.find(3).name%>
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <div class="row">
+                <% @facilities.where(facility_category_id: 3).each do |facility|%>
+                  <div class="facilities__card col-6 col-sm-6 col-m-3 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                      <div class="card-body facilities__card--body d-flex flex-column justify-content-center align-items-center align-content-center">
+                        <h3 class="card-title text-center m-0 text-wrap word-break w-100 fs-6"><%= facility.title%></h3>
+                      </div>
+                    </div>
+                  </div>
+                <%end%>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+              <%= @facility_categories.find(4).name%>
+            </button>
+          </h2>
+          <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <div class="row">
+                <% @facilities.where(facility_category_id: 4).each do |facility|%>
+                  <div class="facilities__card col-6 col-sm-6 col-m-3 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                      <div class="card-body facilities__card--body d-flex flex-column justify-content-center align-items-center align-content-center">
+                        <h3 class="card-title text-center m-0 text-wrap word-break w-100 fs-6"><%= facility.title%></h3>
+                      </div>
+                    </div>
+                  </div>
+                <%end%>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFive">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+              <%= @facility_categories.find(5).name%>
+            </button>
+          </h2>
+          <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <div class="row">
+                <% @facilities.where(facility_category_id: 5).each do |facility|%>
+                  <div class="facilities__card col-6 col-sm-6 col-m-3 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                      <div class="card-body facilities__card--body d-flex flex-column justify-content-center align-items-center align-content-center">
+                        <h3 class="card-title text-center m-0 text-wrap word-break w-100 fs-6"><%= facility.title%></h3>
+                      </div>
+                    </div>
+                  </div>
+                <%end%>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingSix">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+              <%= @facility_categories.find(6).name%>
+            </button>
+          </h2>
+          <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <div class="row">
+                <% @facilities.where(facility_category_id: 6).each do |facility|%>
+                  <div class="facilities__card col-6 col-sm-6 col-m-3 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                      <div class="card-body facilities__card--body d-flex flex-column justify-content-center align-items-center align-content-center">
+                        <h3 class="card-title text-center m-0 text-wrap word-break w-100 fs-6"><%= facility.title%></h3>
+                      </div>
+                    </div>
+                  </div>
+                <%end%>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingSeven">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+              <%= @facility_categories.find(7).name%>
+            </button>
+          </h2>
+          <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <div class="row">
+                <% @facilities.where(facility_category_id: 7).each do |facility|%>
+                  <div class="facilities__card col-6 col-sm-6 col-m-3 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                      <div class="card-body facilities__card--body d-flex flex-column justify-content-center align-items-center align-content-center">
+                        <h3 class="card-title text-center m-0 text-wrap word-break w-100 fs-6"><%= facility.title%></h3>
+                      </div>
+                    </div>
+                  </div>
+                <%end%>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
       <div class="accordion mb-5" id="accordionExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
