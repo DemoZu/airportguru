@@ -1,0 +1,27 @@
+.airport-nav {
+  display: flex;
+  justify-content: space-between;
+}
+.airport-nav__container {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.airport-nav__row {
+  padding: 1rem 0;
+  background-color: $white;
+}
+@media (min-width: 768px) {
+   .airport-nav__row {
+      display: flex;
+      justify-content: center;
+   }
+
+   .airport-nav {
+    justify-content: center;
+   }
+
+   .airport-nav__link {
+      margin-right: 3rem;
+   }
+}
