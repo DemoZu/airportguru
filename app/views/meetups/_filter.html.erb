@@ -1,28 +1,4 @@
-<script>
 
-function select_all(){
-  var uncheck=document.getElementsByName('cb');
-  for(var i=0;i<uncheck.length;i++)
-  {
-    if(uncheck[i].type=='checkbox')
-    {
-    uncheck[i].checked=true;
-    }
-  }
-
-}
-function un_select_all(){
- var uncheck=document.getElementsByName('cb');
- for(var i=0;i<uncheck.length;i++)
- {
-  if(uncheck[i].type=='checkbox')
-  {
-   uncheck[i].checked=false;
-  }
- }
-
-}
-</script>
 <div class="accordion" id="filterDiv" data-search-meetups-target="filter">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
