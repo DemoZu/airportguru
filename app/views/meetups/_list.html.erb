@@ -21,7 +21,7 @@ My meetup:</p>
   <% end %>
 <% end %>
 
- <p>
+
   <p class="fs-3 fw-bolder">
     <% if params[:query].blank? %>
       <%= pluralize meetups.count, "meetup" %> available
@@ -55,6 +55,7 @@ My meetup:</p>
               <%end%>
               </div>
             </li>
+            </div>
           <% end %>
           <% if !haschat %>
             <div class="row">
@@ -65,7 +66,7 @@ My meetup:</p>
               </div>
             </div>
           <% end %>
-          </div></div>
+
         <% else %>
           <%= link_to "Login or Sign up to post a meetup", new_user_session_path %>
         <% end %>
@@ -101,9 +102,6 @@ My meetup:</p>
                           </div>
                         <% end %>
                       </form>
-
-
-                    </p>
 
                 </div>
               </div>

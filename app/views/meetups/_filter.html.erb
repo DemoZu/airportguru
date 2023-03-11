@@ -1,4 +1,29 @@
- <div class="accordion" id="filterDiv" data-search-meetups-target="filter">
+<script>
+
+function select_all(){
+  var uncheck=document.getElementsByName('cb');
+  for(var i=0;i<uncheck.length;i++)
+  {
+    if(uncheck[i].type=='checkbox')
+    {
+    uncheck[i].checked=true;
+    }
+  }
+
+}
+function un_select_all(){
+ var uncheck=document.getElementsByName('cb');
+ for(var i=0;i<uncheck.length;i++)
+ {
+  if(uncheck[i].type=='checkbox')
+  {
+   uncheck[i].checked=false;
+  }
+ }
+
+}
+</script>
+<div class="accordion" id="filterDiv" data-search-meetups-target="filter">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -8,11 +33,15 @@
           <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
             <div class="accordion-body">
               <div class="row row-cols-2 row-cols-lg-3 g-3">
-                 <% meetup_category.each do |category| %>
-
-                  <p><input type="checkbox" id="<%= category.id %>"  data-action='click->search-meetups#filter' checked />
+                <% meetup_category.each do |category| %>
+                  <p><input name="cb" type="checkbox" id="<%= category.id %>"  data-action='click->search-meetups#filter' checked />
                   <%= category.meetup_topic %></p>
-                  <% end %>
+                <% end %>
+                  <p>
+                  <button class="btn btn-sm btn-success" data-action='click->search-meetups#selectall'>all</button>
+                  <button class="btn btn-sm btn-secondary" data-action='click->search-meetups#unselectall'>unselect</button>
+
+                  </p>
               </div>
             </div>
           </div>
