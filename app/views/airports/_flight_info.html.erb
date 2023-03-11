@@ -1,5 +1,7 @@
-<li class="list-group-item border-0">
+<li class="list-group-item border-0 d-flex align-items-center flight-list__item">
   <%# link_to airport_path(airport) do %>
+  <i class="fa-solid fa-plane-up me-2"></i>
+  <span class="me-3">
     Flight <%= flight.flight_number %> to
     <%= flight.flight_destination %> | gate opens
     <% if flight.gate_open_time.present? %>
@@ -8,7 +10,8 @@
       TBC
     <% end %>
     | <%= flight.flight_status %>
+    </span>
 
-    | <%=button_to "save this flight", add_flight_to_journey_path(flight_id: flight.id), method: :post, class: "btn btn-sm btn-primary mt-1 mb-2" %>
+    <%=button_to "save this flight", add_flight_to_journey_path(flight_id: flight.id), method: :post, class: "btn btn-sm inline btn-primary mt-1 mb-2"%>
 
 </li>
