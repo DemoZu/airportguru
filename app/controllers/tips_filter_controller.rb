@@ -1,4 +1,5 @@
 class TipsFilterController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[index]
   def index
     @navbar_disb = true
     if params[:tip_categories] == "All"

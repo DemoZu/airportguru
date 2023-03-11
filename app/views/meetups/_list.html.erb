@@ -41,14 +41,18 @@ My meetup:</p>
         <% end %>
           <!--<%= link_to "Detail","", class: "btn btn-primary w-100 align-self-end" %>
         -->
-        <% if current_user.present? %>
         <div class="row">
-          <div class="col-12 col-md-4 mb-3">
+          <div class="col-12 col-md-9 mb-3">
+        <% if current_user.present? %>
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submitMeetup<%= meetup.id%>">
           Detail
           </button>
+          <% else %>
+          <%= link_to "Login or Sign up to post a meetup", new_user_session_path %>
+          <% end %>
           </div>
         </div>
+
        <% end %>
         <% @chatroomsto.each do |chatroom| %>
           <div >
@@ -61,6 +65,7 @@ My meetup:</p>
           </li>
           </div>
         <% end %>
+        
     </div>
           <!-- Modal -->
           <div class="modal fade" id="submitMeetup<%= meetup.id%>" tabindex="-1" aria-labelledby="MeetupModalLabel" aria-hidden="true">
