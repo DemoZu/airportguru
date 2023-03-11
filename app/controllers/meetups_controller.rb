@@ -13,6 +13,9 @@ class MeetupsController < ApplicationController
   end
 
   def index
+    @chatroom = Chatroom.new
+   
+    @message = Message.new
     @meetup_category = MeetupCategory.all.order("meetup_topic asc")
     @new_meetup = Meetup.new
 
@@ -25,7 +28,9 @@ class MeetupsController < ApplicationController
     end
 
     @mymeetup = Meetup.where("user_id = (?)", user_id)
-
+    @chatrooms = Chatroom.where("name ILIKE (?) ", "%##{current_user.nickname}%")
+    # need to find createor of meetup
+    @chatroomsto = Chatroom.where("name ILIKE (?) ", "#{current_user.nickname}% and %")
     cat_query = ""
     if params[:category_id].present?
       filter_id = params[:category_id].split("_")
@@ -65,7 +70,7 @@ class MeetupsController < ApplicationController
   end
 
   def show
-    @meetup = Meetup.find(params[:id])
+    @meetup = Meetup.find(params[:id])   
   end
 
   private

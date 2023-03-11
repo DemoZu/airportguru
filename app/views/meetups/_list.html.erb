@@ -6,6 +6,15 @@ My meetup:</p>
 <p class="card-text">Content:<%= mymeetup.last.content%></p>
 <p class="card-text">Topic:<%= mymeetup.last.meetup_category.meetup_topic%></p>
 <% end %>
+<% @chatrooms.each do |chatroom| %>
+  <div >
+  <li class="list-group-item d-flex align-items-center justify-content-between align-items-start">
+    <div class="ms-2 me-auto">            
+    <small class="flex-grow-1">🐭🐹 <a href="/chatrooms/<%= chatroom.id %>"  ><%= chatroom.name %></a> </small>            
+    </div>           
+  </li>  
+  </div>
+<% end %>     
  <p>
   <p class="fs-3 fw-bolder">
     <% if params[:query].blank? %>
@@ -28,6 +37,8 @@ My meetup:</p>
         <% end %>
           <!--<%= link_to "Detail","", class: "btn btn-primary w-100 align-self-end" %>
         -->
+
+
         <% if current_user.present? %>
         <div class="row">
           <div class="col-12 col-md-4 mb-3">
@@ -36,8 +47,18 @@ My meetup:</p>
           </button>
           </div>
         </div>
-        <% end %>
-      </div>
+        <% end %>   
+        <% @chatroomsto.each do |chatroom| %>
+          <div >
+          <li class="list-group-item d-flex align-items-center justify-content-between align-items-start">
+            <div class="ms-2 me-auto">  
+            <% if  chatroom.name.include? "#{meetup.user.nickname}"   %>         
+            <small class="flex-grow-1">🍌🍌 <a href="/chatrooms/<%= chatroom.id %>"  ><%= chatroom.name %></a> 🙊 </small>   
+            <%end%>         
+            </div>           
+          </li>  
+          </div>
+        <% end %>    
     </div>
           <!-- Modal -->
           <div class="modal fade" id="submitMeetup<%= meetup.id%>" tabindex="-1" aria-labelledby="MeetupModalLabel" aria-hidden="true">
@@ -57,13 +78,18 @@ My meetup:</p>
                       <% else %>
                         <p class="card-text">Boarding Time: 23:25:10</p>
                       <% end %>
-                      <p><textarea col=5 width=200px></textarea></p>
+                      <!-- <p><textarea col=5 width=200px></textarea></p>-->
+                      <%= simple_form_for @chatroom do |f| %>
+                        <%= f.input :name, placeholder: "Enter message" %>
+                        <%= f.hidden_field :meetup_id, value: meetup.id %>                                           
+                        <%= f.submit  %>
+                      <% end %>
                 </div>
                 <% if current_user.present? %>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                 <!-- <button type="button" class="btn btn-primary">Send request</button>-->
-                 <a href="/chatrooms/1" class ="btn btn-primary" >Send request</a>
+                 <!-- <button type="button" class="btn btn-primary">Send request</button>
+                 <a href="/chatrooms/1" class ="btn btn-primary" >Send request</a>-->
                 </div>
                 <% end %>
               </div>
