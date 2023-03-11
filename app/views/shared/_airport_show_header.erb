@@ -21,10 +21,9 @@
                                   search_flights_target: "form"
                                 }
                           } do |f| %>
-                          <div class="d-flex">
-                            <%= f.label :query, "Find your flight ", class: "d-block mb-1" %>
-                          <%= link_to "login to save your flight details", new_user_session_path, class: "link-primary ms-2" if !user_signed_in?%>
-                          </div>
+
+                            <%= f.label :query, "Find your flight ", class: "d-block fs-5 mb-2" %>
+
                           <%= f.text_field :query,
                                             value: params[:query],
                                             class: "form-control text-start text-muted border border-4 w-100",
@@ -34,9 +33,9 @@
                                               action: "keyup->search-flights#update"
                                             }
                           %>
+                          <% unless user_signed_in? %><div class="d-flex align-items-center mt-2"><i class="fa-solid fa-circle-info"></i> <%= link_to "login to save your flight details", new_user_session_path, class: "d-block link-primary ms-1" %></div><% end %>
             <% end %>
             <%= render "airports/flight_list", flights: @flights %>
-
 
 
 
