@@ -15,7 +15,7 @@
 <% end %>
 </div>
 
-<%= simple_form_for [@chatroom, @message],
+<%= simple_form_for [@chatroom, @message], url: airport_chatroom_message_path,
   html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
 %>
   <%= f.input :content,
@@ -23,6 +23,8 @@
     placeholder: "Message ##{@chatroom.name}",
     wrapper_html: {class: "flex-grow-1"}
   %>
+
+  <input value=<%= @chatroom.messages.last.meetup.id %> autocomplete="off" type="hidden" name="meetup_id" id="meetup_id" />
   <%= f.submit "Send", class: "btn btn-primary mb-3" %>
 <% end %>
 

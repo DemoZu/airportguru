@@ -13,8 +13,6 @@
   <body>
   <%= render "shared/navbar" unless @navbar_disb%>
   <%= render "shared/flashes" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <%= yield %>
   <%= render "shared/footer" unless @navbar_disb%>
   </body>
