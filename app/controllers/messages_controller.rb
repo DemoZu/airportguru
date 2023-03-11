@@ -1,9 +1,11 @@
 class MessagesController < ApplicationController
   def create
 
-    @chatroom = Chatroom.find(params[:chatroom_id])
+    @chatroom = Chatroom.find(params[:id])
     # add param Meetup.find(params[:meetup_id])
-    @meetup = Meetup.find(1)
+
+
+    @meetup = Meetup.find(params[:meetup_id])
     @message = Message.new(message_params)
     @message.meetup = @meetup
     @message.chatroom = @chatroom
