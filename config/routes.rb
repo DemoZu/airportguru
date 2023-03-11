@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'tips_filter/index'
   get 'messages/chatrooms'
   devise_for :users
   root to: "pages#home"
@@ -17,8 +18,9 @@ post '/airports/:airport_id/chatrooms/:id', to: 'messages#create', as: 'airport_
   #  resources :messages, only: :create
   #end
 
-
   # Defines the root path route ("/")
   # root "articles#index"
+
+  post 'tips_filter', action: :index, controller: 'tips_filter'
 
 end
