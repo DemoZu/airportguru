@@ -25,16 +25,17 @@ class MeetupsController < ApplicationController
       user_id = current_user.id
       @new_meetup.airport_id = params[:airport_id]
       @new_meetup.user_id = user_id
+      @chatrooms = Chatroom.where("name ILIKE (?) ", "%##{current_user.nickname}%")
+      # need to find createor of meetup
+      @chatroomsto = Chatroom.where("name ILIKE (?) ", "#{current_user.nickname}% and %")
+
     else
       user_id = 0
     end
 
     @mymeetup = Meetup.where("user_id = (?)", user_id)
 
-    @chatrooms = Chatroom.where("name ILIKE (?) ", "%##{current_user.nickname}%")
-    # need to find createor of meetup
-    @chatroomsto = Chatroom.where("name ILIKE (?) ", "#{current_user.nickname}% and %")
-    cat_query = ""
+   cat_query = ""
     if params[:category_id].present?
       filter_id = params[:category_id].split("_")
       if filter_id.length > 1

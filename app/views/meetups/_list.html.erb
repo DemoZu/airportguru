@@ -9,14 +9,16 @@ My meetup:</p>
   Notifications <span class="badge badge-light">New</span>
 </button>-->
 <% end %>
-<% @chatrooms.each do |chatroom| %>
-  <div >
-  <li class="list-group-item d-flex align-items-center justify-content-between align-items-start">
-    <div class="ms-2 me-auto">
-    <small class="flex-grow-1">🐭🐹 <a href='<%= "#{airport_chatrooms_path}/#{chatroom.id}"%>'  ><%= chatroom.name %></a> </small>
+<% if current_user.present? %>
+  <% @chatrooms.each do |chatroom| %>
+    <div >
+    <li class="list-group-item d-flex align-items-center justify-content-between align-items-start">
+      <div class="ms-2 me-auto">
+      <small class="flex-grow-1">🐭🐹 <a href='<%= "#{airport_chatrooms_path}/#{chatroom.id}"%>'  ><%= chatroom.name %></a> </small>
+      </div>
+    </li>
     </div>
-  </li>
-  </div>
+  <% end %>
 <% end %>
 
  <p>
@@ -41,31 +43,33 @@ My meetup:</p>
         <% end %>
           <!--<%= link_to "Detail","", class: "btn btn-primary w-100 align-self-end" %>
         -->
-        <div class="row">
-          <div class="col-12 col-md-9 mb-3">
         <% if current_user.present? %>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submitMeetup<%= meetup.id%>">
-          Detail
-          </button>
-          <% else %>
-          <%= link_to "Login or Sign up to post a meetup", new_user_session_path %>
+          <% haschat = false %>
+          <% @chatroomsto.each do |chatroom| %>
+            <div >
+            <li class="list-group-item d-flex align-items-center justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+              <% if  chatroom.name.include? "#{meetup.user.nickname}"   %>
+              <small class="flex-grow-1">🍌🍌 <a href='<%= "#{airport_chatrooms_path}/#{chatroom.id}" %>'  ><%= chatroom.name %></a> 🙊 </small>
+              <% haschat = true %>
+              <%end%>
+              </div>
+            </li>
           <% end %>
-          </div>
-        </div>
-
-       <% end %>
-        <% @chatroomsto.each do |chatroom| %>
-          <div >
-          <li class="list-group-item d-flex align-items-center justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-            <% if  chatroom.name.include? "#{meetup.user.nickname}"   %>
-            <small class="flex-grow-1">🍌🍌 <a href='<%= "#{airport_chatrooms_path}/#{chatroom.id}" %>'  ><%= chatroom.name %></a> 🙊 </small>
-            <%end%>
+          <% if !haschat %>
+            <div class="row">
+              <div class="col-12 col-md-4 mb-3">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submitMeetup<%= meetup.id%>">
+              Detail
+              </button>
+              </div>
             </div>
-          </li>
-          </div>
+          <% end %>
+          </div></div>
+        <% else %>
+          <%= link_to "Login or Sign up to post a meetup", new_user_session_path %>
         <% end %>
-        
+
     </div>
           <!-- Modal -->
           <div class="modal fade" id="submitMeetup<%= meetup.id%>" tabindex="-1" aria-labelledby="MeetupModalLabel" aria-hidden="true">
