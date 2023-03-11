@@ -49,9 +49,11 @@ My meetup:</p>
             <div >
             <li class="list-group-item d-flex align-items-center justify-content-between align-items-start">
               <div class="ms-2 me-auto">
-              <% if  chatroom.name.include? "#{meetup.user.nickname}"   %>
-              <small class="flex-grow-1">🍌🍌 <a href='<%= "#{airport_chatrooms_path}/#{chatroom.id}" %>'  ><%= chatroom.name %></a> 🙊 </small>
-              <% haschat = true %>
+              <% if  chatroom.name.include? "#{meetup.user.nickname}" %>
+                <% if meetup.id.eql?chatroom.messages.first.meetup_id %>
+                  <small class="flex-grow-1">🍌🍌 <a href='<%= "#{airport_chatrooms_path}/#{chatroom.id}" %>'  ><%= chatroom.name %></a> 🙊 </small>
+                  <% haschat = true %>
+                <% end %>
               <%end%>
               </div>
             </li>
