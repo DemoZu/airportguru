@@ -12,7 +12,10 @@ class MeetupsController < ApplicationController
     @meetup = Meetup.new(meetup_params)
 
     if @meetup.save
+
       redirect_to airport_meetups_path
+    else
+
     end
   end
 

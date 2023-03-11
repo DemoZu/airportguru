@@ -11,7 +11,7 @@
           <div class="modal-body">
             <%= simple_form_for @new_meetup, url: "/airports/#{params[:airport_id]}/meetups", :method => :post do  |f| %>
             <%= f.input :content %>
-            <%= f.hidden_field :meetup_category_id, value: "2" %>
+            <%= f.input :meetup_category_id, collection: [["Coffee",1],["Drinks",2],["Food",3],["Kids play",5],["Shopping",4]] %>
             <%= f.hidden_field :airport_id, value: params[:airport_id] %>
             <%= f.hidden_field :user_id, value: current_user.id %>
           </div>
