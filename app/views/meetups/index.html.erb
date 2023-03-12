@@ -11,11 +11,7 @@
           <div class="modal-body">
             <%= simple_form_for @new_meetup, url: "/airports/#{params[:airport_id]}/meetups", :method => :post do  |f| %>
             <%= f.input :content %>
-              <select name="meetup_category_id" id="meetup_category_id">
-              <% @meetup_category.each do |category| %>
-              <option value='<%= category.id %>'><%= category.meetup_topic %></option>
-              <% end %>
-            </select>
+
             <%= f.input :meetup_category_id, collection: [["Coffee",1],["Drinks",2],["Food",3],["Kids play",5],["Shopping",4]] %>
             <%= f.hidden_field :airport_id, value: params[:airport_id] %>
             <%= f.hidden_field :user_id, value: current_user.id %>

@@ -1,26 +1,44 @@
 
 <div data-search-meetups-target="list">
 <% if mymeetup.count > 0 %>
-<P class="fs-3 fw-bolder">
-My meetup:</p>
-<p class="card-text">Content:<%= mymeetup.last.content%></p>
-<p class="card-text">Topic:<%= mymeetup.last.meetup_category.meetup_topic%></p>
-<!--<button type="button" class="btn btn-primary">
-  Notifications <span class="badge badge-light">New</span>
-</button>-->
-<% end %>
-<% if current_user.present? %>
-  <% @chatrooms.each do |chatroom| %>
-    <div >
-    <li class="list-group-item d-flex align-items-center justify-content-between align-items-start">
-      <div class="ms-2 me-auto">
-      <small class="flex-grow-1">🐭🐹 <a href='<%= "#{airport_chatrooms_path}/#{chatroom.id}"%>'  ><%= chatroom.name %></a> </small>
-      </div>
-    </li>
-    </div>
-  <% end %>
-<% end %>
+  <div class="accordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <div class=" fw-bolder">My meetup:</div>
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse " aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <div class="row ">
+                <% if current_user.present? %>
 
+                  <% mymeetup.each do |m|  %>
+                  <div class="border border-success">
+                    <p class="card-text">Content:<%= m.content%></p>
+                    <p class="card-text">Topic:<%= m.meetup_category.meetup_topic%></p>
+                    <% @chatrooms.each do |chatroom| %>
+                      <% if (chatroom.messages.first.status != "REJECT")  && (chatroom.messages.first.meetup_id.eql?m.id) %>
+                        <li class="list-group-item d-flex align-items-center justify-content-between align-items-start">
+                          <div class="ms-2 me-auto">
+                          <small class="flex-grow-1">🐭🐹 <a href='<%= "#{airport_chatrooms_path}/#{chatroom.id}"%>'  ><%= chatroom.name %></a> </small>
+                          </div>
+                        </li>
+                      <% end %>
+                    <% end %>
+                  </div>
+                  <% end %>
+
+
+
+                <% end %>
+
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <% end %>
 
   <p class="fs-3 fw-bolder">
     <% if params[:query].blank? %>
@@ -49,12 +67,15 @@ My meetup:</p>
             <div >
             <li class="list-group-item d-flex align-items-center justify-content-between align-items-start">
               <div class="ms-2 me-auto">
-              <% if  chatroom.name.include? "#{meetup.user.nickname}" %>
                 <% if meetup.id.eql?chatroom.messages.first.meetup_id %>
-                  <small class="flex-grow-1">🍌🍌 <a href='<%= "#{airport_chatrooms_path}/#{chatroom.id}" %>'  ><%= chatroom.name %></a> 🙊 </small>
                   <% haschat = true %>
+                  <% if chatroom.messages.first.status.eql?"REJECT"%>
+                    <p class="text-danger">REJECTED</p>
+                  <% else %>
+                    <small class="flex-grow-1">🍌🍌 <a href='<%= "#{airport_chatrooms_path}/#{chatroom.id}" %>'  ><%= chatroom.name %></a> 🙊 </small>
+                  <% end %>
                 <% end %>
-              <%end%>
+
               </div>
             </li>
             </div>
