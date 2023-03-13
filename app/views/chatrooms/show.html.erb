@@ -6,7 +6,7 @@
   <h1>#<%= @chatroom.name %>
   <% if  @chatroom.messages.first.meetup.user_id.eql?current_user.id %>
     <%= simple_form_for @chatroom, url: airport_chatroom_path, :method => :patch do  |f| %>
-    <button class="btn btn-danger">Reject and close</button>
+    <button class="btn btn-danger text-white rounded">Reject and close</button>
     <% end %>
   <% end %>
   </h1>
@@ -20,13 +20,13 @@
   </div>
 <% end %>
 </div>
-
 <%= simple_form_for [@chatroom, @message], url: airport_chatroom_message_path,
   html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
 %>
   <%= f.input :content,
     label: false,
-    placeholder: "Message ##{@chatroom.name}",
+    placeholder: "type your message...",
+    # placeholder: "Message ##{@chatroom.name}",
     wrapper_html: {class: "flex-grow-1"}
   %>
 
