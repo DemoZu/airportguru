@@ -32,6 +32,24 @@
 
   <input value=<%= @chatroom.messages.last.meetup.id %> autocomplete="off" type="hidden" name="meetup_id" id="meetup_id" />
   <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+
 <% end %>
 
 </div>
+
+<script type="text/javascript">
+
+  $(document).ready(function() {
+
+    $("#message_content").emojioneArea({
+      autocomplete: false,
+      search: false,
+      emojiPlaceholder: ":smile_cat:",
+    searchPlaceholder: "Search",
+    buttonTitle: "Use your TAB key to insert emoji faster",
+    searchPosition: "bottom",
+    pickerPosition: "top"
+    });
+
+  });
+</script>

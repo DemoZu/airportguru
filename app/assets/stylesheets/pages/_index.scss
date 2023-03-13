@@ -3,3 +3,21 @@
 @import "facilities";
 @import "home";
 @import "tips";
+
+* {
+  font-family: Arial, Helvetica, san-serif;
+}
+.row:after, .row:before {
+  content: " ";
+  display: table;
+  clear: both;
+}
+.span6 {
+  float: left;
+  width: 48%;
+  padding: 1%;
+}
+
+.emojionearea-standalone {
+  float: right;
+}
