@@ -35,6 +35,22 @@ export default class extends Controller {
       .then((data) => {
         this.listTarget.outerHTML = data
       })
+  }
+
+  selectall(){
+    const ckbChecked = document.querySelectorAll("#filterDiv input[type=checkbox]");
+    for (let item of ckbChecked) {
+      item.checked = true
+    }
+    this.filter()
+
+  }
+  unselectall(){
+    const ckbChecked = document.querySelectorAll("#filterDiv input[type=checkbox]");
+    for (let item of ckbChecked) {
+      item.checked = false
+    }
+    this.filter()
 
   }
 

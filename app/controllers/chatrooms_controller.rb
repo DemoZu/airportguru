@@ -1,11 +1,30 @@
 class ChatroomsController < ApplicationController
   def show
+
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new
+    if current_user.present? &&
+      (@chatroom.messages.first.meetup.user_id == current_user.id ||
+        @chatroom.messages.first.user_id == current_user.id) &&
+        @chatroom.messages.first.status != "REJECT"
+
+    else
+      redirect_to root_path
+    end
   end
   def new
     @chatroom = Chatroom.new
     @message = Message.new
+  end
+  def update
+    #update first message's status to 'REJECT' and close chatroom
+    @chatroom = Chatroom.find(params[:id])
+    @message = @chatroom.messages.first
+    @message.status = "REJECT"
+    if @message.save
+      redirect_to airport_meetups_path
+    end
+
   end
 
   def create
