@@ -1,10 +1,6 @@
-<div class="meetps-card" data-controller="edit-meetups" data-edit-meetup-target="card">
-
-    <h2><%= meetup.content %><small> (<%= meetup.user.nickname %>)</small></h2>
-    <button aria-label="Join">
-      <i class="fa-solid fa-pen fa-xs ml-2" data-action="click->edit-meetup#displayForm"></i>
-    </button>
-
-
-
+<div class="meetups-card" data-controller="edit-meetups" data-edit-meetup-target="card">
+  <h2><%= meetup.content %><small> (<%= meetup.user.nickname %>)</small></h2>
+  <button aria-label="Join">
+    <i class="fa-solid fa-pen fa-xs ml-2" data-action="click->edit-meetup#displayForm"></i>
+  </button>
 </div>

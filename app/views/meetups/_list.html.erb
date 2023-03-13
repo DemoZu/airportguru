@@ -1,133 +1,134 @@
-
 <div data-search-meetups-target="list">
   <% if mymeetup.count > 0 %>
-    <div class="row">
-      <div class="col-12 col-md-6">
-          <div class="card">
-            <div class="card-header">
-              <h2 class="fs-3 mb-0">My meetup:</h2>
-            </div>
-            <div class="card-body">
-              <p class="card-text"><strong><%= mymeetup.last.content%></strong></p>
-              <p class="card-text">I'd like to meet for: <%= mymeetup.last.meetup_category.meetup_topic%></p>
-            </div>
-          </div>
-      </div>
-    </div>
-  <% end %>
-
-
-  <%# AVAILABLE MEETUPS %>
-  <% if current_user.present? %>
-    <div class="row">
-      <ul>
-        <% @chatrooms.each do |chatroom| %>
-            <li class="list-group-item d-flex align-items-center justify-content-between align-items-start">
-              <div class="col-12 col-md-6">
-                <div class="ms-2 me-auto">
-                  <small class="flex-grow-1">🐭🐹 <a href='<%= "#{airport_chatrooms_path}/#{chatroom.id}"%>'  ><%= chatroom.name %></a> </small>
-                </div>
-              </div>
-            </li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="row">
-    <div class="col-12 col-md-6">
-       <p class="fs-3">
-        <% if params[:query].blank? %>
-          <%= pluralize meetups.count, "meetup" %> available
-        <% else %>
-          <%= pluralize meetups.count, "result" %> for <code><%= params[:query] %></code>
-        <% end %>
-      </p>
-    </div>
-  </div>
-
-  <div class="meetups" >
-    <% meetups.each do |meetup| %>
-    <div class="card mb-3">
-      <div class="card-body py-3 d-flex align-items-start flex-column mb-3">
-        <h2 class="card-title fs-3"><%= meetup.content %></h2>
-        <p class="card-text">From: <%= meetup.user.nickname %> </p>
-        <p class="card-text">Topic: <%= meetup.meetup_category.meetup_topic %> </p>
-        <% if meetup.user.journeys.present? %>
-          <p class="card-text">I can meet until: <%= meetup.user.journeys.last.flight.gate_open_time.strftime("%H:%M" )%></p>
-        <% else%>
-          <%# <p class="card-text">Boarding Time: 23:25:10</p> %>
-        <% end %>
-      </div>
-
-        <% if current_user.present? %>
-          <% haschat = false %>
-          <% @chatroomsto.each do |chatroom| %>
-            <div >
-            <li class="list-group-item d-flex align-items-center justify-content-between align-items-start">
-              <div class="ms-2 me-auto">
-                <% if meetup.id.eql?chatroom.messages.first.meetup_id %>
-                  <% haschat = true %>
-                  <% if chatroom.messages.first.status.eql?"REJECT"%>
-                    <p class="text-danger">REJECTED</p>
-                  <% else %>
-                    <small class="flex-grow-1">🍌🍌 <a href='<%= "#{airport_chatrooms_path}/#{chatroom.id}" %>'  ><%= chatroom.name %></a> 🙊 </small>
+    <div class="accordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            My meetups:
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse " aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <% if current_user.present? %>
+              <% mymeetup.each do |m|  %>
+                <p class="card-text">Content:<%= m.content%></p>
+                <p class="card-text">I'd like to meet for:<%= m.meetup_category.meetup_topic%></p>
+                <% @chatrooms.each do |chatroom| %>
+                  <% if (chatroom.messages.first.status != "REJECT")  && (chatroom.messages.first.meetup_id.eql?m.id) %>
+                    <li class="list-group-item d-flex align-items-center justify-content-between align-items-start">
+                      <div class="ms-2 me-auto">
+                        <small class="flex-grow-1">🐭🐹 <a href='<%= "#{airport_chatrooms_path}/#{chatroom.id}"%>'  ><%= chatroom.name %></a> </small>
+                      </div>
+                    </li>
                   <% end %>
                 <% end %>
-
-              </div>
-            </li>
             </div>
-          <% end %>
-          <% if !haschat %>
-            <div class="row">
-              <div class="col-12 col-md-4 mb-3">
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submitMeetup<%= meetup.id%>">
-              Detail
-              </button>
-              </div>
-            </div>
-          <% end %>
-      </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="submitMeetup<%= meetup.id%>" tabindex="-1" aria-labelledby="MeetupModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="MeetupModalLabel">Meetup details</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-          <% if meetup.user.journeys.present? %>
-            <%= meetup.user.nickname %>
-            <% else %>
-            user
-            <% end %>
-                  <h2 class="card-title fs-3"><%= meetup.content %></h2>
-                <p class="card-text">From: <%= meetup.user.nickname %> </p>
-                <p class="card-text">Topic: <%= meetup.meetup_category.meetup_topic %> </p>
-                <% if meetup.user.journeys.present? %>
-                  <p class="card-text">Boarding Time:<%= meetup.user.journeys.last.flight.gate_open_time.strftime("%H:%M:%S" )%></p>
-                <% else %>
-                  <p class="card-text"></p>
+                  <% end %>
+                  </div>
                 <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <% end %>
 
-                <form action="<%= "/airports/#{meetup.airport_id}/chatrooms" %>" accept-charset="UTF-8" method="post">
-                  <input type="text" col=5 name="message" id="message" />
-                  <input value=<%= meetup.id %> autocomplete="off" type="hidden" name="meetup_id" id="meetup_id" />
-                  <input value=<%= meetup.airport_id %> autocomplete="off" type="hidden" name="airport_id" id="airport_id" />
+  <h3 class="fs-3">
+    <% if params[:query].blank? %>
+      There are <%= pluralize meetups.count, "people" %> available to meet
+    <% else %>
+      <%= pluralize meetups.count, "result" %> for <code><%= params[:query] %></code>
+    <% end %>
+  </h3>
+
+  <%# other travellers' meetups %>
+  <div class="meetups">
+    <div class="row">
+      <% meetups.each do |meetup| %>
+      <div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-3">
+        <div class="card mb-3 h-100 w-100 d-flex flex-direction-column">
+          <div class="card-body d-flex align-items-start flex-column mb-3">
+            <h2 class="card-title fs-4"><%= meetup.content %></h2>
+              <p class="card-text">Hi, I'm <%= meetup.user.nickname %> </p>
+              <p class="card-text">I'd like to meet for: <strong><%= meetup.meetup_category.meetup_topic %></strong> </p>
+              <% if meetup.user.journeys.present? %>
+              <p class="card-text">I can meet until: <%= meetup.user.journeys.last.flight.gate_open_time.strftime("%H:%M" )%></p>
+              <% else%>
+              <% end %>
+            <% if current_user.present? %>
+              <% haschat = false %>
+              <% @chatroomsto.each do |chatroom| %>
+                <ul>
+                  <li class="list-group-item d-flex align-items-center justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                      <% if meetup.id.eql?chatroom.messages.first.meetup_id %>
+                        <% haschat = true %>
+                        <% if chatroom.messages.first.status.eql?"REJECT"%>
+                          <p class="text-danger">REJECTED</p>
+                        <% else %>
+                          <small class="flex-grow-1">🍌🍌 <a href='<%= "#{airport_chatrooms_path}/#{chatroom.id}" %>'  ><%= chatroom.name %></a> 🙊 </small>
+                        <% end %>
+                      <% end %>
+
+                    </div>
+                  </li>
+                </ul>
+              <% end %>
+
+              <% if !haschat %>
+                <%# <div class="row"> %>
+                  <%# <div class="col-12 col-md-4 mb-3"> %>
+                    <button type="button" class="btn btn-primary w-100 mt-auto" data-bs-toggle="modal" data-bs-target="#submitMeetup<%= meetup.id%>">
+                    Message <%= meetup.user.nickname %>
+                    </button>
+                  <%# </div> %>
+                <%# </div> %>
+              <% end %>
+
+            <% else %>
+            <div class="d-flex flex-wrap">
+              <%= link_to "sign up", new_user_registration_path, class: "me-2" %> or <%= link_to "log in", new_user_session_path, class: "ms-2 me-2" %> to reply to <%= meetup.user.nickname %>
+            </div>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+          <!-- Modal -->
+      <div class="modal fade" id="submitMeetup<%= meetup.id%>" tabindex="-1" aria-labelledby="MeetupModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title fs-3" id="MeetupModalLabel">Let's meet!</h2>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= meetup.user.photo %>
+                    <h3 class="card-title fs-4"><%= meetup.content %></h3>
+                  <p class="card-text"><strong> <%= meetup.user.nickname %></strong></p>
+                  <p class="card-text">I'd like to meet for  <%= meetup.meetup_category.meetup_topic %> </p>
+                  <% if meetup.user.journeys.present? %>
+                    <p class="card-text">I'm free until:<%= meetup.user.journeys.last.flight.gate_open_time.strftime("%H:%M" )%></p>
+                  <% else %>
+                    <p class="card-text">I'm free until: 23:25:10</p>
+                  <% end %>
+
+                  <form action="<%= "/airports/#{meetup.airport_id}/chatrooms" %>" accept-charset="UTF-8" method="post">
+                    <label for="message" class="d-block">Send a message</label>
+                    <input type="text" col=5 name="message" id="message" />
+                    <input value=<%= meetup.id %> autocomplete="off" type="hidden" name="meetup_id" id="meetup_id" />
+                    <input value=<%= meetup.airport_id %> autocomplete="off" type="hidden" name="airport_id" id="airport_id" />
                     <% if current_user.present? %>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Send message</button>
                       </div>
                     <% end %>
-                </form>
+                  </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     <% end %>
   </div>
 </div>
