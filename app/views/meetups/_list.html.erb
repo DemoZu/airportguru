@@ -49,7 +49,7 @@
   <div class="meetups" >
     <% meetups.each do |meetup| %>
     <div class="card mb-3">
-      <div class="card-body py-3 d-flex align-items-start flex-column card mb-3">
+      <div class="card-body py-3 d-flex align-items-start flex-column mb-3">
         <h2 class="card-title fs-3"><%= meetup.content %></h2>
         <p class="card-text">From: <%= meetup.user.nickname %> </p>
         <p class="card-text">Topic: <%= meetup.meetup_category.meetup_topic %> </p>
