@@ -10,3 +10,32 @@ select[name = "categories"] > option {
 // select[name = "categories"] > option:not(:last-child) {
 //   border-bottom: 1px solid $gray-300;
 // }
+
+.tips-add-filtered {
+  display: flex;
+  flex-direction: column;
+}
+.tip-add {
+  margin-bottom: 2rem;
+}
+@media (min-width: 600px) {
+  .tips-add-filtered {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .tip-add {
+      order: 2;
+      max-height: 50px;
+      align-self: flex-end;
+      flex-basis: 200px;
+      margin-bottom: 0;
+    }
+
+    .filter {
+      order: 1;
+      flex-grow: 1;
+      max-width: 300px;
+    }
+}
