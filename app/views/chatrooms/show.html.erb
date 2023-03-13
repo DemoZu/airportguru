@@ -2,7 +2,7 @@
   data-controller="chatroom-subscription"
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
   data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
-
+  <div class="d-flex align-items-center my-2"><i class="fa-solid fa-chevron-left me-2"></i> <%= link_to "back to meetups", airport_meetups_path %></div>
   <h1>#<%= @chatroom.name %>
   <% if  @chatroom.messages.first.meetup.user_id.eql?current_user.id %>
     <%= simple_form_for @chatroom, url: airport_chatroom_path, :method => :patch do  |f| %>
