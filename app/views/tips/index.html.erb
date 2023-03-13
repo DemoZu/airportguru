@@ -13,13 +13,14 @@
 <%= render "shared/my_flight", flights: @flights %>
 
   <div class="row" data-controller="tips-select-filter" data-select-filter-url="<%= tips_filter_path %>">
-    <div class="col-12 col-md-4 my-3">
-        <h2>Filter tips by</h2>
-        <select name="categories" multiple size="<%= @tip_categories.length %>"  data-action="tips-select-filter#change">
+    <div class="col-12 col-md-9 mt-4 p-3">
+        <h2 class="fs-4">Filter tips by</h2>
+        <select name="categories"  class="form-select" data-action="tips-select-filter#change">
+          <option selected>Select from...</option>
           <%= @tip_categories.each do |category| %>
             <option value="<%= category.name %>"><%= category.name.humanize %></option>
           <% end %>
-            <option value="All" >All</option>
+            <option value="All">All</option>
         </select>
     </div>
     <div class="row">
