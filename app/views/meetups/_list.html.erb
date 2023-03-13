@@ -62,28 +62,30 @@
 
         <% if current_user.present? %>
           <% haschat = false %>
-            <% @chatroomsto.each do |chatroom| %>
-                <div class="list-group-item d-flex align-items-center justify-content-between align-items-start">
-                  <div class="ms-2 me-auto">
-                    <% if  chatroom.name.include? "#{meetup.user.nickname}"  %>
-                    <small class="flex-grow-1">🍌🍌 <a href='<%= "#{airport_chatrooms_path}/#{chatroom.id}" %>'><%= chatroom.name %></a> 🙊 </small>
-                    <% haschat = true %>
-                    <% end %>
-                  </div>
-                </div>
-            <% end %>
-            <% if !haschat %>
-              <div class="row">
-                <div class="col-12 col-md-4 mb-3">
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submitMeetup<%= meetup.id%>">
-                  Message <%= meetup.user.nickname %>
-                  </button>
-                </div>
+          <% @chatroomsto.each do |chatroom| %>
+            <div >
+            <li class="list-group-item d-flex align-items-center justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <% if meetup.id.eql?chatroom.messages.first.meetup_id %>
+                  <% haschat = true %>
+                  <% if chatroom.messages.first.status.eql?"REJECT"%>
+                    <p class="text-danger">REJECTED</p>
+                  <% else %>
+                    <small class="flex-grow-1">🍌🍌 <a href='<%= "#{airport_chatrooms_path}/#{chatroom.id}" %>'  ><%= chatroom.name %></a> 🙊 </small>
+                  <% end %>
+                <% end %>
+
               </div>
-            <% end %>
-            <% else %>
-            <div class="d-flex">
-              <%= link_to "Login", new_user_session_path, class: "me-1" %> or <%= link_to "Sign up", new_user_registration_path, class: "ms-1 me-1" %> to post a meetup post
+            </li>
+            </div>
+          <% end %>
+          <% if !haschat %>
+            <div class="row">
+              <div class="col-12 col-md-4 mb-3">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submitMeetup<%= meetup.id%>">
+              Detail
+              </button>
+              </div>
             </div>
           <% end %>
       </div>
