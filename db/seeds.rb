@@ -973,19 +973,19 @@ meetup = Meetup.create!([
     user_id: 1,
     meetup_category_id: 1,
     airport_id: 1,
-    content: "Let's meet together have a coffee chat",
+    content: "Let's get together for a chat over a coffee",
   },
   {
     user_id: 2,
     meetup_category_id: 2,
     airport_id: 1,
-    content: "Any people come to have a Drink and music? Free",
+    content: "Anyone fancy catching a drink at the bar?",
   },
   {
     user_id: 3,
     meetup_category_id: 3,
     airport_id: 1,
-    content: "Any people going to Paris? My fligh is delayed",
+    content: "Anyone else going to Paris? My flight is delayed",
   },
 ])
 
