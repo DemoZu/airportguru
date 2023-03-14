@@ -53,6 +53,16 @@ export default class extends Controller {
   }
 
   resetForm(event) {
+    //alert($(".message_content").html);
+    //alert($("#message_content").html);
+    //var a = document.getElementById("message_content");
+    //alert(a.value);
+
+    //alert(event.detail);
+   //console.log(a);
+    //a.value = "";
+
+    //a.value = '';
     event.target.reset();
   }
 
