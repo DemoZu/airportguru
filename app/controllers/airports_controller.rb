@@ -24,11 +24,6 @@ class AirportsController < ApplicationController
 
   end
 
-  # def flies_from_here
-  #   @airport = Airport.find(params[:id])
-  #   @flies_from_this_terminal = Flight.where(airport_id: @airport) AND Flight.where(terminal: @airport.terminal)
-  # end
-
   private
 
   def set_airport
