@@ -973,19 +973,19 @@ meetup = Meetup.create!([
     user_id: 1,
     meetup_category_id: 1,
     airport_id: 1,
-    content: "Let's meet together have a coffee chat",
+    content: "Let's get together for a chat over a coffee",
   },
   {
     user_id: 2,
     meetup_category_id: 2,
     airport_id: 1,
-    content: "Any people come to have a Drink and music? Free",
+    content: "Anyone fancy catching a drink at the bar?",
   },
   {
     user_id: 3,
     meetup_category_id: 3,
     airport_id: 1,
-    content: "Any people going to Paris? My fligh is delayed",
+    content: "Anyone else going to Paris? My flight is delayed",
   },
 ])
 
@@ -1002,7 +1002,7 @@ flight = Flight.create!([
 
 {
     flight_number: "EZ8324",
-    departure_time: Time.new,
+    departure_time: Time.new + 11111,
     airport_id: 18,
     flight_destination: "London Gatwick",
     flight_status: "On Time",
@@ -1011,7 +1011,7 @@ flight = Flight.create!([
   },
   {
     flight_number: "BA123",
-    departure_time: Time.new,
+    departure_time: Time.new + 6000,
     airport_id: 1,
     flight_destination: "Paris Charles de Gaulle",
     flight_status: "On Time",
@@ -1020,7 +1020,7 @@ flight = Flight.create!([
   },
   {
     flight_number: "FL234",
-    departure_time: Time.new,
+    departure_time: Time.new + 6000,
     airport_id: 2,
     flight_destination: "Italy",
     flight_status: "On Time",
@@ -1029,7 +1029,7 @@ flight = Flight.create!([
   },
   {
     flight_number: "BA24",
-    departure_time: Time.new,
+    departure_time: Time.new + 9000,
     airport_id: 1,
     flight_destination: "Paris Charles de Gaulle",
     flight_status: "On Time",
@@ -1038,16 +1038,16 @@ flight = Flight.create!([
   },
   {
     flight_number: "ZA999",
-    departure_time: Time.new,
+    departure_time: Time.new + 6000,
     airport_id: 1,
     flight_destination: "South Africa",
     flight_status: "On Time",
     gate_number: "TBC",
-    gate_open_time: Time.new + 300
+    gate_open_time: Time.new + 3000
   },
   {
     flight_number: "AC6965",
-    departure_time: Time.new,
+    departure_time: Time.new + 10000,
     airport_id: 1,
     flight_destination: "Dusseldorf",
     flight_status: "On Time",
@@ -1056,7 +1056,7 @@ flight = Flight.create!([
   },
   {
     flight_number: "UA9621",
-    departure_time: Time.new,
+    departure_time: Time.new + 9000,
     airport_id: 1,
     flight_destination: "Dusseldorf",
     flight_status: "On Time",
@@ -1065,7 +1065,7 @@ flight = Flight.create!([
   },
   {
     flight_number: "SQ308",
-    departure_time: Time.new,
+    departure_time: Time.new + 12000,
     airport_id: 1,
     flight_destination: "Singapore",
     flight_status: "On Time",
@@ -1074,7 +1074,7 @@ flight = Flight.create!([
   },
   {
     flight_number: "EI168",
-    departure_time: Time.new,
+    departure_time: Time.new + 10000,
     airport_id: 1,
     flight_destination: "Dublin",
     flight_status: "On Time",
@@ -1083,7 +1083,7 @@ flight = Flight.create!([
   },
   {
     flight_number: "LH2476",
-    departure_time: Time.new,
+    departure_time: Time.new + 10900,
     airport_id: 1,
     flight_destination: "Munich",
     flight_status: "On Time",
@@ -1092,7 +1092,7 @@ flight = Flight.create!([
   },
   {
     flight_number: "SK505",
-    departure_time: Time.new,
+    departure_time: Time.new + 12000,
     airport_id: 1,
     flight_destination: "Copenhagen",
     flight_status: "On Time",
@@ -1101,7 +1101,7 @@ flight = Flight.create!([
   },
   {
     flight_number: "AC6965",
-    departure_time: Time.new,
+    departure_time: Time.new + 12000,
     airport_id: 1,
     flight_destination: "Dusseldorf",
     flight_status: "On Time",
@@ -1110,7 +1110,7 @@ flight = Flight.create!([
   },
   {
     flight_number: "TP7444",
-    departure_time: Time.new,
+    departure_time: Time.new + 12000,
     airport_id: 1,
     flight_destination: "Athens",
     flight_status: "On Time",
@@ -1119,7 +1119,7 @@ flight = Flight.create!([
   },
   {
     flight_number: "UA9762",
-    departure_time: Time.new,
+    departure_time: Time.new + 12000,
     airport_id: 1,
     flight_destination: "Zurich",
     flight_status: "On Time",
