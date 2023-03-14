@@ -63,6 +63,15 @@ export default class extends Controller {
     //a.value = "";
 
     //a.value = '';
+    var emojiElt = $("#message_content").emojioneArea({autocomplete: false});
+
+// Get text
+var text = emojiElt.data("message_content").getText();
+// Get html
+var html = emojiElt.data("message_content").editor.html();
+
+// Reset Emoji field
+emojiElt.data("message_content").setText('');
     event.target.reset();
   }
 

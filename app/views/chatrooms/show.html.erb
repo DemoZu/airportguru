@@ -32,7 +32,12 @@
 
   <input value=<%= @chatroom.messages.last.meetup.id %> autocomplete="off" type="hidden" name="meetup_id" id="meetup_id" />
   <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-
+  <input type="reset" value="reset">
+  <button onclick= 'alert(document.getElementById("message_content").value);
+  document.getElementById("message_content").value ="";
+  $("#message_content").emojioneArea.setText("");
+  alert(document.getElementById("message_content").value);'>
+  reset 2</button>
 <% end %>
 
 </div>
