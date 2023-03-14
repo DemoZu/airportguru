@@ -41,9 +41,13 @@
 
     <div class="row" data-controller="tips-select-filter" data-select-filter-url="<%= tips_filter_path %>">
       <div class="col-12 mt-4 p-3 tips-add-filtered">
+      <% if current_user %>
        <button type="button" class="btn btn-primary tip-add" data-bs-toggle="modal" data-bs-target="#submitTip">
             Add a tip
         </button>
+        <% else %>
+        <%= link_to "Login to post a tip", new_user_session_path, class: "btn btn-primary tip-add"  %>
+        <% end %>
         <div class="filter">
           <h2 class="fs-4">Filter tips by</h2>
           <select name="categories"  class="form-select" data-action="tips-select-filter#change">
