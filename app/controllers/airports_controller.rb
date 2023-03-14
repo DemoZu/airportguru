@@ -21,6 +21,7 @@ class AirportsController < ApplicationController
       format.html
       format.text { render partial: "airports/flight_list", locals: { flights: @flights }, formats: [:html] }
     end
+
   end
 
   private
