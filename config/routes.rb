@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :chatrooms
 end
 
+post '/tips/:tip_id/likes', to: 'likes#create', as: 'tip_likes'
 post '/journeys/add_flight', to: 'journeys#add_flight', as: 'add_flight_to_journey'
 
 post '/airports/:airport_id/chatrooms/:id', to: 'messages#create', as: 'airport_chatroom_message'

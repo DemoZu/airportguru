@@ -23,7 +23,12 @@
                 </p>
               </div>
               <div>
-                <p class="mb-0"><small class="d-flex align-items-center"><i class="fa-regular fa-heart me-2"></i> <%= tip.likes %></small></p>
+              <% if current_user %>
+                <div class="d-flex align-items-center">
+                  <%= button_to 'Like', tip_likes_path(tip_id: tip.id, airport_id: @airport.id), method: :post %>
+                  <p class="mb-0"><%= tip.likes.count %> </p>
+                </div>
+              <% end %>
               </div>
             </div>
           </div>
