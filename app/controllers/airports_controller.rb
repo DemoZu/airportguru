@@ -21,7 +21,13 @@ class AirportsController < ApplicationController
       format.html
       format.text { render partial: "airports/flight_list", locals: { flights: @flights }, formats: [:html] }
     end
+
   end
+
+  # def flies_from_here
+  #   @airport = Airport.find(params[:id])
+  #   @flies_from_this_terminal = Flight.where(airport_id: @airport) AND Flight.where(terminal: @airport.terminal)
+  # end
 
   private
 
