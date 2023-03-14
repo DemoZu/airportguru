@@ -56,11 +56,52 @@
     </div>
   </div>
 
+  <%# my meetup%>
+  <% if @mymeetup.count > 0 %>
+
+  <div class="row justify-content-center" >
+    <div class="accordion mt-5 col-12 col-md-9 px-3">
+      <h2 class="fs-3">My meetups</h2>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#myMeetups" aria-expanded="true" aria-controls="collapseTwo">
+            View your posts and replies:
+          </button>
+        </h2>
+        <div id="myMeetups" class="accordion-collapse collapse " aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <% if current_user.present? %>
+              <% @mymeetup.each do |m|  %>
+                <div class="card">
+                  <div class="card-body">
+                    <h2 class="card-text fs-4"><%= m.content%></h2>
+                    <p class="card-text">I'd like to meet for: <%= m.meetup_category.meetup_topic%></p>
+                      <% @chatrooms.each do |chatroom| %>
+                        <% if (chatroom.messages.first.status != "REJECT")  && (chatroom.messages.first.meetup_id.eql?m.id) %>
+                          <div class="list-group-item d-flex align-items-center justify-content-between align-items-start">
+                            <div class="">
+                              <small class="">🐭🐹 <a href='<%= "#{airport_chatrooms_path}/#{chatroom.id}"%>'><%= chatroom.name %></a></small>
+                            </div>
+                          </div>
+                        <% end %>
+                      <% end %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  <% end %>
 
     <%# search meetups %>
     <div class="row justify-content-center">
       <div class="col-12 col-md-9 px-3">
+
         <div data-controller="search-meetups">
+          <%= render "filter", meetup_category: @meetup_category%>
           <%= form_with url: airport_meetups_path,
             method: :get,
             html: {class: "mb-4", data: {search_meetups_target: "form"}} do |f|
@@ -75,9 +116,8 @@
             }
           %>
           <% end %>
-
-          <%= render "filter", meetup_category: @meetup_category%>
-          <%= render "list", meetups: @meetups, mymeetup: @mymeetup %>
+          <%= render "list", meetups: @meetups %>
         </div>
-</div>
+      </div>
+    </div>
 </div>
