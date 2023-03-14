@@ -1,39 +1,6 @@
 <div data-search-meetups-target="list">
-  <% if mymeetup.count > 0 %>
-    <div class="accordion mt-5 mb-3">
-      <h2 class="fs-3">My meetups</h2>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingTwo">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#myMeetups" aria-expanded="true" aria-controls="collapseTwo">
-            View your posts and replies:
-          </button>
-        </h2>
-        <div id="myMeetups" class="accordion-collapse collapse " aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            <% if current_user.present? %>
-              <% mymeetup.each do |m|  %>
-                <div class="card">
-                  <div class="card-body">
-                    <h2 class="card-text fs-4"><%= m.content%></h2>
-                    <p class="card-text">I'd like to meet for: <%= m.meetup_category.meetup_topic%></p>
-                      <% @chatrooms.each do |chatroom| %>
-                        <% if (chatroom.messages.first.status != "REJECT")  && (chatroom.messages.first.meetup_id.eql?m.id) %>
-                          <div class="list-group-item d-flex align-items-center justify-content-between align-items-start">
-                            <div class="">
-                              <small class="">🐭🐹 <a href='<%= "#{airport_chatrooms_path}/#{chatroom.id}"%>'><%= chatroom.name %></a></small>
-                            </div>
-                          </div>
-                        <% end %>
-                      <% end %>
-                  </div>
-                </div>
-              <% end %>
-          </div>
-            <% end %>
-        </div>
-      </div>
-    <% end %>
-    </div>
+
+
 
   <div class="container p-0">
     <div class="row mt-5 mb-3">
@@ -83,11 +50,11 @@
                       Message <%= meetup.user.nickname %>
                       </button>
                     <% end %>
-                    <% else %>
+                <% else %>
                       <div class="d-flex flex-wrap">
                         <%= link_to "sign up", new_user_registration_path, class: "me-2" %> or <%= link_to "log in", new_user_session_path, class: "ms-2 me-2" %> to reply to <%= meetup.user.nickname %>
                       </div>
-                    <% end %>
+                <% end %>
             </div>
           </div>
         </div>
@@ -127,9 +94,8 @@
             </div>
           </div>
         </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
     </div>
   </div>
-
 </div>
