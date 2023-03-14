@@ -7,16 +7,21 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Form will go here...</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Submit</button>
-      </div>
+        <%= simple_form_for @tip, url: airport_tips_path, :method => :post do  |f| %>
+                                              <%= f.input :title, label: "Give your tip a one line summary", required: true, placeholder: "eg Best food in the airport" %>
+                                              <%= f.input :content, label: "What is your tip?", required: true, placeholder: "Type your tip here..." %>
+                                              <%= f.input :tip_category_id, collection: @tip_categories, as: :select, label: "Choose a category for your tip" %>
+                                              <%= f.hidden_field :airport_id, value: params[:airport_id] %>
+                                              <%= f.hidden_field :user_id, value: current_user.id if current_user.present? %>
+                                              <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <%= f.submit class: "btn btn-primary" %>
+                                              </div>
+                                            <% end %>
+        </div>
     </div>
   </div>
 </div>
-
 
 <%= render "shared/airport_nav" %>
 
@@ -34,19 +39,15 @@
 
   <%= render "shared/my_flight", flights: @flights %>
 
-  <%# <div class="d-flex"> %>
-    <%# <div class="row tip__add--btn">
-      <div class="col-12 col-md-9 my-3 p-3"> %>
-        <%# <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submitTip">
-            Add a tip
-        </button> %>
-      <%# </div>
-    </div> %>
     <div class="row" data-controller="tips-select-filter" data-select-filter-url="<%= tips_filter_path %>">
       <div class="col-12 mt-4 p-3 tips-add-filtered">
+      <% if current_user %>
        <button type="button" class="btn btn-primary tip-add" data-bs-toggle="modal" data-bs-target="#submitTip">
             Add a tip
         </button>
+        <% else %>
+        <%= link_to "Login to post a tip", new_user_session_path, class: "btn btn-primary tip-add"  %>
+        <% end %>
         <div class="filter">
           <h2 class="fs-4">Filter tips by</h2>
           <select name="categories"  class="form-select" data-action="tips-select-filter#change">
