@@ -2,7 +2,7 @@
   <div class="row airport-nav__row">
     <nav aria-label="airport terminal navigation" class="airport-nav col-12 col-md-9 d-flex align-items-center">
       <span class="airport-nav__link d-flex justify-content-center flex-column"><span class="d-flex justify-content-center p-1 h-100"><i class="fa-solid fa-plane-departure"></i></span><%= link_to "Home", airport_path(@airport), class: "link-primary text-decoration-none text-center d-flex" %></span>
-      <span class="airport-nav__link d-flex justify-content-center flex-column"><span class="d-flex justify-content-center p-1 h-100"><i class="fa-solid fa-people-group"></i></span><%= link_to "Meet people", airport_meetups_path(@airport), class: "link-primary text-decoration-none text-center d-flex" %></span>
+      <span class="airport-nav__link d-flex justify-content-center flex-column"><span class="d-flex justify-content-center p-1 h-100"><i class="fa-solid fa-comments"></i></span><%= link_to "Meet people", airport_meetups_path(@airport), class: "link-primary text-decoration-none text-center d-flex" %></span>
       <span class="airport-nav__link d-flex justify-content-center flex-column"><span class="d-flex justify-content-center p-1 h-100"><i class="fa-solid fa-thumbs-up"></i></span><%= link_to "Top tips", airport_tips_path(@airport), class: "link-primary text-decoration-none text-center d-flex" %></span>
       <span class="airport-nav__link d-flex justify-content-center flex-column"><span class="d-flex justify-content-center p-1 h-100"><i class="fa-solid fa-utensils"></i></span><%= link_to "Facilities", airport_facilities_path(@airport), class: "link-primary text-decoration-none text-center d-flex" %></span>
     </nav>

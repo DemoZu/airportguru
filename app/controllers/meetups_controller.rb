@@ -1,22 +1,16 @@
 class MeetupsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index]
 
-
-
   def new
     @meetup = Meetup.new
   end
 
   def create
-
     @meetup = Meetup.new(meetup_params)
 
-    if @meetup.save
+    return unless @meetup.save
 
-      redirect_to airport_meetups_path
-    else
-
-    end
+    redirect_to airport_meetups_path
   end
 
   def index
@@ -39,7 +33,7 @@ class MeetupsController < ApplicationController
 
     @mymeetup = Meetup.where("user_id = (?)", user_id)
 
-   cat_query = ""
+    cat_query = ""
     if params[:category_id].present?
       filter_id = params[:category_id].split("_")
       if filter_id.length > 1
@@ -86,5 +80,4 @@ class MeetupsController < ApplicationController
   def meetup_params
     params.require(:meetup).permit(:user_id, :content, :airport_id, :meetup_category_id)
   end
-
 end

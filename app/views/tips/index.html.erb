@@ -1,5 +1,27 @@
+<!-- Modal -->
+<div class="modal fade" id="submitTip" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title h5" id="exampleModalLabel">Add your tip</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Form will go here...</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <%= render "shared/airport_nav" %>
+
 <div class="container">
+
   <div class="row justify-content-center">
     <div class="col-12 col-md-9 mt-3 p-3">
         <h1><%=@airport.name %></h1>
@@ -10,47 +32,37 @@
     </div>
   </div>
 
-<%= render "shared/my_flight", flights: @flights %>
+  <%= render "shared/my_flight", flights: @flights %>
 
-  <div class="row" data-controller="tips-select-filter" data-select-filter-url="<%= tips_filter_path %>">
-    <div class="col-12 col-md-4 my-3">
-        <h2>Filter tips by</h2>
-        <select name="categories" multiple size="<%= @tip_categories.length %>"  data-action="tips-select-filter#change">
-          <%= @tip_categories.each do |category| %>
-            <option value="<%= category.name %>"><%= category.name.humanize %></option>
-          <% end %>
-            <option value="All" >All</option>
-        </select>
-    </div>
-    <div class="row">
-      <div class="col-12 col-md-9 my-3 p-3">
-        <%# <button type='button' class="btn btn-success">See All</button> %>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submitTip">
+  <%# <div class="d-flex"> %>
+    <%# <div class="row tip__add--btn">
+      <div class="col-12 col-md-9 my-3 p-3"> %>
+        <%# <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submitTip">
+            Add a tip
+        </button> %>
+      <%# </div>
+    </div> %>
+    <div class="row" data-controller="tips-select-filter" data-select-filter-url="<%= tips_filter_path %>">
+      <div class="col-12 mt-4 p-3 tips-add-filtered">
+       <button type="button" class="btn btn-primary tip-add" data-bs-toggle="modal" data-bs-target="#submitTip">
             Add a tip
         </button>
-      </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="submitTip" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2 class="modal-title h5" id="exampleModalLabel">Add your tip</h2>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <p>Form will go here...</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Submit</button>
-          </div>
+        <div class="filter">
+          <h2 class="fs-4">Filter tips by</h2>
+          <select name="categories"  class="form-select" data-action="tips-select-filter#change">
+            <option selected>Select from...</option>
+            <%= @tip_categories.each do |category| %>
+              <option value="<%= category.name %>"><%= category.name.humanize %></option>
+            <% end %>
+              <option value="All">All</option>
+          </select>
         </div>
       </div>
-    </div>
-    <div data-tips-select-filter-target="tips">
-      <%= render partial: 'tips/tip_list', locals: { tips: @tips} %>
+      <div data-tips-select-filter-target="tips">
+        <%= render partial: 'tips/tip_list', locals: { tips: @tips} %>
+      </div>
     </div>
   </div>
+  </div>
+
 </div>
