@@ -11,7 +11,9 @@
     <% end %>
     | <%= flight.flight_status %>
     </span>
-
-    <%=button_to "save this flight", add_flight_to_journey_path(flight_id: flight.id), method: :post, class: "btn btn-sm inline btn-primary mt-1 mb-2"%>
-
+    <% if current_user.present? %>
+      <%=button_to "save this flight", add_flight_to_journey_path(flight_id: flight.id), method: :post, class: "btn btn-sm inline btn-primary mt-1 mb-2"%>
+    <% else %>
+      <%= link_to "log in to save your flight details", new_user_session_path %>
+    <% end %>
 </li>

@@ -33,7 +33,7 @@
                                               action: "keyup->search-flights#update"
                                             }
                           %>
-                          <% unless user_signed_in? %><div class="d-flex align-items-center mt-2"><i class="fa-solid fa-circle-info"></i> <%= link_to "login to save your flight details", new_user_session_path, class: "d-block link-primary ms-1" %></div><% end %>
+
             <% end %>
             <%= render "airports/flight_list", flights: @flights %>
 
