@@ -746,7 +746,7 @@ tip = Tip.create!([
   {
     title: "Charge your phone",
     content: "There are charging points in the airport - try the ones next to Gate 12",
-    likes: 1,
+    # likes: 1,
     user_id: 1,
     airport_id: 1,
     tip_category_id: 1,
@@ -754,7 +754,7 @@ tip = Tip.create!([
   {
     title: "Good place to watch the planes",
     content: "There's a great view of the runway from the top floor, opposite Gate 8",
-    likes: 3,
+    # likes: 3,
     user_id: 1,
     airport_id: 1,
     tip_category_id: 5,
@@ -762,7 +762,7 @@ tip = Tip.create!([
   {
     title: "Good lunch deal at Caffe Nero",
     content: "Sandwich and drink for £5.99",
-    likes: 3,
+    # likes: 3,
     airport_id: 2,
     user_id: 2,
     tip_category_id: 3,
@@ -770,7 +770,7 @@ tip = Tip.create!([
   {
     title: "Great place to pick up a gift",
     content: "Gifts4All have some really nice gifts, reasonably priced. Good to take with you if you're visiting family or friends.",
-    likes: 8,
+    # likes: 8,
     airport_id: 1,
     user_id: 3,
     tip_category_id: 3,
@@ -778,7 +778,7 @@ tip = Tip.create!([
   {
     title: "Kids activities",
     content: "There's a softplay area not far from the Emirates departure lounge. It's free to use and there's a cafe too",
-    likes: 13,
+    # likes: 13,
     airport_id: 1,
     user_id: 10,
     tip_category_id: 6,
@@ -786,7 +786,7 @@ tip = Tip.create!([
   {
     title: "Refill your water bottle",
     content: "There are water fountains in the airport - try the ones next to Gate 4 or 22",
-    likes: 23,
+    # likes: 23,
     airport_id: 1,
     user_id: 5,
     tip_category_id: 2,
@@ -794,7 +794,7 @@ tip = Tip.create!([
   {
     title: "Best food at the terminal without a doubt",
     content: "Diwans serves amazing felafels and hummus. It's a bit pricey but worth it",
-    likes: 5,
+    # likes: 5,
     airport_id: 1,
     user_id: 6,
     tip_category_id: 2,
@@ -802,7 +802,7 @@ tip = Tip.create!([
   {
     title: "If you need to rest, there's a great place to do it",
     content: "Comfortable chairs and a quiet area. It's a bit hidden so not many go there although they might now I've posted this!",
-    likes: 2,
+    # likes: 2,
     airport_id: 1,
     user_id: 7,
     tip_category_id: 7,
@@ -810,7 +810,7 @@ tip = Tip.create!([
   {
     title: "Try the margueritas - take the edge off!",
     content: "I hate flying but love holidays LOL. Try the cocktails at St Elmo's - they're amazing",
-    likes: 18,
+    # likes: 18,
     airport_id: 1,
     user_id: 8,
     tip_category_id: 2,
@@ -823,7 +823,7 @@ tip = Tip.create!([
   {
     title: "Charge your phone",
     content: "There are charging points in the airport - try the ones next to Gate 12 or if they're busy the ones by Gate 28B are quiet.",
-    likes: 37,
+    # likes: 37,
     user_id: 1,
     airport_id: 8,
     tip_category_id: 1,
@@ -831,7 +831,7 @@ tip = Tip.create!([
   {
     title: "Good place to watch the planes",
     content: "There's a great view of the runway from the top floor, opposite Gate 8",
-    likes: 3,
+    # likes: 3,
     user_id: 1,
     airport_id: 8,
     tip_category_id: 5,
@@ -839,7 +839,7 @@ tip = Tip.create!([
   {
     title: "Wagamama is worth visiting if you need to eat before your flight",
     content: "Just as good as the one in Leamington Spa that I go to all the time. Try the Katsu curry",
-    likes: 12,
+    # likes: 12,
     airport_id: 8,
     user_id: 2,
     tip_category_id: 2,
@@ -847,7 +847,7 @@ tip = Tip.create!([
   {
     title: "Pamper yourself!",
     content: "Have a quick neck massage for £15 or get your nails done at Aerospa. Staff are great.",
-    likes: 6,
+    # likes: 6,
     airport_id: 8,
     user_id: 3,
     tip_category_id: 4,
@@ -855,7 +855,7 @@ tip = Tip.create!([
   {
     title: "Treat yourself to lounge access",
     content: "So worth doing. Costs from £40 but you get unlimited food and drink and it's much quieter than the terminal! I went to Clubrooms. ",
-    likes: 12,
+    # likes: 12,
     airport_id: 8,
     user_id: 9,
     tip_category_id: 4,
@@ -863,7 +863,7 @@ tip = Tip.create!([
   {
     title: "Kids activities",
     content: "There's a softplay area not far from the Emirates departure lounge. It's free to use and there's a cafe too",
-    likes: 13,
+    # likes: 13,
     airport_id: 8,
     user_id: 4,
     tip_category_id: 6,
@@ -871,7 +871,7 @@ tip = Tip.create!([
   {
     title: "Keep your kids entertained on the flight!",
     content: "Kids' Stop sell lots of toys and colouring books which are great for keeping the kids occupied on the flight or while you're waiting!",
-    likes: 7,
+    # likes: 7,
     airport_id: 8,
     user_id: 10,
     tip_category_id: 6,
@@ -879,7 +879,7 @@ tip = Tip.create!([
   {
     title: "Refill your water bottle",
     content: "There are water fountains in the airport - try the ones next to Gate 4 or 22",
-    likes: 23,
+    # likes: 23,
     airport_id: 8,
     user_id: 5,
     tip_category_id: 2,
@@ -887,7 +887,7 @@ tip = Tip.create!([
   {
     title: "Who doesn't love cake?!",
     content: "Warrens Bakery have the best cakes. Freshly baked each day. Try the carrot cake - they sell out quickly!",
-    likes: 15,
+    # likes: 15,
     airport_id: 8,
     user_id: 3,
     tip_category_id: 2,
@@ -895,7 +895,7 @@ tip = Tip.create!([
   {
     title: "If you need to rest, there's a great place to do it",
     content: "Comfortable chairs and a quiet area. It's a bit hidden so not many go there although they might now I've posted this!",
-    likes: 2,
+    # likes: 2,
     airport_id: 8,
     user_id: 7,
     tip_category_id: 7,
@@ -903,7 +903,7 @@ tip = Tip.create!([
   {
     title: "Try the margueritas - take the edge off!",
     content: "I hate flying but love holidays LOL. Try the cocktails at St Elmo's - they're amazing",
-    likes: 18,
+    # likes: 18,
     airport_id: 8,
     user_id: 8,
     tip_category_id: 2,
@@ -911,7 +911,7 @@ tip = Tip.create!([
   {
     title: "Healthy food options",
     content: "Caters for vegans and those after healthy food. Try the quinoa salad with beet juice.",
-    likes: 8,
+    # likes: 8,
     airport_id: 8,
     user_id: 6,
     tip_category_id: 2,
@@ -919,7 +919,7 @@ tip = Tip.create!([
   {
     title: "Currency exchange",
     content: "There's a currency exchange just as you exit Duty Free. Good if you've forgotted to get currency. Rates aren't too bad",
-    likes: 15,
+    # likes: 15,
     airport_id: 8,
     user_id: 9,
     tip_category_id: 4,
