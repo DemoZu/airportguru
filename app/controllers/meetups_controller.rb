@@ -21,7 +21,8 @@ class MeetupsController < ApplicationController
 
     if current_user.present?
       user_id = current_user.id
-      @new_meetup.airport_id = params[:airport_id]
+      airport_id = params[:airport_id]
+      @new_meetup.airport_id = airport_id
       @new_meetup.user_id = user_id
       @chatrooms = Chatroom.where("name ILIKE (?) ", "%##{current_user.nickname}%")
       # need to find createor of meetup
@@ -29,9 +30,10 @@ class MeetupsController < ApplicationController
 
     else
       user_id = 0
+      airport_id = params[:airport_id]
     end
 
-    @mymeetup = Meetup.where("user_id = (?)", user_id)
+    @mymeetup = Meetup.where("user_id = (?) and airport_id =(?)", user_id, airport_id)
 
     cat_query = ""
     if params[:category_id].present?
@@ -50,15 +52,15 @@ class MeetupsController < ApplicationController
     end
 
     if params[:query].present? && cat_query != ""
-      tmp_query = "(#{cat_query}) AND content ILIKE (?) AND user_id <> (?)"
-      @meetups = Meetup.where(tmp_query, "%#{params[:query]}%", user_id)
+      tmp_query = "(#{cat_query}) AND content ILIKE (?) AND user_id <> (?) AND airport_id = (?)"
+      @meetups = Meetup.where(tmp_query, "%#{params[:query]}%", user_id, airport_id)
     elsif params[:query].present? && cat_query == ""
-      @meetups = Meetup.where("content ILIKE (?) AND user_id <> (?)", "%#{params[:query]}%", user_id)
+      @meetups = Meetup.where("content ILIKE (?) AND user_id <> (?) AND airport_id = (?)", "%#{params[:query]}%", user_id, airport_id)
     elsif !params[:query].present? && cat_query != ""
-      tmp_query = "(#{cat_query}) AND user_id <> (?)"
-      @meetups = Meetup.where(tmp_query, user_id)
+      tmp_query = "(#{cat_query}) AND user_id <> (?) AND airport_id = (?)"
+      @meetups = Meetup.where(tmp_query, user_id, airport_id)
     else
-      @meetups = Meetup.where("user_id <> (?)", user_id)
+      @meetups = Meetup.where("user_id <> (?) AND airport_id = (?)", user_id, airport_id)
     end
 
     respond_to do |format|
