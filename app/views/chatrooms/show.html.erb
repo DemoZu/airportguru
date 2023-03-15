@@ -1,3 +1,6 @@
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.js"></script>
+
 <div class="container chatroom"
   data-controller="chatroom-subscription"
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
@@ -31,7 +34,7 @@
       wrapper_html: {class: "flex-grow-1"}
     %>
     <input value=<%= @chatroom.messages.last.meetup.id %> autocomplete="off" type="hidden" name="meetup_id" id="meetup_id" />
-    <button class="btn btn-sm" id="emoticon"></button>
+    <button class="btn btn-sm" id="emoticon">  </button>
     <%= f.submit "Send", class: "btn btn-primary mb-3" %>
     </div>
   <% end %>
@@ -40,8 +43,8 @@
 
 
 
-<script type="text/javascript">
 
+<script type="text/javascript">
 $(document).ready(function () {
     //$(".tooltipped").tooltip();
 
