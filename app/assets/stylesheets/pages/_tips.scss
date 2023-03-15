@@ -18,6 +18,20 @@ select[name = "categories"] > option {
 .tip-add {
   margin-bottom: 2rem;
 }
+
+.like-btn {
+  border: none;
+  background: transparent;
+  transition: all .5s ease;
+
+  &:hover {
+    color: red;
+  }
+}
+
+.like-btn.fill {
+  color: red;
+}
 @media (min-width: 600px) {
   .tips-add-filtered {
       flex-direction: row;
