@@ -1,7 +1,7 @@
 class LikesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index]
 
-  before_action :find_tip, :find_airport, only: %i[create destroy]
+  before_action :find_tip, :find_airport, only: %i[create]
 
   def create
     if already_liked?
@@ -13,22 +13,7 @@ class LikesController < ApplicationController
     redirect_to airport_tips_path(@airport)
   end
 
-  # def destroy
-  #   if !(already_liked?)
-
-  #     flash[:notice] = "Cannot unlike"
-  #   else
-  #     @like.destroy
-  #   end
-
-  #   redirect_to airport_tips_path(@airport)
-  # end
-
   private
-
-  # def find_like
-  #   @like = @tip.likes.find(params[:id])
-  # end
 
   def find_tip
     @tip = Tip.find(params[:tip_id])

@@ -26,7 +26,13 @@
               <% if current_user %>
                 <div class="d-flex align-items-center">
                   <%= button_to tip_likes_path(tip_id: tip.id, airport_id: airport.id), class: "like-btn", method: :post do %>
-                    <i class="fa-solid fa-heart"></i>
+                    <% liked_by_me = tip.likes.find_by(user_id: current_user.id) %>
+                    <% if liked_by_me %>
+                    <% #if tip.likes.count > 0 %>
+                    <i class="fa-solid fa-heart fill"></i>
+                    <% else %>
+                    <i class="fa-regular fa-heart"></i>
+                  <% end %>
                   <% end %>
                   <p class="mb-0"><%= tip.likes.count %> </p>
                 </div>

@@ -27,9 +27,13 @@ select[name = "categories"] > option {
   &:hover {
     color: red;
   }
+  &:active {
+    color: red;
+  }
 }
 
-.like-btn.fill {
+.like-btn.fill,
+i.fa-heart.fill {
   color: red;
 }
 @media (min-width: 600px) {
