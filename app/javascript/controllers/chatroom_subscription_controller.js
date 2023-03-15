@@ -50,29 +50,14 @@ export default class extends Controller {
     // Inserting the `message` in the DOM
     this.messagesTarget.insertAdjacentHTML("beforeend", messageElement);
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight);
+    ClearText();
   }
 
   resetForm(event) {
-    //alert($(".message_content").html);
-    //alert($("#message_content").html);
-    //var a = document.getElementById("message_content");
-    //alert(a.value);
 
-    //alert(event.detail);
-   //console.log(a);
-    //a.value = "";
-
-    //a.value = '';
-    var emojiElt = $("#message_content").emojioneArea({autocomplete: false});
-
-// Get text
-var text = emojiElt.data("message_content").getText();
-// Get html
-var html = emojiElt.data("message_content").editor.html();
-
-// Reset Emoji field
-emojiElt.data("message_content").setText('');
     event.target.reset();
+
+
   }
 
   disconnect() {

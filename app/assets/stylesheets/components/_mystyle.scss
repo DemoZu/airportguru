@@ -1,0 +1,35 @@
+*
+
+.emojionearea{
+  display: none;
+}
+
+.emojionearea-editor{
+  display: none !important;
+}
+.emojionearea-standalone{
+  height: 5vh !important;
+  width: 4vw !important;
+  padding: 0 !important;
+}
+.emojionearea-button{
+
+  position: relative !important;
+  /* right: -50% !important; */
+}
+.emojionearea-button-open{
+  position: relative !important;
+  left: 30% !important;
+  /* right: 50% !important; */
+}
+.emojionearea-button-close{
+  position: relative !important;
+  left: 30% !important;
+  top: -1vh !important;
+}
+
+#emoticon{
+  padding: 1vh;
+  overflow: hidden !important;
+  overflow-x: hidden;
+}
