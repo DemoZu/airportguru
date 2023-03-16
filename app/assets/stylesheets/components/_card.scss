@@ -10,3 +10,12 @@
   width: fit-content;
   background-color: $light-gray;
 }
+
+.my-meetup-card,
+.my-meetup-card-body {
+  border: none !important;
+  border-bottom: 2px solid $periwinkle-100 !important;
+  // margin-bottom: 4px !important;
+  // background-color: $periwinkle-100 !important
+
+}

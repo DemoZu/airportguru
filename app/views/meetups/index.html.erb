@@ -42,9 +42,10 @@
   <%= render "shared/my_flight", flights: @flights %>
   <% end %>
 
+  <% if current_user.present? %>
   <div class="row justify-content-center">
-    <div class="col-12 col-md-9 px-3">
-      <% if current_user.present? %>
+    <div class="col-12 col-md-9 px-3 mt-4">
+      <h2 class="fs-3">Arrange to meet others</h2>
       <a href class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#createMeetup">
         Post a meetup
       </a>
@@ -61,21 +62,20 @@
 
   <div class="row justify-content-center" >
     <div class="accordion mt-5 col-12 col-md-9 px-3">
-      <h2 class="fs-3">My meetups</h2>
+      <h2 class="fs-3">View my meetups</h2>
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingTwo">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#myMeetups" aria-expanded="true" aria-controls="collapseTwo">
-            View your posts and replies:
+            Meetups you've posted and replies:
           </button>
         </h2>
         <div id="myMeetups" class="accordion-collapse collapse " aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
           <div class="accordion-body">
             <% if current_user.present? %>
               <% @mymeetup.each do |m|  %>
-                <div class="card">
-                  <div class="card-body">
-                    <h2 class="card-text fs-4"><%= m.content%></h2>
-                    <p class="card-text">I'd like to meet for: <%= m.meetup_category.meetup_topic%></p>
+                <div class="card my-meetup-card">
+                  <div class="card-body my-meetup-card-body">
+                    <h2 class="card-text fs-6"><%= m.content%></h2>
                       <% @chatrooms.each do |chatroom| %>
                         <% if (chatroom.messages.first.status != "REJECT")  && (chatroom.messages.first.meetup_id.eql?m.id) %>
                           <div class="list-group-item d-flex align-items-center justify-content-between align-items-start">

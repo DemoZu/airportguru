@@ -1,0 +1,16 @@
+.accordion-item {
+  border-width: 4px !important;
+}
+
+.accordion-button.collapsed {
+  border-color: $periwinkle-100 !important;
+}
+
+.accordion-button,
+.accordion-button:not(.collapsed) {
+  color: $gray;
+}
+
+.accordion-body {
+  // background: $periwinkle-200 !important;
+}
