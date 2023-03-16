@@ -25,16 +25,16 @@ select[name = "categories"] > option {
   transition: all .5s ease;
 
   &:hover {
-    color: red;
+    color: $primary;
   }
   &:active {
-    color: red;
+    color: $primary;
   }
 }
 
 .like-btn.fill,
 i.fa-heart.fill {
-  color: red;
+  color: $primary;
 }
 @media (min-width: 600px) {
   .tips-add-filtered {
