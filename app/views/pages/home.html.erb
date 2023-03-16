@@ -1,35 +1,39 @@
-<div class="container">
-  <div class="home__content d-flex flex-column justify-content-center align-items-center h-100">
-    <div class="row w-100 justify-content-center">
-      <div class="col col-md-8 my-5">
-        <h1 class="text-center app-heading">airportGuru</h1>
-        <p class="h3 text-center">Your holiday starts here</p>
-      </div>
-    </div>
+<div class="home-page__bg" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= image_path "airportguru-home-bg.jpg" %>')">
+  <div class="container">
+    <div class="home__content d-flex flex-column justify-content-center align-items-center h-100">
 
-    <div class="row w-100 justify-content-center" data-controller="search-airports">
-      <div class="col col-md-8 my-5">
-        <h2 class="text-center mb-3">Find your airport</h2>
-          <%= form_with url: root_path,
-                        method: :get,
-                        html: {
-                              class: "input-group mb-3",
-                              data: {
-                                search_airports_target: "form"
-                              }
-                        } do |f| %>
-                        <%= f.text_field :query,
-                                          value: params[:query],
-                                          class: "form-control text-center border border-4",
-                                          placeholder: "eg London Heathrow",
-                                          data: {
-                                            search_airports_target: "input",
-                                            action: "keyup->search-airports#update"
-                                          }
-                        %>
-          <% end %>
-          <%= render "airports/list", airports: @airports %>
+      <div class="row w-100 justify-content-center home-page__tagline">
+        <div class="col col-md-8 mt-5 mb-2 ">
+          <%= image_tag('airportguru-logo.png', class: "home-page__logo", alt: "airportGuru logo") %>
+          <p class="h4 text-center mt-3 text-white">Your holiday starts here</p>
+        </div>
       </div>
+
+      <div class="row w-100 justify-content-center" data-controller="search-airports">
+        <div class="col col-md-8 mt-5 mb-3">
+          <h2 class="text-center mb-3 text-white">Find your airport</h2>
+            <%= form_with url: root_path,
+                          method: :get,
+                          html: {
+                                class: "input-group mb-3",
+                                data: {
+                                  search_airports_target: "form"
+                                }
+                          } do |f| %>
+                          <%= f.text_field :query,
+                                            value: params[:query],
+                                            class: "form-control home-page__find-airport text-center border border-4 py-2",
+                                            placeholder: "eg London Heathrow",
+                                            data: {
+                                              search_airports_target: "input",
+                                              action: "keyup->search-airports#update"
+                                            }
+                          %>
+            <% end %>
+            <%= render "airports/list", airports: @airports %>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

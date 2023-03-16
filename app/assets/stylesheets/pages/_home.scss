@@ -9,3 +9,36 @@ h1.app-heading {
 .airport-terminal__link {
   text-decoration: none;
 }
+
+.home-page__bg {
+  background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    height: 90vh;
+}
+
+.home-page__logo {
+  display: block;
+  max-width: 300px;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.home-page__tagline {
+  margin-top: 4rem;
+}
+
+.home-page__find-airport {
+  border: 3px solid $savoy-blue !important;
+}
+
+@media(min-width: 768px) {
+  .home-page__logo {
+    max-width: 400px;
+  }
+  .home-page__tagline {
+    margin-top: 6rem;
+  }
+
+}
