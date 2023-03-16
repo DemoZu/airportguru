@@ -56,6 +56,8 @@
               <option value="<%= category.name %>"><%= category.name.humanize %></option>
             <% end %>
               <option value="All">All</option>
+          <input type=hidden name="airport_id" id ="airport_id" value=<%=@airport.id%>>
+
           </select>
         </div>
       </div>
