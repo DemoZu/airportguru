@@ -50,10 +50,14 @@ export default class extends Controller {
     // Inserting the `message` in the DOM
     this.messagesTarget.insertAdjacentHTML("beforeend", messageElement);
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight);
+    ClearText();
   }
 
   resetForm(event) {
+
     event.target.reset();
+
+
   }
 
   disconnect() {

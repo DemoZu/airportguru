@@ -1,37 +1,86 @@
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.js"></script>
+
 <div class="container chatroom"
   data-controller="chatroom-subscription"
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
   data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
   <div class="d-flex align-items-center my-2"><i class="fa-solid fa-chevron-left me-2"></i> <%= link_to "back to meetups", airport_meetups_path %></div>
-  <h1>#<%= @chatroom.name %>
-  <% if  @chatroom.messages.first.meetup.user_id.eql?current_user.id %>
-    <%= simple_form_for @chatroom, url: airport_chatroom_path, :method => :patch do  |f| %>
-    <button class="btn btn-danger text-white rounded">Reject and close</button>
+    <h1>#<%= @chatroom.name %>
+    <% if  @chatroom.messages.first.meetup.user_id.eql?current_user.id %>
+      <%= simple_form_for @chatroom, url: airport_chatroom_path, :method => :patch do  |f| %>
+      <button class="btn btn-danger text-white rounded">Reject and close</button>
+      <% end %>
     <% end %>
-  <% end %>
-  </h1>
+    </h1>
 
- <div class="messages" data-chatroom-subscription-target="messages">
-<% @chatroom.messages.each do |message| %>
-  <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
-    <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
-      <%= render "messages/message", message: message %>
+    <div class="messages" data-chatroom-subscription-target="messages">
+    <% @chatroom.messages.each do |message| %>
+      <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
+        <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+          <%= render "messages/message", message: message %>
+        </div>
+      </div>
+    <% end %>
     </div>
+    <div class="row">
+    <%= simple_form_for [@chatroom, @message], url: airport_chatroom_message_path,
+    html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
+    %>
+    <%= f.input :content,
+      label: false,
+      placeholder: "type your message...",
+      # placeholder: "Message ##{@chatroom.name}",
+      wrapper_html: {class: "flex-grow-1"}
+    %>
+    <input value=<%= @chatroom.messages.last.meetup.id %> autocomplete="off" type="hidden" name="meetup_id" id="meetup_id" />
+    <button class="btn btn-sm" id="emoticon">  </button>
+    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+    </div>
+  <% end %>
   </div>
-<% end %>
 </div>
-<%= simple_form_for [@chatroom, @message], url: airport_chatroom_message_path,
-  html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
-%>
-  <%= f.input :content,
-    label: false,
-    placeholder: "type your message...",
-    # placeholder: "Message ##{@chatroom.name}",
-    wrapper_html: {class: "flex-grow-1"}
-  %>
 
-  <input value=<%= @chatroom.messages.last.meetup.id %> autocomplete="off" type="hidden" name="meetup_id" id="meetup_id" />
-  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-<% end %>
 
-</div>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+    //$(".tooltipped").tooltip();
+
+    $("#emoticon").emojioneArea({
+        pickerPosition: "top",
+        inline: true,
+        tonesStyle: "bullet",
+        buttonTitle: "Emojis",
+        autocomplete: false,
+        standalone: true,
+        events: {
+            emojibtn_click: function () {
+                var actElem = document.getElementById("message_content");
+                var actText = actElem.value;
+                actElem.value =
+                    actText.slice(0, actElem.selectionStart) +
+                    this.getText() +
+                    actText.slice(actElem.selectionEnd);
+                actElem.focus();
+            },
+        },
+        attributes: {
+            spellcheck: false,
+            autocomplete: "off",
+        },
+    });
+});
+
+//document.getElementById("message_content").focus();
+
+
+
+  function ClearText() {
+    var actElem = document.getElementById("message_content");
+    actElem.value = "";
+   // actElem.focus();
+}
+
+</script>
