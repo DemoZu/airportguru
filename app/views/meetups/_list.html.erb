@@ -2,14 +2,14 @@
 
 
 
-  <div class="container p-0">
-    <div class="row mt-5 mb-3">
-      <div class="col-12 col-md-9">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-9 mt-3 mb-3">
         <h3 class="fs-3">
           <% if params[:query].blank? %>
-            There are <%= pluralize meetups.count, "people" %> available to meet
+            <strong>There are <%= pluralize meetups.count, "people" %> available to meet</strong>
           <% else %>
-            <%= pluralize meetups.count, "result" %> for <code><%= params[:query] %></code>
+            <strong><%= pluralize meetups.count, "result" %> for <code><%= params[:query] %></code></strong>
           <% end %>
         </h3>
       </div>
@@ -19,13 +19,24 @@
       <div class="row">
         <% meetups.each do |meetup| %>
         <div class="col-12 col-sm-6 col-lg-4 mb-3">
-          <div class="card mb-3 h-100 w-100 d-flex border-0 shadow">
+          <div class="card mb-3 h-100 w-100 d-flex border-0 shadow-orange">
             <div class="card-body d-flex align-items-start flex-column">
-              <h2 class="card-title fs-5"><%= meetup.content %></h2>
-                <p class="card-text">Hi, I'm <%= meetup.user.nickname %> </p>
-                <p class="card-text">I'd like to meet for: <strong><%= meetup.meetup_category.meetup_topic %></strong> </p>
+              <div>
+                  <p class="mb-2">
+                    <small class="d-flex align-items-center">
+                      <% if meetup.user.photo %>
+                      <%= image_tag meetup.user.photo, alt: meetup.user.nickname, class: "me-2", width: 50 %> <%= meetup.user.nickname %>
+                      <% else %>
+                      <%= image_tag "https://cdn3.iconfinder.com/data/icons/web-design-and-development-2-6/512/87-1024.png", alt: meetup.user.nickname, class: "me-2", width: 20 %> <%= meetup.user.nickname %>
+                      <% end %>
+                    </small>
+                  </p>
+                </div>
+                <p class="card-text fs-5"><%= meetup.content %></p>
                 <% if meetup.user.journeys.present? %>
-                <p class="card-text">I can meet until: <%= meetup.user.journeys.last.flight.gate_open_time.strftime("%H:%M" )%></p>
+                  <% if meetup.user.journeys.last.flight.gate_open_time.present? %>
+                  <p class="card-text">I can meet until: <%= meetup.user.journeys.last.flight.gate_open_time.strftime("%H:%M" )%></p>
+                  <% end %>
                 <% end %>
                 <% if current_user.present? %>
                 <% haschat = false %>
@@ -35,10 +46,8 @@
                             <% haschat = true %>
                             <% if chatroom.messages.first.status.eql?"REJECT"%>
                               <p class="text-danger mb-1"><i class="fa-regular fa-face-frown"></i> Sorry, your chat request has been declined</p>
-                              <p class="mb-0">Why not create your own meetup?
                                 <a href class="btn btn-outline-primary mt-3 d-block" data-bs-toggle="modal" data-bs-target="#createMeetup">
                                   Create a meetup </a>
-                              </p>
                               <% else %>
                                 <p class="mb-0"><i class="fa-regular fa-comments me-1"></i> <a href='<%= "#{airport_chatrooms_path}/#{chatroom.id}" %>'><%= chatroom.name %></a> </p>
                               <% end %>
@@ -73,7 +82,9 @@
                     <p class="card-text"><strong> <%= meetup.user.nickname %></strong></p>
                     <p class="card-text">I'd like to meet for  <%= meetup.meetup_category.meetup_topic %> </p>
                     <% if meetup.user.journeys.present? %>
-                      <p class="card-text">I'm free until:<%= meetup.user.journeys.last.flight.gate_open_time.strftime("%H:%M" )%></p>
+                      <% if meetup.user.journeys.last.flight.gate_open_time.present? %>
+                        <p class="card-text">I'm free until:<%= meetup.user.journeys.last.flight.gate_open_time.strftime("%H:%M" )%></p>
+                      <% end %>
                     <% else %>
                       <p class="card-text">I'm free until: 23:25:10</p>
                     <% end %>

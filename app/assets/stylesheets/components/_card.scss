@@ -6,7 +6,24 @@
   border-bottom: 0;
 }
 
+
+.my-meetup-card,
+.my-meetup-card-body {
+  border: none !important;
+  border-bottom: 2px solid $periwinkle-100 !important;
+  // margin-bottom: 4px !important;
+  // background-color: $periwinkle-100 !important
+
+}
+
+// tip page
+
 .category {
   width: fit-content;
-  background-color: $light-gray;
+}
+.tip-card-footer {
+  background-color: $periwinkle-100 !important;
+}
+span.category-name {
+  background-color: $periwinkle-200 !important;
 }

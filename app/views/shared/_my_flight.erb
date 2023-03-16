@@ -1,11 +1,11 @@
-<% if current_user.present? %>
-  <div class="row justify-content-center">
-    <div class="col-12 col-md-9 my-3 px-3">
+<% if current_user.present? && current_user.flights.present? %>
+  <div class="row justify-content-center my-flight__container">
+    <div class="col-12 col-md-9 p-3 ">
         <div class="row">
           <% current_user.flights.each do |flight| %>
               <% if flight.airport_id == @airport.id %>
                   <div class="col">
-                    <h2 class="fs-4"><i class="fa-solid fa-plane me-2"></i> Your flight details</h2>
+                    <h2 class="fs-4"><i class="fa-solid fa-plane me-2 primary-color"></i> Your flight details</h2>
                       <span class="d-block mb-1"><strong><%= flight.flight_number %> to <%= flight.flight_destination %></strong></span>
                         Gate opens at <%= flight.gate_open_time.strftime("%H:%M") if flight.gate_open_time.present? %>
                       <span class="d-block mb-1">Your flight departs at <%= flight.departure_time.strftime("%H:%M") %></span>
