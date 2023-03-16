@@ -7,21 +7,32 @@
 // General style
 $font-family-sans-serif: $body-font;
 $headings-font-family:   $headers-font;
-$body-bg:                $light-gray;
+$body-bg:                $white-smoke;
 $font-size-base:         1rem;
 
 // Colors
 $body-color: $gray;
-$primary:    $blue;
+$primary:    $fandango;
 $success:    $green;
 $info:       $yellow;
 $danger:     $red;
 $warning:    $orange;
 
 // Buttons & inputs' radius
-$border-radius:    2px;
-$border-radius-lg: 2px;
+$border-radius:    4px;
+$border-radius-lg: 8px;
 $border-radius-sm: 2px;
+
+// links
+$link-color: $gray !default;
 
 // forms
 $form-padding: 2rem;
+$border-color: $fandango-100 !default;
+
+// headers
+$primary-navbar: $periwinkle;
+$secondary-navbar: $savoy-blue;
+
+// footers
+$footer: $savoy-blue;

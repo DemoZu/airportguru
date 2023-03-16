@@ -9,9 +9,25 @@
 }
 .airport-nav__row {
   padding: 1rem 0;
-  background-color: $white;
+  background: $secondary-navbar;
 }
-@media (min-width: 768px) {
+.airport-nav__link {
+  color: $white;
+  &:hover {
+    color: $white;
+  }
+  &:focus {
+    color: $white;
+  }
+  &:active {
+    color: $white;
+  }
+  &:visited {
+    color: $white;
+  }
+}
+
+@media (min-width: 600px) {
    .airport-nav__row {
       display: flex;
       justify-content: center;
@@ -21,7 +37,7 @@
     justify-content: center;
    }
 
-   .airport-nav__link {
+   .secondary-nav__item {
       margin-right: 3rem;
    }
 }
