@@ -21,7 +21,17 @@
         <div class="col-12 col-sm-6 col-lg-4 mb-3">
           <div class="card mb-3 h-100 w-100 d-flex border-0 shadow-orange">
             <div class="card-body d-flex align-items-start flex-column">
-              <h2 class="card-title fs-6">Hi, I'm <%= meetup.user.nickname %> </h2>
+              <div>
+                  <p class="mb-2">
+                    <small class="d-flex align-items-center">
+                      <% if meetup.user.photo %>
+                      <%= image_tag meetup.user.photo, alt: meetup.user.nickname, class: "me-2", width: 50 %> <%= meetup.user.nickname %>
+                      <% else %>
+                      <%= image_tag "https://cdn3.iconfinder.com/data/icons/web-design-and-development-2-6/512/87-1024.png", alt: meetup.user.nickname, class: "me-2", width: 20 %> <%= meetup.user.nickname %>
+                      <% end %>
+                    </small>
+                  </p>
+                </div>
                 <p class="card-text fs-5"><%= meetup.content %></p>
                 <% if meetup.user.journeys.present? %>
                   <% if meetup.user.journeys.last.flight.gate_open_time.present? %>
