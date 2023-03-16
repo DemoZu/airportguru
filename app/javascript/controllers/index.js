@@ -7,20 +7,16 @@ import { application } from "./application"
 import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
 
-import FilterMeetupsController from "./filter_meetups_controller"
-application.register("filter-meetups", FilterMeetupsController)
-
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import SearchMeetupsController from "./search_meetups_controller"
+application.register("search-meetups", SearchMeetupsController)
 import SearchAirportsController from "./search_airports_controller"
 application.register("search-airports", SearchAirportsController)
 
 import SearchFlightsController from "./search_flights_controller"
 application.register("search-flights", SearchFlightsController)
-
-import SearchMeetupsController from "./search_meetups_controller"
-application.register("search-meetups", SearchMeetupsController)
 
 import TipsSelectFilterController from "./tips_select_filter_controller"
 application.register("tips-select-filter", TipsSelectFilterController)

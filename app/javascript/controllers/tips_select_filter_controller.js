@@ -17,9 +17,10 @@ export default class extends Controller {
   }
 
   change(event) {
+    //alert(document.getElementById("airport_id").value);
     fetch("/tips_filter", {
       method: 'POST',
-      body: JSON.stringify( { tip_categories: [...event.target.selectedOptions].map(option => option.value)}),
+      body: JSON.stringify( { tip_categories: [...event.target.selectedOptions].map(option => option.value), airport_id:document.getElementById("airport_id").value}),
       credentials: "include",
       dataType: 'script',
       headers: {
