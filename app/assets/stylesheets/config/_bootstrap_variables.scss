@@ -36,3 +36,9 @@ $secondary-navbar: $savoy-blue;
 
 // footers
 $footer: $savoy-blue;
+
+// box shadow
+
+.shadow-orange {
+  box-shadow: 0px 5px 10px 0px $light-orange-100 !important
+}

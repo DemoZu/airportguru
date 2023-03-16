@@ -45,8 +45,8 @@
   <% if current_user.present? %>
   <div class="row justify-content-center">
     <div class="col-12 col-md-9 px-3 mt-4">
-      <h2 class="fs-3">Arrange to meet others</h2>
-      <a href class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#createMeetup">
+      <h2 class="fs-3 mb-3">Arrange to meet others</h2>
+      <a href class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createMeetup">
         Post a meetup
       </a>
       <% else %>
@@ -62,7 +62,7 @@
 
   <div class="row justify-content-center" >
     <div class="accordion mt-5 col-12 col-md-9 px-3">
-      <h2 class="fs-3">View my meetups</h2>
+      <h2 class="fs-3 mb-3">View my meetups</h2>
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingTwo">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#myMeetups" aria-expanded="true" aria-controls="collapseTwo">
@@ -104,11 +104,14 @@
           <%= render "filter", meetup_category: @meetup_category%>
           <%= form_with url: airport_meetups_path,
             method: :get,
-            html: {class: "mb-4", data: {search_meetups_target: "form"}} do |f|
+            html: {class: "mt-2 mb-4", data: {search_meetups_target: "form"}} do |f|
+          %>
+          <%= f.label :search, "Search meetups",
+                      class: "mt-2 mb-1"
           %>
           <%= f.text_field :query,
             class: "form-control",
-            placeholder: "Search meetups...",
+            placeholder: "eg Paris...",
             value: params[:query],
             data: {
               search_meetups_target: "input",
