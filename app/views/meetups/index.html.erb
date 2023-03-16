@@ -28,7 +28,7 @@
 <%= render "shared/airport_nav" %>
 
 <div class="container">
-  <div class="row justify-content-center">
+  <div class="row justify-content-center terminal-header">
     <div class="col-12 col-md-9 mt-4 p-3">
         <h1><%=@airport.name %></h1>
         <% if @airport.terminal.present? %>
@@ -60,7 +60,7 @@
   <%# my meetup%>
   <% if @mymeetup.count > 0 %>
 
-  <div class="row justify-content-center" >
+  <div class="row justify-content-center">
     <div class="accordion mt-5 col-12 col-md-9 px-3">
       <h2 class="fs-3 mb-3">View my meetups</h2>
       <div class="accordion-item">
@@ -69,7 +69,7 @@
             Meetups you've posted and replies:
           </button>
         </h2>
-        <div id="myMeetups" class="accordion-collapse collapse " aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div id="myMeetups" class="accordion-collapse collapse " aria-labelledby="headingTwo" data-bs-parent="#myMeetups">
           <div class="accordion-body">
             <% if current_user.present? %>
               <% @mymeetup.each do |m|  %>
@@ -110,7 +110,7 @@
                       class: "mt-2 mb-1"
           %>
           <%= f.text_field :query,
-            class: "form-control",
+            class: "form-control bg-white",
             placeholder: "eg Paris...",
             value: params[:query],
             data: {

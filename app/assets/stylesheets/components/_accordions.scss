@@ -9,6 +9,7 @@
 .accordion-button,
 .accordion-button:not(.collapsed) {
   color: $gray;
+  background: $white !important;
 }
 
 .accordion-body {
