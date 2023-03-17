@@ -3,13 +3,14 @@
 }
 
 .accordion-button.collapsed {
-  border-color: $periwinkle-100 !important;
+  background: $light-orange-200 !important;
 }
 
 .accordion-button,
 .accordion-button:not(.collapsed) {
   color: $gray;
   background: $white !important;
+  background: $light-orange-200 !important;
 }
 
 .accordion-body {
