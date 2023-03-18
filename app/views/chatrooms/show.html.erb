@@ -32,7 +32,7 @@
       wrapper_html: {class: "flex-grow-1"}
     %>
     <input value=<%= @chatroom.messages.last.meetup.id %> autocomplete="off" type="hidden" name="meetup_id" id="meetup_id" />
-    <button class=""  id="emoticon"></button>
+    <button class="btn"  id="emoticon"></button>
     <%= f.submit "Send", class: "btn btn-primary mb-3" %>
     </div>
   <% end %>
@@ -47,6 +47,7 @@
 <script  type="text/javascript">
 $(document).ready(function () {
     //$(".tooltipped").tooltip();
+
 
     $("#emoticon").emojioneArea({
         pickerPosition: "top",

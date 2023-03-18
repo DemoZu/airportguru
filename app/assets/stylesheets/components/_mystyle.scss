@@ -23,10 +23,14 @@
 
 @media (min-width: 400px) {
   .emojionearea-button-open{
+    border: 0;
+
     width: 2px;
     /* right: 50% !important; */
   }
   .emojionearea-button-close{
+    border: 0;
+
     width: 2px;
     top: -1vh !important;
 
@@ -34,6 +38,7 @@
   }
 
   .emojionearea-standalone{
+    border: 0;
     height: 4vh !important;
     width: 5vw !important;
     padding: 0 !important;
@@ -45,17 +50,23 @@
 
 @media (max-width: 400px) {
   .emojionearea-button-open{
+    border: 0;
+
     position: relative !important;
     left: 15% !important;
     /* right: 50% !important; */
   }
   .emojionearea-button-close{
+    border: 0;
+
     position: relative !important;
     left: 15% !important;
     top: -1vh !important;
   }
 
   .emojionearea-standalone{
+    border: 0;
+
     height: 5vh !important;
     width: 8vw !important;
     padding: 0 !important;
