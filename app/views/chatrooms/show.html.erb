@@ -46,36 +46,35 @@
 
 <script  type="text/javascript">
 $(document).ready(function () {
-    //$(".tooltipped").tooltip();
 
 
-    $("#emoticon").emojioneArea({
-        pickerPosition: "top",
-        inline: true,
-        tones: false,
-        buttonTitle: "Emojis",
-        autocomplete: false,
-        standalone: true,
-        events: {
-            emojibtn_click: function () {
-                var actElem = document.getElementById("message_content");
-                var actText = actElem.value;
-                actElem.value =
-                    actText.slice(0, actElem.selectionStart) +
-                    this.getText() +
-                    actText.slice(actElem.selectionEnd);
-                actElem.focus();
-            },
-        },
-        attributes: {
-            spellcheck: false,
-            autocomplete: "off",
-        },
-    });
+  //  if ( document.readyState == 'complete' ) {
+      $("#emoticon").emojioneArea({
+          pickerPosition: "top",
+          inline: true,
+          tones: false,
+          buttonTitle: "Emojis",
+          autocomplete: false,
+          standalone: true,
+          events: {
+              emojibtn_click: function () {
+                  var actElem = document.getElementById("message_content");
+                  var actText = actElem.value;
+                  actElem.value =
+                      actText.slice(0, actElem.selectionStart) +
+                      this.getText() +
+                      actText.slice(actElem.selectionEnd);
+                  actElem.focus();
+              },
+          },
+          attributes: {
+              spellcheck: false,
+              autocomplete: "off",
+          },
+      });
+ // }
+
 })
-
-//}
-//}
 
 //document.getElementById("message_content").focus();
 

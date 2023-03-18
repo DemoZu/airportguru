@@ -15,6 +15,7 @@ export default class extends Controller {
       `Subscribed to the chatroom with the id ${this.chatroomIdValue}.`
     );
 
+
   }
 
   #justifyClass(currentUserIsSender) {
