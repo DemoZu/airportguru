@@ -7,25 +7,11 @@
 .emojionearea-editor{
   display: none !important;
 }
-.emojionearea-standalone{
-  height: 5vh !important;
-  width: 4vw !important;
-  padding: 0 !important;
-}
+
 .emojionearea-button{
 
   position: relative !important;
   /* right: -50% !important; */
-}
-.emojionearea-button-open{
-  position: relative !important;
-  left: 30% !important;
-  /* right: 50% !important; */
-}
-.emojionearea-button-close{
-  position: relative !important;
-  left: 30% !important;
-  top: -1vh !important;
 }
 
 #emoticon{
@@ -33,4 +19,57 @@
   overflow: hidden !important;
   overflow-x: hidden;
   margin: 0 8px;
+}
+
+@media (min-width: 400px) {
+  .emojionearea-button-open{
+    border: 0;
+
+    width: 2px;
+    /* right: 50% !important; */
+  }
+  .emojionearea-button-close{
+    border: 0;
+
+    width: 2px;
+    top: -1vh !important;
+
+
+  }
+
+  .emojionearea-standalone{
+    border: 0;
+    height: 4vh !important;
+    width: 5vw !important;
+    padding: 0 !important;
+
+  }
+}
+
+
+
+@media (max-width: 400px) {
+  .emojionearea-button-open{
+    border: 0;
+
+    position: relative !important;
+    left: 15% !important;
+    /* right: 50% !important; */
+  }
+  .emojionearea-button-close{
+    border: 0;
+
+    position: relative !important;
+    left: 15% !important;
+    top: -1vh !important;
+  }
+
+  .emojionearea-standalone{
+    border: 0;
+
+    height: 5vh !important;
+    width: 8vw !important;
+    padding: 0 !important;
+
+  }
 }
