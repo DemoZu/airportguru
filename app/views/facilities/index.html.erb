@@ -1,15 +1,18 @@
 <%= render "shared/airport_nav" %>
-<div class="container">
-  <div class="row justify-content-center terminal-header">
-    <div class="col-12 col-md-9 mt-4 p-3">
-      <h1 class="airport__name"><%=@airport.name %></h1>
-      <% if @airport.terminal.present? %>
-      <h2 class="fs-3"><strong>Terminal <%= @airport.terminal%></strong></h2>
-      <% end %>
-      <h3 class="my-3">Facilities</h3>
+<div class="terminal-header">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-9 mt-4 py-3 px-5">
+        <h1 class="airport__name"><%=@airport.name %></h1>
+        <% if @airport.terminal.present? %>
+        <h2 class="fs-3"><strong>Terminal <%= @airport.terminal%></strong></h2>
+        <% end %>
+        <h3 class="my-3">Facilities</h3>
+      </div>
     </div>
-  </div>
     <%= render "shared/my_flight", flights: @flights %>
+  </div>
+  </div>
 
     <div class="container">
       <div class="row justify-content-center">
@@ -152,5 +155,4 @@
       </div>
     </div>
   </div>
-</div>
 </div>

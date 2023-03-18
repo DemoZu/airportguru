@@ -1,6 +1,6 @@
 <% if current_user.present? && current_user.flights.present? %>
   <div class="row justify-content-center my-flight__container">
-    <div class="col-12 col-md-9 p-3 ">
+    <div class="col-12 col-md-9 px-5 py-3">
         <div class="row">
           <% current_user.flights.each do |flight| %>
               <% if flight.airport_id == @airport.id %>
