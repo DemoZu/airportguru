@@ -3,9 +3,9 @@ class ChatroomsController < ApplicationController
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new
     if current_user.present? &&
-       (@chatroom.messages.first.meetup.user_id == current_user.id ||
-         @chatroom.messages.first.user_id == current_user.id) &&
-       @chatroom.messages.first.status != "REJECT"
+      (@chatroom.messages.first.meetup.user_id == current_user.id ||
+        @chatroom.messages.first.user_id == current_user.id) &&
+        @chatroom.messages.first.status != "REJECT"
 
     else
       redirect_to root_path
