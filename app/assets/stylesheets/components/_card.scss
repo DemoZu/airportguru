@@ -27,3 +27,9 @@
 span.category-name {
   background-color: $light-orange-200 !important;
 }
+
+.card-page__bg {
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
