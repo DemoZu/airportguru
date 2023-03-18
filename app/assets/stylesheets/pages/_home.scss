@@ -30,7 +30,14 @@ h1.app-heading {
 }
 
 .home-page__find-airport {
-  border: 3px solid $savoy-blue !important;
+  border: 3px solid $light-orange !important;
+}
+
+.airports-list li:hover {
+  background-color: $light-orange !important;
+  &:active {
+    background-color: $light-orange !important;
+  }
 }
 
 @media(min-width: 768px) {

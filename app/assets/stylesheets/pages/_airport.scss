@@ -12,7 +12,10 @@
   max-width: 300px;
   margin: auto;
 }
-
+.airport__name {
+  font-weight: 700;
+  color: $fandango;
+}
 
 .flight-list__item {
  border-bottom: 1px solid $gray-300 !important;
