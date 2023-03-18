@@ -1,6 +1,17 @@
 .facilities__card {
   max-width: 200px;
 }
+
+.facilities__body {
+  display: flex;
+  justify-content: center;
+}
 .facilities__card--body {
   height: 150px;
+}
+
+@media(min-width: 700px) {
+  .facilities__body {
+    justify-content: flex-start;
+  }
 }

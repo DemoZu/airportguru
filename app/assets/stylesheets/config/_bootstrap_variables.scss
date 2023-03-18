@@ -8,7 +8,7 @@
 $font-family-sans-serif: $body-font;
 $headings-font-family:   $headers-font;
 $body-bg:                $white-smoke;
-$body-bg:                $white;
+// $body-bg:                $white;
 $font-size-base:         1rem;
 
 // Colors
@@ -27,9 +27,13 @@ $border-radius-sm: 2px;
 // links
 $link-color: $gray !default;
 
+// text
+
+
 // forms
 $form-padding: 2rem;
 $border-color: $fandango-100 !default;
+$border-color-orange: $light-orange !default;
 
 // headers
 $primary-navbar: $periwinkle;
@@ -39,7 +43,6 @@ $secondary-navbar: $savoy-blue;
 $footer: $savoy-blue;
 
 // box shadow
-
 .shadow-orange {
   box-shadow: $light-orange-100 0px 6px 14px 0px !important;
 }
