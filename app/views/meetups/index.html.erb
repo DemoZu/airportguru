@@ -47,13 +47,13 @@
 
   <% if current_user.present? %>
   <div class="row justify-content-center">
-    <div class="col-12 col-md-9 px-3 py-3 mt-2">
+    <div class="col-12 col-md-9 px-5 py-3 mt-2">
       <h2 class="fs-3 mb-3">Arrange to meet others</h2>
       <a href class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createMeetup">
         Post a meetup
       </a>
       <% else %>
-        <div class="d-flex flex-wrap align-items-center mb-3">
+        <div class="d-flex flex-wrap align-items-center px-5 mt-3 mb-3">
           <i class="fa-solid fa-user me-2"></i> <%= link_to "sign up", new_user_registration_path, class: "me-1" %> or <%= link_to "log in", new_user_session_path, class: "ms-1 me-2" %> to post a meetup
         </div>
       <% end %>
@@ -64,7 +64,7 @@
   <% if @mymeetup.count > 0 %>
 
   <div class="row justify-content-center">
-    <div class="accordion mt-5 col-12 col-md-9 pb-5 px-3">
+    <div class="accordion mt-5 col-12 col-md-9 pb-5 px-5">
       <h2 class="fs-3 mb-3">View my meetups</h2>
       <div class="accordion-item__container pb-5">
         <div class="accordion-item">
@@ -83,7 +83,7 @@
                           <% @chatrooms.each do |chatroom| %>
                             <% if (chatroom.messages.first.status != "REJECT")  && (chatroom.messages.first.meetup_id.eql?m.id) %>
                               <div class="list-group-item d-flex align-items-center justify-content-between align-items-start">
-                                <div class="">
+                                <div class="mb-1">
                                   <small class="">🐭🐹 <a href='<%= "#{airport_chatrooms_path}/#{chatroom.id}"%>'><%= chatroom.name %></a></small>
                                 </div>
                               </div>
@@ -109,7 +109,7 @@
           <%= render "filter", meetup_category: @meetup_category%>
           <%= form_with url: airport_meetups_path,
             method: :get,
-            html: {class: "mt-2 mb-4 pb-5 filter-meetups", data: {search_meetups_target: "form"}} do |f|
+            html: {class: "mt-2 mb-4 pb-5 px-5 filter-meetups", data: {search_meetups_target: "form"}} do |f|
           %>
           <%= f.label :search, "Search meetups",
                       class: "mt-2 mb-1"
