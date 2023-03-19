@@ -1,7 +1,4 @@
 <div data-search-meetups-target="list">
-
-
-
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-9 mt-3 mb-3">
@@ -21,18 +18,22 @@
         <div class="col-12 col-sm-6 col-lg-4 mb-3">
           <div class="card mb-3 h-100 w-100 d-flex border-0 shadow-orange">
             <div class="card-body d-flex align-items-start flex-column">
-              <div class="d-flex">
-                  <div class="mb-2 d-flex">
-                    <small class="d-flex align-items-center flex-grow-1">
-                      <% if meetup.user.photo %>
-                      <%= image_tag meetup.user.photo, alt: meetup.user.nickname, class: "me-2", width: 50 %> <%= meetup.user.nickname %>
-                      <% else %>
-                      <%= image_tag "https://cdn3.iconfinder.com/data/icons/web-design-and-development-2-6/512/87-1024.png", alt: meetup.user.nickname, class: "me-2", width: 20 %> <%= meetup.user.nickname %>
-                      <% end %>
-                    </small>
-                    <small class="d-block">
-                      <%= meetup.meetup_category.meetup_topic %>
-                    </small>
+              <div class="w-100">
+                  <div class="mb-2 d-flex justify-space-between align-items-center">
+                    <div class="flex-grow-1">
+                      <small class="d-flex align-items-center">
+                        <% if meetup.user.photo %>
+                        <%= image_tag meetup.user.photo, alt: meetup.user.nickname, class: "me-2", width: 50 %> <%= meetup.user.nickname %>
+                        <% else %>
+                        <%= image_tag "https://cdn3.iconfinder.com/data/icons/web-design-and-development-2-6/512/87-1024.png", alt: meetup.user.nickname, class: "me-2", width: 20 %> <%= meetup.user.nickname %>
+                        <% end %>
+                      </small>
+                    </div>
+                    <div>
+                      <small class="d-block category-name p-1">
+                        <%= meetup.meetup_category.meetup_topic %>
+                      </small>
+                    </div>
                   </div>
                 </div>
                 <p class="card-text fs-5"><%= meetup.content %></p>

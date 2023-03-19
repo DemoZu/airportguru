@@ -40,7 +40,7 @@
   <%= render "shared/my_flight", flights: @flights %>
 
     <div class="row" data-controller="tips-select-filter" data-select-filter-url="<%= tips_filter_path %>">
-      <div class="col-12 mt-4 p-3 tips-add-filtered">
+      <div class="col-12 mt-4 mb-3 p-3 tips-add-filtered">
       <% if current_user %>
        <button type="button" class="btn btn-primary tip-add" data-bs-toggle="modal" data-bs-target="#submitTip">
             Add a tip
