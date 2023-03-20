@@ -3,13 +3,13 @@
   justify-content: space-between;
 }
 .airport-nav__container {
+  background: $secondary-navbar;
   position: sticky;
   top: 0;
   z-index: 50;
 }
 .airport-nav__row {
   padding: 1rem 0;
-  background: $secondary-navbar;
 }
 .airport-nav__link {
   color: $white;
@@ -38,6 +38,6 @@
    }
 
    .secondary-nav__item {
-      margin-right: 3rem;
+      // margin-right: 3rem;
    }
 }

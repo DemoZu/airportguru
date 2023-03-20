@@ -12,7 +12,7 @@
             <%= simple_form_for @new_meetup, url: "/airports/#{params[:airport_id]}/meetups", :method => :post do  |f| %>
               <div class="modal-body">
               <%= f.input :content, label: "What message would you like to post?", placeholder: "eg anyone free for a coffee?" %>
-              <%= f.input :meetup_category_id, collection: [["Coffee",1],["Drinks",2],["Food",3],["Kids play",5],["Shopping",4]], label: "What would you like to meet for?" %>
+              <%= f.input :meetup_category_id, collection: [["Coffee",1],["Drinks",2],["Food",3],["Kids play",5],["Shopping",4]], label: "What would you like to meet for?", prompt: "Select from...", class:"text-muted" %>
               <%= f.hidden_field :airport_id, value: params[:airport_id] %>
               <%= f.hidden_field :user_id, value: current_user.id %>
             </div>
@@ -32,7 +32,7 @@
 
 <div class="container">
   <div class="row justify-content-center terminal-header">
-    <div class="col-12 col-md-9 mt-4 p-3">
+    <div class="col-12 col-md-9 mt-4 py-3 px-5">
         <h1 class="airport__name"><%=@airport.name %></h1>
         <% if @airport.terminal.present? %>
         <h2 class="fs-3"><strong>Terminal <%= @airport.terminal%></strong></h2>
@@ -47,14 +47,14 @@
 
   <% if current_user.present? %>
   <div class="row justify-content-center">
-    <div class="col-12 col-md-9 px-3 mt-5">
-      <h2 class="fs-3 mb-3">Arrange to meet others</h2>
+    <div class="col-12 col-md-9 px-5 py-3 mt-2">
+      <%# <h2 class="fs-3 mb-3">Arrange to meet others</h2> %>
       <a href class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createMeetup">
         Post a meetup
       </a>
       <% else %>
-        <div class="d-flex flex-wrap align-items-center mb-3">
-          <i class="fa-solid fa-user me-2"></i> <%= link_to "sign up", new_user_registration_path, class: "me-1" %> or <%= link_to "log in", new_user_session_path, class: "ms-1 me-2" %> to post a meetup
+        <div class="d-flex flex-wrap align-items-center px-5 mt-3 mb-3">
+          <i class="fa-solid fa-user primary-color me-2"></i> <%= link_to "sign up", new_user_registration_path, class: "me-1" %> or <%= link_to "log in", new_user_session_path, class: "ms-1 me-2" %> to post a meetup
         </div>
       <% end %>
     </div>
@@ -64,13 +64,13 @@
   <% if @mymeetup.count > 0 %>
 
   <div class="row justify-content-center">
-    <div class="accordion mt-5 col-12 col-md-9 pb-5 px-3">
-      <h2 class="fs-3 mb-3">View my meetups</h2>
-      <div class="accordion-item__container pb-5">
+    <div class="accordion mt-3 col-12 col-md-9 px-5">
+      <h2 class="fs-3 mb-3">Meetups I've posted</h2>
+      <div class="accordion-item__container pb-4">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingTwo">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#myMeetups" aria-expanded="true" aria-controls="collapseTwo">
-              Meetups you've posted and replies:
+            <button class="accordion-button p-2" type="button" data-bs-toggle="collapse" data-bs-target="#myMeetups" aria-expanded="true" aria-controls="collapseTwo">
+              Your meetups and replies:
             </button>
           </h2>
             <div id="myMeetups" class="accordion-collapse collapse " aria-labelledby="headingTwo" data-bs-parent="#myMeetups">
@@ -83,7 +83,7 @@
                           <% @chatrooms.each do |chatroom| %>
                             <% if (chatroom.messages.first.status != "REJECT")  && (chatroom.messages.first.meetup_id.eql?m.id) %>
                               <div class="list-group-item d-flex align-items-center justify-content-between align-items-start">
-                                <div class="">
+                                <div class="mb-1">
                                   <small class="">🐭🐹 <a href='<%= "#{airport_chatrooms_path}/#{chatroom.id}"%>'><%= chatroom.name %></a></small>
                                 </div>
                               </div>
@@ -103,19 +103,19 @@
 
     <%# search meetups %>
     <div class="row justify-content-center">
-      <div class="col-12 col-md-9 px-3">
+      <div class="col-12 col-md-9 pt-4 pb-3">
 
         <div data-controller="search-meetups">
           <%= render "filter", meetup_category: @meetup_category%>
           <%= form_with url: airport_meetups_path,
             method: :get,
-            html: {class: "mt-2 mb-4 pb-5 filter-meetups", data: {search_meetups_target: "form"}} do |f|
+            html: {class: "mt-2 mb-4 pb-5 px-5 filter-meetups", data: {search_meetups_target: "form"}} do |f|
           %>
           <%= f.label :search, "Search meetups",
                       class: "mt-2 mb-1"
           %>
           <%= f.text_field :query,
-            class: "form-control bg-white",
+            class: "form-control bg-white py-1 px-2",
             placeholder: "eg Paris...",
             value: params[:query],
             data: {
@@ -129,3 +129,5 @@
       </div>
     </div>
 </div>
+<script type="text/javascript"  src="//ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js" ></script>
+<script type="text/javascript"  src="/javascript/emojionearea.min.js" ></script>

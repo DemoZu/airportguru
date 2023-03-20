@@ -24,8 +24,10 @@
 .tip-card-footer {
   background-color: $periwinkle-100 !important;
 }
-span.category-name {
+span.category-name,
+.category-name {
   background-color: $light-orange-200 !important;
+  border: 2px solid $periwinkle-200 !important;
 }
 
 .card-page__bg {
