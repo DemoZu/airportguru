@@ -22,7 +22,7 @@
                   <div class="mb-3 d-flex justify-space-between align-items-center">
                     <div class="flex-grow-1">
                       <small class="d-flex align-items-center py-1 fw-bold">
-                        <% if meetup.user.photo %>
+                        <% if !meetup.user.photo.blank? %>
                         <%= image_tag meetup.user.photo, alt: meetup.user.nickname, class: "me-2", width: 50 %> <%= meetup.user.nickname %>
                         <% else %>
                         <%= image_tag "https://cdn3.iconfinder.com/data/icons/web-design-and-development-2-6/512/87-1024.png", alt: meetup.user.nickname, class: "me-2", width: 20 %> <%= meetup.user.nickname %>
@@ -81,32 +81,42 @@
                 <h2 class="modal-title fs-3" id="MeetupModalLabel">Let's meet!</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
+               <form action="<%= "/airports/#{meetup.airport_id}/chatrooms" %>" accept-charset="UTF-8" method="post">
               <div class="modal-body">
                 <%= meetup.user.photo %>
-                      <h3 class="card-title fs-4"><%= meetup.content %></h3>
-                    <p class="card-text"><strong> <%= meetup.user.nickname %></strong></p>
-                    <p class="card-text">I'd like to meet for  <%= meetup.meetup_category.meetup_topic %> </p>
-                    <% if meetup.user.journeys.present? %>
-                      <% if meetup.user.journeys.last.flight.gate_open_time.present? %>
-                        <p class="card-text">I'm free until:<%= meetup.user.journeys.last.flight.gate_open_time.strftime("%H:%M" )%></p>
-                      <% end %>
-                    <% else %>
-                      <p class="card-text">I'm free until: 23:25:10</p>
-                    <% end %>
-
-                    <form action="<%= "/airports/#{meetup.airport_id}/chatrooms" %>" accept-charset="UTF-8" method="post">
-                      <label for="message" class="d-block">Send a message</label>
-                      <input type="text" col=5 name="message" id="message" />
-                      <input value=<%= meetup.id %> autocomplete="off" type="hidden" name="meetup_id" id="meetup_id" />
-                      <input value=<%= meetup.airport_id %> autocomplete="off" type="hidden" name="airport_id" id="airport_id" />
-                      <% if current_user.present? %>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="submit" class="btn btn-primary">Send message</button>
-                        </div>
-                      <% end %>
-                    </form>
+                <h3 class="card-title fs-4"><b><%= meetup.content %></b></h3>
+                <br>
+                <div>
+                  <small class="d-flex align-items-center flex-grow-1">
+                  <% if !meetup.user.photo.blank? %>
+                    <%= image_tag meetup.user.photo, alt: meetup.user.nickname, class: "me-2", width: 50 %> <%= meetup.user.nickname %>
+                  <% else %>
+                    <%= image_tag "https://cdn3.iconfinder.com/data/icons/web-design-and-development-2-6/512/87-1024.png", alt: meetup.user.nickname, class: "me-2", width: 20 %> <%= meetup.user.nickname %>
+                  <% end %>
+                  </small>
+                </div>
+                <div>
+                <% if meetup.user.journeys.present? %>
+                  <% if meetup.user.journeys.last.flight.gate_open_time.present? %>
+                    <p class="card-text">I'm free until:<%= meetup.user.journeys.last.flight.gate_open_time.strftime("%H:%M" )%></p>
+                  <% end %>
+                <% else %>
+                  <p class="card-text">I'm free until: 23:25</p>
+                <% end %>
+                </div>
+                  <label for="message" class="d-block" >Send a message</label>
+                  <input class="form-control" type="text" col=10 name="message" id="message" />
+                  <input value=<%= meetup.id %> autocomplete="off" type="hidden" name="meetup_id" id="meetup_id" />
+                  <input value=<%= meetup.airport_id %> autocomplete="off" type="hidden" name="airport_id" id="airport_id" />
               </div>
+                  <% if current_user.present? %>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">Send message</button>
+                    </div>
+                  <% end %>
+                </form>
+
             </div>
           </div>
         </div>
