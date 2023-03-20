@@ -3,11 +3,11 @@
       <div class="col-12 col-md-4 mb-3">
         <div class="card w-100 h-100 border-0 p-2 shadow-orange">
           <div class="card-header pt-4">
-            <p class="category border-0"><span class="d-block category-name px-3 py-1 mb-3"><%= tip.tip_category.name %></span></p>
+            <p class="category border-0"><span class="d-block category-name rounded px-2 py-1 mb-3 text-muted"><%= tip.tip_category.name %></span></p>
             <h2 class="fs-5 mb-1"><%= tip.title %></h2>
           </div>
           <div class="card-body py-2">
-            <p class="mb-0"><%= tip.content %></p>
+            <p class="mb-0 text-muted"><%= tip.content %></p>
           </div>
           <div class="card-footer tip-card-footer py-2 mt-3 text-muted border-0">
             <div class="d-flex justify-content-between align-items-center">
@@ -34,7 +34,7 @@
                     <i class="fa-regular fa-heart"></i>
                   <% end %>
                   <% end %>
-                  <p class="mb-0"><%= tip.likes.count %> </p>
+                  <small class="mb-0"><%= tip.likes.count %> </small>
                 </div>
               <% end %>
               </div>

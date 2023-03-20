@@ -10,7 +10,7 @@
         <%= simple_form_for @tip, url: airport_tips_path, :method => :post do  |f| %>
                                               <%= f.input :title, label: "Give your tip a one line summary", required: true, placeholder: "eg Best food in the airport" %>
                                               <%= f.input :content, label: "What is your tip?", required: true, placeholder: "Type your tip here..." %>
-                                              <%= f.input :tip_category_id, collection: @tip_categories, as: :select, label: "Choose a category for your tip" %>
+                                              <%= f.input :tip_category_id, collection: @tip_categories, as: :select, label: "Choose a category for your tip", class: "text-muted", prompt: "Choose from..." %>
                                               <%= f.hidden_field :airport_id, value: params[:airport_id] %>
                                               <%= f.hidden_field :user_id, value: current_user.id if current_user.present? %>
                                               <div class="modal-footer">
@@ -28,7 +28,7 @@
 <div class="container">
 
   <div class="row justify-content-center terminal-header">
-    <div class="col-12 col-md-9 mt-3 p-3">
+    <div class="col-12 col-md-9 mt-3 py-3 px-5">
         <h1 class="airport__name"><%=@airport.name %></h1>
         <% if @airport.terminal.present? %>
         <h2 class="fs-3"><strong>Terminal <%= @airport.terminal%></strong></h2>
@@ -40,10 +40,10 @@
   <%= render "shared/my_flight", flights: @flights %>
 
     <div class="row" data-controller="tips-select-filter" data-select-filter-url="<%= tips_filter_path %>">
-      <div class="col-12 mt-4 p-3 tips-add-filtered">
+      <div class="col-12 mt-4 mb-3 p-3 tips-add-filtered">
       <% if current_user %>
        <button type="button" class="btn btn-primary tip-add" data-bs-toggle="modal" data-bs-target="#submitTip">
-            Add a tip
+            Add your tip
         </button>
         <% else %>
         <%= link_to "Login to post a tip", new_user_session_path, class: "btn btn-primary tip-add"  %>

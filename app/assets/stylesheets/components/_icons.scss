@@ -1,6 +1,10 @@
 i.white {
   color: $white;
 }
-i.primary-color {
+i.primary-color,
+.primary-color {
   color: $primary;
+}
+i.fa-regular.fa-heart {
+  color: $fandango;
 }
