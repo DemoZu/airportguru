@@ -5,7 +5,7 @@ class TipsFilterController < ApplicationController
     if params[:tip_categories][0] == "All"
       @airport = Airport.find(params[:airport_id])
       @tips = @airport.tips.order(likes: :desc)
-      #@tips = Tip.all
+      # @tips = Tip.all
 
     else
 

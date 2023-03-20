@@ -14,7 +14,12 @@
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
               <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
             <% end %>
-
+            <% if resource.avatar.attached? %>
+            <%= image_tag(resource.avatar_thumbnail) %>
+            <% else %>
+            image('/app/assets/images/default_avatar.jpg', style:'width:40px; height: 40px;') %>
+            <% end %>
+            <%= f.input :avatar, as: :file %>
             <%= f.input :password,
                         hint: "leave it blank if you don't want to change it",
                         required: false,

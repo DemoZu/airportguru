@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   get 'tips_filter/index'
   get 'messages/chatrooms'
-  devise_for :users
+  devise_for :users, controller: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :airports do
