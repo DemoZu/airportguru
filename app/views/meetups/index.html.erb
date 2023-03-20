@@ -64,9 +64,9 @@
   <% if @mymeetup.count > 0 %>
 
   <div class="row justify-content-center">
-    <div class="accordion mt-5 col-12 col-md-9 pb-5 px-5">
+    <div class="accordion mt-3 col-12 col-md-9 px-5">
       <h2 class="fs-3 mb-3">Meetups I've posted</h2>
-      <div class="accordion-item__container pb-5">
+      <div class="accordion-item__container pb-4">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingTwo">
             <button class="accordion-button p-2" type="button" data-bs-toggle="collapse" data-bs-target="#myMeetups" aria-expanded="true" aria-controls="collapseTwo">
@@ -103,7 +103,7 @@
 
     <%# search meetups %>
     <div class="row justify-content-center">
-      <div class="col-12 col-md-9 py-3">
+      <div class="col-12 col-md-9 pt-4 pb-3">
 
         <div data-controller="search-meetups">
           <%= render "filter", meetup_category: @meetup_category%>
