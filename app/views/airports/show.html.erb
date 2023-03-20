@@ -4,25 +4,26 @@
 
   <div class="airport-show__cards row justify-content-center gap-3">
       <div class="col-12 col-md-3">
-        <div class="airport-show__card card shadow-orange border-0 py-5 text-center">
+        <div class="airport-show__card card shadow-orange border-0 py-5 text-center card-page__bg" style="background-image: url('<%= image_path "meetup2.jpg" %>')">
           <div class="card-body">
-            <%= link_to "Meet People", airport_meetups_path(@airport), class: "text-decoration-none stretched-link" %>
+            <%= link_to "Meet People", airport_meetups_path(@airport), class: "text-decoration-none stretched-link text-on-three" %>
           </div>
         </div>
       </div>
 
       <div class="col-12 col-md-3">
-        <div class="airport-show__card card shadow-orange border-0 py-5 text-center">
+        <div class="airport-show__card card shadow-orange border-0 py-5 text-center card-page__bg" style="background-image: url('<%= image_path "toptips2.jpg" %>')">
+
           <div class="card-body">
-            <%= link_to "Top Tips", airport_tips_path(@airport), class: "text-decoration-none stretched-link" %>
+            <%= link_to "Top Tips", airport_tips_path(@airport), class: "text-decoration-none stretched-link text-on-three" %>
           </div>
         </div>
       </div>
 
       <div class="col-12 col-md-3">
-        <div class="airport-show__card card shadow-orange border-0 py-5 text-center">
+        <div class="airport-show__card card shadow-orange border-0 py-5 text-center card-page__bg" style="background-image: url('<%= image_path "facilities2.jpg" %>')">
           <div class="card-body">
-            <%= link_to "Facilities", airport_facilities_path(@airport), class: "text-decoration-none stretched-link" %>
+            <%= link_to "Facilities", airport_facilities_path(@airport), class: "text-decoration-none stretched-link text-on-three" %>
           </div>
         </div>
       </div>
