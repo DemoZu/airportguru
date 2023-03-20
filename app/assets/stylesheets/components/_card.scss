@@ -31,7 +31,28 @@ span.category-name,
 }
 
 .card-page__bg {
-  background-size: contain;
+  background-size:cover;
   background-position: center center;
   background-repeat: no-repeat;
+}
+
+.text-on-three {
+/* From https://css.glass */
+/* From https://css.glass */
+/* From https://css.glass */
+/* From https://css.glass */
+/* From https://css.glass */
+background: rgba(79, 7, 80, 0.58);
+border-radius: 6px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(6.4px);
+-webkit-backdrop-filter: blur(6.4px);
+max-height: 150px;
+min-width: 300px;
+padding-left: 10px;
+padding-right: 10px;
+padding-bottom: 20px;
+padding-top: 20px;
+color: white;
+text-decoration: none !important;
 }
