@@ -1258,13 +1258,85 @@ flight = Flight.create!([
 
 
 {
-    flight_number: "EZ8324",
-    departure_time: Time.new(2023, 3, 25, 19, 25, 0),
-    airport_id: 18,
+    flight_number: "EZ8322",
+    departure_time: Time.new(2023, 3, 25, 20, 25, 0),
+    airport_id: 17,
     flight_destination: "London Gatwick",
     flight_status: "On Time",
     gate_number: "4",
+    gate_open_time: Time.new(2023, 3, 25, 19, 45, 0)
+  },
+{
+    flight_number: "AA6557",
+    departure_time: Time.new(2023, 3, 29, 19, 15, 0),
+    airport_id: 17,
+    flight_destination: "London Heathrow",
+    flight_status: "On Time",
+    gate_number: "8",
     gate_open_time: Time.new(2023, 3, 25, 18, 45, 0)
+  },
+{
+    flight_number: "AF1650",
+    departure_time: Time.new(2023, 3, 29, 18, 55, 0),
+    airport_id: 17,
+    flight_destination: "London Heathrow",
+    flight_status: "On Time",
+    gate_number: "9B",
+    gate_open_time: Time.new(2023, 3, 25, 18, 25, 0)
+  },
+{
+    flight_number: "BA303",
+    departure_time: Time.new(2023, 3, 29, 19, 45, 0),
+    airport_id: 17,
+    flight_destination: "London Heathrow",
+    flight_status: "On Time",
+    gate_number: "7",
+    gate_open_time: Time.new(2023, 3, 25, 19, 05, 0)
+  },
+{
+    flight_number: "IB5138",
+    departure_time: Time.new(2023, 3, 29, 20, 45, 0),
+    airport_id: 17,
+    flight_destination: "Lisbon",
+    flight_status: "On Time",
+    gate_number: "12",
+    gate_open_time: Time.new(2023, 3, 25, 20, 05, 0)
+  },
+{
+    flight_number: "EW7403",
+    departure_time: Time.new(2023, 3, 29, 21, 05, 0),
+    airport_id: 17,
+    flight_destination: "Hamburg",
+    flight_status: "On Time",
+    gate_number: "11C",
+    gate_open_time: Time.new(2023, 3, 25, 20, 35, 0)
+  },
+{
+    flight_number: "AF1000",
+    departure_time: Time.new(2023, 3, 29, 19, 25, 0),
+    airport_id: 17,
+    flight_destination: "Madrid",
+    flight_status: "On Time",
+    gate_number: "13",
+    gate_open_time: Time.new(2023, 3, 25, 18, 35, 0)
+  },
+{
+    flight_number: "EJU3931",
+    departure_time: Time.new(2023, 3, 29, 19, 15, 0),
+    airport_id: 17,
+    flight_destination: "Milan Linate",
+    flight_status: "On Time",
+    gate_number: "18",
+    gate_open_time: Time.new(2023, 3, 25, 18, 45, 0)
+  },
+{
+    flight_number: "VS6699",
+    departure_time: Time.new(2023, 3, 29, 19, 35, 0),
+    airport_id: 17,
+    flight_destination: "London Heathrow",
+    flight_status: "On Time",
+    gate_number: "12C",
+    gate_open_time: Time.new(2023, 3, 25, 18, 55, 0)
   },
   {
     flight_number: "BA123",
