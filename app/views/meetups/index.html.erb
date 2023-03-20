@@ -12,7 +12,7 @@
             <%= simple_form_for @new_meetup, url: "/airports/#{params[:airport_id]}/meetups", :method => :post do  |f| %>
               <div class="modal-body">
               <%= f.input :content, label: "What message would you like to post?", placeholder: "eg anyone free for a coffee?" %>
-              <%= f.input :meetup_category_id, collection: [["Coffee",1],["Drinks",2],["Food",3],["Kids play",5],["Shopping",4]], label: "What would you like to meet for?" %>
+              <%= f.input :meetup_category_id, collection: [["Coffee",1],["Drinks",2],["Food",3],["Kids play",5],["Shopping",4]], label: "What would you like to meet for?", prompt: "Select from...", class:"text-muted" %>
               <%= f.hidden_field :airport_id, value: params[:airport_id] %>
               <%= f.hidden_field :user_id, value: current_user.id %>
             </div>
@@ -54,7 +54,7 @@
       </a>
       <% else %>
         <div class="d-flex flex-wrap align-items-center px-5 mt-3 mb-3">
-          <i class="fa-solid fa-user me-2"></i> <%= link_to "sign up", new_user_registration_path, class: "me-1" %> or <%= link_to "log in", new_user_session_path, class: "ms-1 me-2" %> to post a meetup
+          <i class="fa-solid fa-user primary-color me-2"></i> <%= link_to "sign up", new_user_registration_path, class: "me-1" %> or <%= link_to "log in", new_user_session_path, class: "ms-1 me-2" %> to post a meetup
         </div>
       <% end %>
     </div>
@@ -65,11 +65,11 @@
 
   <div class="row justify-content-center">
     <div class="accordion mt-5 col-12 col-md-9 pb-5 px-5">
-      <h2 class="fs-3 mb-3">View my meetups</h2>
+      <h2 class="fs-3 mb-3">Meetups I've posted</h2>
       <div class="accordion-item__container pb-5">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingTwo">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#myMeetups" aria-expanded="true" aria-controls="collapseTwo">
+            <button class="accordion-button p-2" type="button" data-bs-toggle="collapse" data-bs-target="#myMeetups" aria-expanded="true" aria-controls="collapseTwo">
               Your meetups and replies:
             </button>
           </h2>
@@ -115,7 +115,7 @@
                       class: "mt-2 mb-1"
           %>
           <%= f.text_field :query,
-            class: "form-control bg-white",
+            class: "form-control bg-white py-1 px-2",
             placeholder: "eg Paris...",
             value: params[:query],
             data: {

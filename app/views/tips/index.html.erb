@@ -10,7 +10,7 @@
         <%= simple_form_for @tip, url: airport_tips_path, :method => :post do  |f| %>
                                               <%= f.input :title, label: "Give your tip a one line summary", required: true, placeholder: "eg Best food in the airport" %>
                                               <%= f.input :content, label: "What is your tip?", required: true, placeholder: "Type your tip here..." %>
-                                              <%= f.input :tip_category_id, collection: @tip_categories, as: :select, label: "Choose a category for your tip" %>
+                                              <%= f.input :tip_category_id, collection: @tip_categories, as: :select, label: "Choose a category for your tip", class: "text-muted", prompt: "Choose from..." %>
                                               <%= f.hidden_field :airport_id, value: params[:airport_id] %>
                                               <%= f.hidden_field :user_id, value: current_user.id if current_user.present? %>
                                               <div class="modal-footer">
