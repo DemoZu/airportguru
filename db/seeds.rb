@@ -97,6 +97,38 @@ user = User.create!([
     bio: "Mum to one boy. Work as a teacher.",
     email: "petra@rebakova.com",
     password: "123456"
+  },
+  {
+    first_name: "Jean",
+    last_name: "Paul",
+    nickname: "JP",
+    bio: "Single 30 year old. Loves to travel.",
+    email: "jean@paul.com",
+    password: "123456"
+  },
+  {
+    first_name: "Phillipe",
+    last_name: "Frome",
+    nickname: "mad_bars",
+    bio: "Je suis un barman",
+    email: "phillipe@frome.com",
+    password: "123456"
+  },
+  {
+    first_name: "Guy",
+    last_name: "Laurent",
+    nickname: "funny_baguette",
+    bio: "J'ai un chien'",
+    email: "guy@laurent.com",
+    password: "123456"
+  },
+  {
+    first_name: "Monique",
+    last_name: "Moselle",
+    nickname: "ensoleille",
+    bio: "J'aime le soleil",
+    email: "monique@moselle.com",
+    password: "123456"
   }
 ])
 
@@ -704,7 +736,127 @@ facilities = Facility.create!([
     title: "Plaza Premium Lounge",
     airport_id: 1,
     facility_category_id: 7
-}
+},
+  {
+    title: "Bonjourno Caffe",
+    airport_id: 17,
+    facility_category_id: 1
+},
+  {
+    title: "Paul",
+    airport_id: 17,
+    facility_category_id: 1
+},
+  {
+    title: "Starbucks",
+    airport_id: 17,
+    facility_category_id: 1
+},
+  {
+    title: "Baguette Belles",
+    airport_id: 17,
+    facility_category_id: 4
+  },
+  {
+    title: "Baguette Specialite",
+    airport_id: 17,
+    facility_category_id: 4
+  },
+  {
+    title: "Brioche Dorée",
+    airport_id: 17,
+    facility_category_id: 1
+  },
+  {
+    title: "Bistro Benoite",
+    airport_id: 17,
+    facility_category_id: 3
+  },
+  {
+    title: "Bert's",
+    airport_id: 17,
+    facility_category_id: 1
+  },
+  {
+    title: "Caviar House & Prunier Seafood Bar",
+    airport_id: 17,
+    facility_category_id: 3
+  },
+  {
+    title: "Yo! Sushi",
+    airport_id: 17,
+    facility_category_id: 3
+  },
+  {
+    title: "I Love Paris",
+    airport_id: 17,
+    facility_category_id: 3
+  },
+  {
+    title: "The French Taste",
+    airport_id: 17,
+    facility_category_id: 3
+  },
+  {
+    title: "EXKI",
+    airport_id: 17,
+    facility_category_id: 1
+  },
+  {
+    title: "Teppan",
+    airport_id: 17,
+    facility_category_id: 3
+  },
+  {
+    title: "Le Wagon",
+    airport_id: 17,
+    facility_category_id: 4
+  },
+  {
+    title: "Cafe Eiffel",
+    airport_id: 17,
+    facility_category_id: 3
+  },
+  {
+    title: "Burberry",
+    airport_id: 17,
+    facility_category_id: 2
+  },
+  {
+    title: "4G",
+    airport_id: 17,
+    facility_category_id: 2
+  },
+  {
+    title: "Cartier",
+    airport_id: 17,
+    facility_category_id: 2
+  },
+  {
+    title: "Celine",
+    airport_id: 17,
+    facility_category_id: 2
+  },
+  {
+    title: "Chanel",
+    airport_id: 17,
+    facility_category_id: 2
+  },
+  {
+    title: "fnac",
+    airport_id: 17,
+    facility_category_id: 2
+  },
+  {
+    title: "LACOSTE",
+    airport_id: 17,
+    facility_category_id: 2
+  },
+  {
+    title: "LACOSTE",
+    airport_id: 17,
+    facility_category_id: 2
+  },
 ])
 
 puts facilities.pluck(:title)
@@ -815,11 +967,6 @@ tip = Tip.create!([
     user_id: 8,
     tip_category_id: 2,
   },
-
-
-
-
-
   {
     title: "Charge your phone",
     content: "There are charging points in the airport - try the ones next to Gate 12 or if they're busy the ones by Gate 28B are quiet.",
@@ -842,6 +989,14 @@ tip = Tip.create!([
     # likes: 12,
     airport_id: 8,
     user_id: 2,
+    tip_category_id: 2,
+  },
+  {
+    title: "Decent food that's not too expensive",
+    content: "The food court is a bit pricey but there's a great place called Juniper & Co that does a good range of food. I had their all-day breakfast and it was delicious.",
+    # likes: 12,
+    airport_id: 8,
+    user_id: 3,
     tip_category_id: 2,
   },
   {
@@ -910,7 +1065,7 @@ tip = Tip.create!([
   },
   {
     title: "Healthy food options",
-    content: "Caters for vegans and those after healthy food. Try the quinoa salad with beet juice.",
+    content: "Pure caters for vegans and those after healthy food. Try the quinoa salad with beet juice.",
     # likes: 8,
     airport_id: 8,
     user_id: 6,
@@ -924,8 +1079,38 @@ tip = Tip.create!([
     user_id: 9,
     tip_category_id: 4,
   },
-
-
+  {
+      title: "Great space for working",
+      content: "Some tables and electric sockets in a quiet spot towards the back of the terminal near gate 16. Great if you need to work on the go.",
+      # likes: 1,
+      user_id: 9,
+      airport_id: 8,
+      tip_category_id: 1,
+    },
+  {
+      title: "Super bar chez Le Wagon",
+      content: "Le Wagon est idéal pour prendre un verre. Belle ambiance aussi.",
+      # likes: 1,
+      user_id: 14,
+      airport_id: 17,
+      tip_category_id: 2,
+    },
+    {
+    title: "Change d'argent",
+    content: "Utile si vous voyagez en dehors de l'Europe",
+    # likes: 15,
+    airport_id: 17,
+    user_id: 11,
+    tip_category_id: 4,
+  },
+  {
+    title: "Des lunettes de soleil élégantes à des prix raisonnables",
+    content: "Grand choix chez Solaris. Gamme à prix réduit aussi.",
+    # likes: 8,
+    airport_id: 17,
+    user_id: 12,
+    tip_category_id: 3,
+  },
 
 
 ])
@@ -976,7 +1161,7 @@ meetup = Meetup.create!([
     content: "Let's get together for a chat over a coffee",
   },
   {
-    user_id: 2,
+    user_id: 4,
     meetup_category_id: 2,
     airport_id: 1,
     content: "Anyone fancy catching a drink at the bar?",
@@ -986,6 +1171,78 @@ meetup = Meetup.create!([
     meetup_category_id: 3,
     airport_id: 1,
     content: "Anyone else going to Paris? My flight is delayed",
+  },
+  {
+    user_id: 2,
+    meetup_category_id: 1,
+    airport_id: 8,
+    content: "Anyone free for a chat over a coffee?",
+  },
+  {
+    user_id: 8,
+    meetup_category_id: 2,
+    airport_id: 8,
+    content: "Currently in Spoons getting drunk. Anyone want to join me?",
+  },
+  {
+    user_id: 9,
+    meetup_category_id: 3,
+    airport_id: 8,
+    content: "Travelling alone would be good to meet some people",
+  },
+  {
+    user_id: 5,
+    meetup_category_id: 4,
+    airport_id: 8,
+    content: "Someone help me choose a new outfit for my holiday",
+  },
+  {
+    user_id: 6,
+    meetup_category_id: 2,
+    airport_id: 8,
+    content: "It's my birthday! Come buy me a drink!",
+  },
+  {
+    user_id: 7,
+    meetup_category_id: 3,
+    airport_id: 8,
+    content: "Anyone care to join me and my wife for dinner?",
+  },
+  {
+    user_id: 10,
+    meetup_category_id: 5,
+    airport_id: 8,
+    content: "Travelling with my son. Anyone want to meet for a play date?",
+  },
+  {
+    user_id: 13,
+    meetup_category_id: 1,
+    airport_id: 17,
+    content: "Envie de se rencontrer pour un café?",
+  },
+  {
+    user_id: 13,
+    meetup_category_id: 2,
+    airport_id: 17,
+    content: "J'aimerais aussi prendre quelques verres plus tard - contactez-moi les gens!",
+  },
+  {
+    user_id: 11,
+    meetup_category_id: 2,
+    airport_id: 17,
+    content: "Je m'ennuie - qui veut boire un verre?",
+  },
+  {
+    user_id: 12,
+    meetup_category_id: 2,
+    airport_id: 17,
+    content: "toutes les dames célibataires viennent me rencontrer au bar 'Le Wagon' au premier étage - je mesure 6 pieds et je suis un beau jeune étalon et j'aime aussi la k-pop",
+  },
+  {
+    user_id: 14,
+    meetup_category_id: 3,
+    airport_id: 17,
+    content: "Nous sommes 3 amis qui vont manger. Envie de nous rejoindre?",
   },
 ])
 
