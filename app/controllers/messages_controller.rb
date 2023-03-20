@@ -1,9 +1,7 @@
 class MessagesController < ApplicationController
   def create
-
     @chatroom = Chatroom.find(params[:id])
     # add param Meetup.find(params[:meetup_id])
-
 
     @meetup = Meetup.find(params[:meetup_id])
     @message = Message.new(message_params)
@@ -17,7 +15,7 @@ class MessagesController < ApplicationController
         message: render_to_string(partial: "message", locals: { message: @message }),
         sender_id: @message.user.id
       )
-       head :ok
+      head :ok
     else
       render "chatrooms/show", status: :unprocessable_entity
     end

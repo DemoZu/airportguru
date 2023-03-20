@@ -1,5 +1,6 @@
 <div id="message-<%= message.id %>">
   <small>
+  <%= image_tag(message.user.chat_avatar, class: "avatar dropdown-toggle")%>
     <strong><%= message.user.nickname %></strong>
     <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
   </small>

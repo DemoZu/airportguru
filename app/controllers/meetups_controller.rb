@@ -55,7 +55,8 @@ class MeetupsController < ApplicationController
       tmp_query = "(#{cat_query}) AND content ILIKE (?) AND user_id <> (?) AND airport_id = (?)"
       @meetups = Meetup.where(tmp_query, "%#{params[:query]}%", user_id, airport_id)
     elsif params[:query].present? && cat_query == ""
-      @meetups = Meetup.where("content ILIKE (?) AND user_id <> (?) AND airport_id = (?)", "%#{params[:query]}%", user_id, airport_id)
+      @meetups = Meetup.where("content ILIKE (?) AND user_id <> (?) AND airport_id = (?)", "%#{params[:query]}%",
+                              user_id, airport_id)
     elsif !params[:query].present? && cat_query != ""
       tmp_query = "(#{cat_query}) AND user_id <> (?) AND airport_id = (?)"
       @meetups = Meetup.where(tmp_query, user_id, airport_id)
