@@ -14,10 +14,10 @@
               <div>
                 <p class="mb-0">
                   <span class="d-block small">
-                    <% if tip.user.photo %>
-                    <%= image_tag tip.user.photo, alt: tip.user.nickname, width: 50 %> <%= tip.user.nickname %></small>
+                    <% if tip.user.avatar_thumbnail.present? %>
+                      <%= image_tag tip.user.avatar_thumbnail, class: "me-2 rounded-circle", width: 30, height: 30 %> <%= tip.user.nickname %>
                     <% else %>
-                    <%= image_tag "https://cdn3.iconfinder.com/data/icons/web-design-and-development-2-6/512/87-1024.png", alt: tip.user.nickname, width: 20 %> <%= tip.user.nickname %></small>
+                      <% image_tag "default_avatar.jpg", alt: tip.user.nickname, class: "me-2 rounded-circle", width: 20, height: 20 %> <%= tip.user.nickname %>
                     <% end %>
                   </span>
                 </p>

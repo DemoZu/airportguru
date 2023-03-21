@@ -15,7 +15,7 @@ h1.app-heading {
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: scroll;
-    height: 90vh;
+    flex-grow: 1;
 }
 
 .home-page__logo {

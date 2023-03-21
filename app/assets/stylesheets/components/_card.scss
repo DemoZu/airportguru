@@ -55,4 +55,13 @@ padding-bottom: 20px;
 padding-top: 20px;
 color: white;
 text-decoration: none !important;
+  &:hover {
+    color: white;
+  }
+  &:visited {
+    color: white;
+  }
+  &:active {
+    color: white;
+  }
 }

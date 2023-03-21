@@ -1,4 +1,3 @@
-
 <!-- Modal for user to create a meetup-->
 <% if current_user.present? %>
   <div class="modal fade" id="createMeetup" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
@@ -8,7 +7,6 @@
           <h5 class="modal-title" id="createModalLabel">Post your meetup</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-
             <%= simple_form_for @new_meetup, url: "/airports/#{params[:airport_id]}/meetups", :method => :post do  |f| %>
               <div class="modal-body">
               <%= f.input :content, label: "What message would you like to post?", placeholder: "eg anyone free for a coffee?" %>
@@ -21,39 +19,34 @@
             <%= f.submit value: "Post your request", class: "btn btn-primary" %>
             </div>
           <% end %>
-
-
       </div>
     </div>
   </div>
 <% end %>
 
 <%= render "shared/airport_nav" %>
+<% if current_user.present? %>
+  <%= render "shared/my_flight", flights: @flights %>
+<% end %>
+
+ <div class="row justify-content-center terminal-header">
+  <div class="col-12 col-md-9 mt-2 py-1 padx-4">
+      <h1 class="mt-2 mb-3 h2 text-center"><strong>Meet other travellers</strong></h1>
+  </div>
+</div>
+
+
 
 <div class="container">
-  <div class="row justify-content-center terminal-header">
-    <div class="col-12 col-md-9 mt-4 py-3 px-5">
-        <h1 class="airport__name"><%=@airport.name %></h1>
-        <% if @airport.terminal.present? %>
-        <h2 class="fs-3"><strong>Terminal <%= @airport.terminal%></strong></h2>
-        <% end %>
-        <h3 class="my-3">Meet up with other travellers</h3>
-    </div>
-  </div>
-
-  <% if current_user.present? %>
-  <%= render "shared/my_flight", flights: @flights %>
-  <% end %>
-
   <% if current_user.present? %>
   <div class="row justify-content-center">
-    <div class="col-12 col-md-9 px-5 py-3 mt-2">
+    <div class="col-12 mt-1 mb-4 padx-4">
       <%# <h2 class="fs-3 mb-3">Arrange to meet others</h2> %>
-      <a href class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createMeetup">
+      <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#createMeetup">
         Post a meetup
-      </a>
+      </button>
       <% else %>
-        <div class="d-flex flex-wrap align-items-center px-5 mt-3 mb-3">
+        <div class="d-flex flex-wrap align-items-center padx-4 mt-3 mb-3">
           <i class="fa-solid fa-user primary-color me-2"></i> <%= link_to "sign up", new_user_registration_path, class: "me-1" %> or <%= link_to "log in", new_user_session_path, class: "ms-1 me-2" %> to post a meetup
         </div>
       <% end %>
@@ -64,8 +57,8 @@
   <% if @mymeetup.count > 0 %>
 
   <div class="row justify-content-center">
-    <div class="accordion mt-3 col-12 col-md-9 px-5">
-      <h2 class="fs-3 mb-3">Meetups I've posted</h2>
+    <div class="accordion mt-3 col-12 col-md-9 padx-4">
+      <h2 class="fs-4 mb-2">Meetups I've posted</h2>
       <div class="accordion-item__container pb-4">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingTwo">
@@ -103,13 +96,13 @@
 
     <%# search meetups %>
     <div class="row justify-content-center">
-      <div class="col-12 col-md-9 pt-4 pb-3">
+      <div class="col-12 col-md-9 pt-2 pb-3">
 
         <div data-controller="search-meetups">
           <%= render "filter", meetup_category: @meetup_category%>
           <%= form_with url: airport_meetups_path,
             method: :get,
-            html: {class: "mt-2 mb-4 pb-5 px-5 filter-meetups", data: {search_meetups_target: "form"}} do |f|
+            html: {class: "mt-2 mb-2 pb-4 padx-4 filter-meetups", data: {search_meetups_target: "form"}} do |f|
           %>
           <%= f.label :search, "Search meetups",
                       class: "mt-2 mb-1"

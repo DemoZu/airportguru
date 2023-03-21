@@ -3,7 +3,11 @@ body {
   display: flex;
   flex-direction: column;
 }
+.navbar {
+  min-height: 50px;
+}
 
 .footer {
   margin-top: auto;
+  min-height: 50px;
 }

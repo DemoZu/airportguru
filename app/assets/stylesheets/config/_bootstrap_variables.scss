@@ -27,7 +27,15 @@ $border-radius-sm: 2px;
 // links
 $link-color: $gray !default;
 
-// text
+// padding
+.padx-4 {
+  padding-left: 2.15rem !important;
+  padding-right: 2.15rem !important;
+}
+.padx-5 {
+  padding-left: 2.5rem !important;
+  padding-right: 2.5rem !important;
+}
 
 
 // forms
