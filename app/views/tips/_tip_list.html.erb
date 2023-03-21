@@ -17,7 +17,7 @@
                     <% if tip.user.avatar_thumbnail.present? %>
                       <%= image_tag tip.user.avatar_thumbnail, class: "me-2 rounded-circle", width: 30, height: 30 %> <%= tip.user.nickname %>
                     <% else %>
-                      <% image_tag "default_avatar.jpg", alt: tip.user.nickname, class: "me-2 rounded-circle", width: 20, height: 20 %> <%= tip.user.nickname %>
+                      <% image_tag "default_avatar.png", alt: tip.user.nickname, class: "me-2 rounded-circle", width: 20, height: 20 %> <%= tip.user.nickname %>
                     <% end %>
                   </span>
                 </p>
