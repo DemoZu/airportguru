@@ -1,13 +1,11 @@
-
-
 // CSS for airport show page
 .terminal-header {
-  background: $periwinkle-100;
+  // background: $periwinkle-100;
   // background: red;
 }
 
 .airport-show__cards {
-  margin: 1rem auto;
+  margin: .75rem auto;
 }
 .airport-show__card {
   max-width: 300px;
@@ -15,7 +13,12 @@
 }
 .airport__name {
   font-weight: 700;
+  margin-bottom: 8px;
   color: $fandango;
+}
+
+.airport__terminal {
+  margin-bottom: 0;
 }
 
 .flight-list__item {

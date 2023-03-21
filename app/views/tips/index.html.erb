@@ -24,47 +24,43 @@
 </div>
 
 <%= render "shared/airport_nav" %>
+<% if current_user.present? %>
+  <%= render "shared/my_flight", flights: @flights %>
+<% end %>
+
+<div class="row justify-content-center terminal-header">
+  <div class="col-12 col-md-9 mt-2 py-1 padx-4">
+      <h1 class="mt-2 mb-3 h2 text-center"><strong>Top tips</strong></h1>
+  </div>
+</div>
 
 <div class="container">
+  <div class="row" data-controller="tips-select-filter" data-select-filter-url="<%= tips_filter_path %>">
+    <div class="col-12 mt-1 mb-4 padx-4 tips-add-filtered">
+    <% if current_user %>
+      <button type="button" class="btn btn-primary tip-add" data-bs-toggle="modal" data-bs-target="#submitTip">
+            Add your tip
+      </button>
+    <% else %>
+      <%= link_to "Login to post a tip", new_user_session_path, class: "btn btn-primary tip-add"  %>
+    <% end %>
+      <div class="filter">
+        <h2 class="fs-4">Filter tips by</h2>
+        <select name="categories"  class="form-select" data-action="tips-select-filter#change">
+          <option selected>Select from...</option>
+          <%= @tip_categories.each do |category| %>
+            <option value="<%= category.name %>"><%= category.name.humanize %></option>
+          <% end %>
+            <option value="All">All</option>
+        <input type=hidden name="airport_id" id ="airport_id" value=<%=@airport.id%>>
 
-  <div class="row justify-content-center terminal-header">
-    <div class="col-12 col-md-9 mt-3 py-3 px-5">
-        <h1 class="airport__name"><%=@airport.name %></h1>
-        <% if @airport.terminal.present? %>
-        <h2 class="fs-3"><strong>Terminal <%= @airport.terminal%></strong></h2>
-        <h3 class="my-3">Top tips</h3>
-        <% end %>
+        </select>
+      </div>
+    </div>
+    <div data-tips-select-filter-target="tips">
+      <%= render partial: 'tips/tip_list', locals: { tips: @tips, airport: @airport} %>
     </div>
   </div>
-
-  <%= render "shared/my_flight", flights: @flights %>
-
-    <div class="row" data-controller="tips-select-filter" data-select-filter-url="<%= tips_filter_path %>">
-      <div class="col-12 mt-4 mb-3 p-3 tips-add-filtered">
-      <% if current_user %>
-       <button type="button" class="btn btn-primary tip-add" data-bs-toggle="modal" data-bs-target="#submitTip">
-            Add your tip
-        </button>
-        <% else %>
-        <%= link_to "Login to post a tip", new_user_session_path, class: "btn btn-primary tip-add"  %>
-        <% end %>
-        <div class="filter">
-          <h2 class="fs-4">Filter tips by</h2>
-          <select name="categories"  class="form-select" data-action="tips-select-filter#change">
-            <option selected>Select from...</option>
-            <%= @tip_categories.each do |category| %>
-              <option value="<%= category.name %>"><%= category.name.humanize %></option>
-            <% end %>
-              <option value="All">All</option>
-          <input type=hidden name="airport_id" id ="airport_id" value=<%=@airport.id%>>
-
-          </select>
-        </div>
-      </div>
-      <div data-tips-select-filter-target="tips">
-        <%= render partial: 'tips/tip_list', locals: { tips: @tips, airport: @airport} %>
-      </div>
-    </div>
   </div>
   </div>
 

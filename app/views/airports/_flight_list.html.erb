@@ -1,8 +1,8 @@
 <div data-search-flights-target="list">
   <div class="row w-100">
-    <div class="col-12 mb-5">
+    <div class="">
     <% if flights.present? %>
-    <ul class="flights-list list-group">
+    <ul class="col-12 mb-3 flights-list list-group">
       <% flights.each do |flight| %>
         <%= render "/airports/flight_info", flight: flight %>
       <% end %>
