@@ -28,14 +28,13 @@
 <% if current_user.present? %>
   <%= render "shared/my_flight", flights: @flights %>
 <% end %>
-
- <div class="row justify-content-center terminal-header">
-  <div class="col-12 col-md-9 mt-2 py-1 padx-4">
-      <h1 class="mt-2 mb-3 h2 text-center"><strong>Meet other travellers</strong></h1>
+<div class="container">
+  <div class="row justify-content-center terminal-header">
+    <div class="col-12 col-md-9 mt-2 py-1 padx-4">
+        <h1 class="mt-2 mb-3 h2 text-center"><strong>Meet other travellers</strong></h1>
+    </div>
   </div>
 </div>
-
-
 
 <div class="container">
   <% if current_user.present? %>
