@@ -99,11 +99,11 @@ user = User.create!([
     password: "123456"
   },
   {
-    first_name: "Jean",
-    last_name: "Paul",
-    nickname: "JP",
+    first_name: "Sébastien",
+    last_name: "Saunier",
+    nickname: "sébastien_saunier",
     bio: "Single 30 year old. Loves to travel.",
-    email: "jean@paul.com",
+    email: "sebastien@saunier.com",
     password: "123456"
   },
   {
@@ -128,6 +128,14 @@ user = User.create!([
     nickname: "ensoleille",
     bio: "J'aime le soleil",
     email: "monique@moselle.com",
+    password: "123456"
+  },
+  {
+    first_name: "Paul",
+    last_name: "Trent",
+    nickname: "petrol_head88",
+    bio: "Love Motorhead!",
+    email: "paul@trent.com",
     password: "123456"
   }
 ])
@@ -1174,9 +1182,9 @@ meetup = Meetup.create!([
   },
   {
     user_id: 2,
-    meetup_category_id: 1,
+    meetup_category_id: 3,
     airport_id: 8,
-    content: "Anyone free for a chat over a coffee?",
+    content: "Anyone fancy joining me for a Wagamama?",
   },
   {
     user_id: 8,
@@ -1230,7 +1238,7 @@ meetup = Meetup.create!([
     user_id: 11,
     meetup_category_id: 2,
     airport_id: 17,
-    content: "Je m'ennuie - qui veut boire un verre?",
+    content: "Je m'ennuie - qui veut me rejoindre pour boire un verre au bar Le Wagon?",
   },
   {
     user_id: 12,
@@ -1243,6 +1251,12 @@ meetup = Meetup.create!([
     meetup_category_id: 3,
     airport_id: 17,
     content: "Nous sommes 3 amis qui vont manger. Envie de nous rejoindre?",
+  },
+  {
+    user_id: 15,
+    meetup_category_id: 2,
+    airport_id: 17,
+    content: "Travelling solo ;-) I've cash to splash - who wants a drink?",
   },
 ])
 
