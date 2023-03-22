@@ -1238,7 +1238,7 @@ meetup = Meetup.create!([
     user_id: 11,
     meetup_category_id: 2,
     airport_id: 17,
-    content: "Je m'ennuie - qui veut me rejoindre pour boire un verre au bar Le Wagon?",
+    content: "Je m'ennuie - qui veut me rejoindre pour boire un verre au bar?",
   },
   {
     user_id: 12,
