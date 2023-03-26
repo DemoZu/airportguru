@@ -5,7 +5,7 @@
         <div class="row p-0">
           <% current_user.flights.each do |flight| %>
               <% if flight.airport_id == @airport.id %>
-                  <div class="col-12 p-0">
+                  <div class="col-12 p-0 my-flight__details">
                   <h2 class="mb-2 fs-6">Your flight details</h2>
                     <h3 class="my-flight__destination d-flex align-items-center mb-2 gap-2">
                       <i class="fa-solid fa-plane me-1 primary-color"></i>
