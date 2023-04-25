@@ -1,8 +1,9 @@
 <%= render "shared/airport_nav" %>
-<div class="container">
-  <%= render "shared/airport_show_header" %>
+<%= render "shared/airport_show_header" %>
 
+<div class="container">
   <div class="airport-show__cards row justify-content-center gap-3">
+
       <div class="col-12 col-md-3">
         <div class="airport-show__card card shadow-orange border-0 py-5 text-center card-page__bg" style="background-image: url('<%= image_path "meetup2.jpg" %>')">
           <div class="card-body">
@@ -13,7 +14,6 @@
 
       <div class="col-12 col-md-3">
         <div class="airport-show__card card shadow-orange border-0 py-5 text-center card-page__bg" style="background-image: url('<%= image_path "toptips2.jpg" %>')">
-
           <div class="card-body">
             <%= link_to "Top Tips", airport_tips_path(@airport), class: "text-decoration-none stretched-link text-on-three" %>
           </div>
@@ -27,5 +27,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
+<%# </div> %>

@@ -1,22 +1,22 @@
-<div class="row justify-content-center terminal-header">
-  <div class="col-12 col-md-9 mt-3 mb-2 py-1 padx-4">
-    <p class="fs-4 mb-0">Welcome to</p>
-    <h1 class="airport__name"><%=@airport.name %></h1>
-      <% if @airport.terminal.present? %>
-        <h2 class="fs-3 airport__terminal"><strong>Terminal <%= @airport.terminal%></strong></h2>
-      <% end %>
+<div class="container">
+  <div class="row justify-content-center terminal-header">
+    <div class="col-12 col-md-9 mt-3 mb-2 py-1 padx-4">
+      <p class="fs-4 mb-0">Welcome to</p>
+      <h1 class="airport__name"><%=@airport.name %></h1>
+        <% if @airport.terminal.present? %>
+          <h2 class="fs-3 airport__terminal"><strong>Terminal <%= @airport.terminal%></strong></h2>
+        <% end %>
+    </div>
   </div>
 </div>
-
 <% if current_user %>
   <%= render "shared/my_flight" %>
 <% end %>
-
-<div class="find-flight" data-controller="search-flights">
-  <div class="row justify-content-center">
-    <div class="col-12 col-md-9 mt-1 padx-4">
-        <% @this_flight = current_user.flights.find_by(airport_id: @airport.id) if current_user %>
+<% @this_flight = current_user.flights.find_by(airport_id: @airport.id) if current_user %>
         <% if !@this_flight  %>
+<div class="container find-flight" data-controller="search-flights">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-9 mt-1 padx-4 flight-form">
               <%= form_with url: airport_path,
                                   method: :get,
                                   html: {

@@ -1,44 +1,44 @@
 <% if current_user.present? && current_user.flights.present? %>
 <div class="container">
-  <div class="row justify-content-center my-flight__container">
-    <div class="col-12 col-md-9 padx-4 py-3">
-        <div class="row p-0">
-          <% current_user.flights.each do |flight| %>
-              <% if flight.airport_id == @airport.id %>
-                  <div class="col-12 p-0">
-                  <h2 class="mb-2 fs-6">Your flight details</h2>
-                    <h3 class="my-flight__destination d-flex align-items-center mb-2 gap-2">
-                      <i class="fa-solid fa-plane me-1 primary-color"></i>
-                      <div>
-                        <span class="mb-1">
-                          <strong><%= flight.flight_number %> to <%= flight.flight_destination %></strong>
-                        </span>
+  <% current_user.flights.each do |flight| %>
+    <% if flight.airport_id == @airport.id %>
+    <div class="row justify-content-center my-flight__container">
+      <div class="col-12 col-md-9 padx-4 py-3">
+          <div class="row p-0">
+            <div class="col-12 p-0 my-flight__details">
+            <h2 class="mb-2 fs-6">Your flight details</h2>
+              <h3 class="my-flight__destination d-flex align-items-center mb-2 gap-2">
+                <i class="fa-solid fa-plane me-1 primary-color"></i>
+                <div>
+                  <span class="mb-1">
+                    <strong><%= flight.flight_number %> to <%= flight.flight_destination %></strong>
+                  </span>
 
-                      </div>
-                    </h3>
+                </div>
+              </h3>
 
-                      <div class="d-flex justify-space-between align-items-center">
-                      <% if flight.gate_number.present? && flight.gate_number !=nil %>
-                          <span class="flex-grow-1">gate: <span class="fw-bold"><%= flight.gate_number %></span></span>
-                        <% else %>
-                          <span class="flex-grow-1">gate: <span class="fw-bold">TBC</span></span>
-                        <% end %>
+                <div class="d-flex justify-space-between align-items-center">
+                <% if flight.gate_number.present? && flight.gate_number !=nil %>
+                    <span class="flex-grow-1">gate: <span class="fw-bold"><%= flight.gate_number %></span></span>
+                  <% else %>
+                    <span class="flex-grow-1">gate: <span class="fw-bold">TBC</span></span>
+                  <% end %>
 
-                        <% if flight.gate_open_time.present? && flight.gate_open_time !=nil %>
-                          <span class="flex-grow-1">opens: <span class="fw-bold"><%= flight.gate_open_time.strftime("%H:%M")  %></span></span>
-                        <% else %>
-                          <span class="flex-grow-1">opens: <span class="fw-bold">TBC</span></span>
-                        <% end %>
+                  <% if flight.gate_open_time.present? && flight.gate_open_time !=nil %>
+                    <span class="flex-grow-1">opens: <span class="fw-bold"><%= flight.gate_open_time.strftime("%H:%M")  %></span></span>
+                  <% else %>
+                    <span class="flex-grow-1">opens: <span class="fw-bold">TBC</span></span>
+                  <% end %>
 
-                        <% if flight.departure_time.present? %>
-                          <span class="my-flight__departure-time flex-grow-1">departs: <span class="fw-bold"><%= flight.departure_time.strftime("%H:%M") %></span></span>
-                        <% end %>
-                      </div>
-              <% end %>
-          <% end %>
+                  <% if flight.departure_time.present? %>
+                    <span class="my-flight__departure-time flex-grow-1">departs: <span class="fw-bold"><%= flight.departure_time.strftime("%H:%M") %></span></span>
+                  <% end %>
+                </div>
+                <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   </div>
 <% end %>

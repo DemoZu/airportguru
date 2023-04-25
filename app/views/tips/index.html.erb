@@ -31,6 +31,15 @@
   <div class="row justify-content-center terminal-header">
     <div class="col-12 col-md-9 mt-2 py-1 padx-4">
         <h1 class="mt-2 mb-3 h2 text-center"><strong>Top tips</strong></h1>
+          <% if @tips.length == 0 %>
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-12">
+                  <p class="fs-4 text-center mt-3">There are no tips yet for this airport. Why not add one?</p>
+                </div>
+              </div>
+            </div>
+            <% end %>
     </div>
   </div>
 </div>

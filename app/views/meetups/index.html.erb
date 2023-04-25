@@ -40,17 +40,18 @@
   <% if current_user.present? %>
   <div class="row justify-content-center">
     <div class="col-12 col-md-4 mt-1 mb-4 padx-4">
-      <%# <h2 class="fs-3 mb-3">Arrange to meet others</h2> %>
       <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#createMeetup">
         Post a meetup
       </button>
       <% else %>
-        <div class="d-flex flex-wrap align-items-center padx-4 mt-3 mb-3">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 mt-1 mb-4 padx-4">
+        <div class="d-flex flex-wrap justify-content-center align-items-center padx-4 mt-3 mb-3">
           <i class="fa-solid fa-user primary-color me-2"></i> <%= link_to "sign up", new_user_registration_path, class: "me-1" %> or <%= link_to "log in", new_user_session_path, class: "ms-1 me-2" %> to post a meetup
         </div>
       <% end %>
-    </div>
-  </div>
+        </div>
+      </div>
 
   <%# my meetup%>
   <% if @mymeetup.count > 0 %>
@@ -95,31 +96,36 @@
 
     <%# search meetups %>
     <div class="row justify-content-center">
-      <div class="col-12 col-md-12 pt-2 pb-3">
-
+      <div class="col-12 pt-2 pb-3">
         <div data-controller="search-meetups">
-          <%= render "filter", meetup_category: @meetup_category%>
-          <%= form_with url: airport_meetups_path,
-            method: :get,
-            html: {class: "mt-2 mb-2 pb-4 padx-4 filter-meetups", data: {search_meetups_target: "form"}} do |f|
-          %>
-          <%= f.label :search, "Search meetups",
-                      class: "mt-2 mb-1"
-          %>
-          <%= f.text_field :query,
-            class: "form-control bg-white py-1 px-2",
-            placeholder: "eg Paris...",
-            value: params[:query],
-            data: {
-              search_meetups_target: "input",
-              action: "keyup->search-meetups#update"
-            }
-          %>
-          <% end %>
-          <%= render "list", meetups: @meetups %>
+          <%= render "filter", meetup_category: @meetup_category %>
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-9">
+              <%= form_with url: airport_meetups_path,
+                method: :get,
+                html: {class: "mt-2 mb-2 pb-4 padx-4 filter-meetups", data: {search_meetups_target: "form"}} do |f|
+              %>
+              <%= f.label :search, "Search meetups",
+                          class: "mt-2 mb-1"
+              %>
+              <%= f.text_field :query,
+                class: "form-control bg-white py-1 px-2",
+                placeholder: "eg Paris...",
+                value: params[:query],
+                data: {
+                  search_meetups_target: "input",
+                  action: "keyup->search-meetups#update"
+                }
+              %>
+              <% end %>
+            </div>
+          </div>
+              <%= render "list", meetups: @meetups %>
         </div>
       </div>
     </div>
-</div>
+  </div>
+  </div>
+  </div>
 <script type="text/javascript"  src="//ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js" ></script>
 <script type="text/javascript"  src="/javascript/emojionearea.min.js" ></script>
