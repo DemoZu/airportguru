@@ -45,7 +45,9 @@
         Post a meetup
       </button>
       <% else %>
-        <div class="d-flex flex-wrap align-items-center padx-4 mt-3 mb-3">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 mt-1 mb-4 padx-4">
+        <div class="d-flex flex-wrap justify-content-center align-items-center padx-4 mt-3 mb-3">
           <i class="fa-solid fa-user primary-color me-2"></i> <%= link_to "sign up", new_user_registration_path, class: "me-1" %> or <%= link_to "log in", new_user_session_path, class: "ms-1 me-2" %> to post a meetup
         </div>
       <% end %>
