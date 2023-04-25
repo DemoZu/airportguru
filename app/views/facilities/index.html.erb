@@ -22,6 +22,7 @@
               <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   <div class="row facilities__body">
+                  <% if @facilities.length > 0 %>
                     <% @facilities.where(facility_category_id: 1).each do |facility|%>
                       <div class="facilities__card col-6 col-sm-6 col-m-3 mb-3">
                         <div class="card h-100 border-0 shadow-sm">
@@ -31,6 +32,15 @@
                         </div>
                       </div>
                     <%end%>
+                  <% else %>
+                  <div class="facilities__card col-6 col-sm-6 col-m-3 mb-3">
+                        <div class="card h-100 border-0 shadow-sm">
+                          <div class="card-body facilities__card--body d-flex flex-column justify-content-center align-items-center align-content-center">
+                            <h3 class="card-title text-center m-0 text-wrap word-break w-100 fs-6">We'll be adding facilities to this airport soon</h3>
+                          </div>
+                        </div>
+                      </div>
+                  <% end %>
                   </div>
                 </div>
               </div>
