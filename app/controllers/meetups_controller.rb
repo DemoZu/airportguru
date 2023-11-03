@@ -1,5 +1,8 @@
 class MeetupsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index]
+
+
+
   def new
     @meetup = Meetup.new
   end
