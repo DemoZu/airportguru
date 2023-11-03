@@ -1,6 +1,6 @@
 <li class="list-group-item border-0">
   <%= link_to airport_path(airport) do %>
-    <%= airport.name %>
+   <i class="fa-solid fa-plane-up me-2"></i><%= airport.name %>
     <% if airport.terminal.present? %> Terminal <%= airport.terminal %>
     <% end %>
   <% end %>

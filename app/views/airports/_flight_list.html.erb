@@ -2,7 +2,7 @@
   <div class="row w-100">
     <div class="col-12 mb-5">
     <% if flights.present? %>
-    <ul class="airports-list list-group">
+    <ul class="flights-list list-group">
       <% flights.each do |flight| %>
         <%= render "/airports/flight_info", flight: flight %>
       <% end %>

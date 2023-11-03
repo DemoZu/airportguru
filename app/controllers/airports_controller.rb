@@ -13,7 +13,7 @@ class AirportsController < ApplicationController
 
   def show
     @user = current_user
-    sql_query = "flight_number ILIKE :query" if params[:query].present?
+    sql_query = "flight_number ILIKE :query OR flight_destination ILIKE :query" if params[:query].present?
     @airport_flights = Flight.where(airport_id: @airport)
     @flights = @airport_flights.where(sql_query, query: "%#{params[:query]}%") if params[:query].present?
 

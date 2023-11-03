@@ -55,7 +55,6 @@ My meetup:</p>
               <%end%>
               </div>
             </li>
-            </div>
           <% end %>
           <% if !haschat %>
             <div class="row">
@@ -66,7 +65,11 @@ My meetup:</p>
               </div>
             </div>
           <% end %>
+          </div></div>
+        <% else %>
+          <%= link_to "Login or Sign up to post a meetup", new_user_session_path %>
         <% end %>
+
     </div>
           <!-- Modal -->
           <div class="modal fade" id="submitMeetup<%= meetup.id%>" tabindex="-1" aria-labelledby="MeetupModalLabel" aria-hidden="true">
