@@ -10,77 +10,46 @@
     </div>
   </div>
 
-<%= render "shared/my_flight", flights: @flights %>
 
-  <div class="row">
-    <div class="col-12 col-md-4">
-      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-        <option selected>Filter tips by...</option>
-        <option value="1">Utilities</option>
-        <option value="2">Food & drink</option>
-        <option value="3">Good for families</option>
-      </select>
+  <div class="row" data-controller="tips-select-filter" data-select-filter-url="<%= tips_filter_path %>">
+    <div class="col-12 col-md-4 my-3">
+        <h2>Filter tips by</h2>
+        <select name="categories" multiple size="<%= @tip_categories.length %>"  data-action="tips-select-filter#change">
+          <%= @tip_categories.each do |category| %>
+            <option value="<%= category.name %>"><%= category.name.humanize %></option>
+          <% end %>
+            <option value="All" >All</option>
+        </select>
     </div>
-  </div>
-
-  <div class="row">
-    <div class="col-12 col-md-9 my-3 p-3">
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submitTip">
-          Add a tip
-      </button>
+    <div class="row">
+      <div class="col-12 col-md-9 my-3 p-3">
+        <%# <button type='button' class="btn btn-success">See All</button> %>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submitTip">
+            Add a tip
+        </button>
+      </div>
     </div>
-  </div>
 
     <!-- Modal -->
-  <div class="modal fade" id="submitTip" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2 class="modal-title h5" id="exampleModalLabel">Add your tip</h2>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>Form will go here...</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Submit</button>
+    <div class="modal fade" id="submitTip" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title h5" id="exampleModalLabel">Add your tip</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Form will go here...</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Submit</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="row">
-      <% @tips.each do |tip| %>
-      <div class="col-12 col-md-4 mb-3">
-        <div class="card w-100 h-100 border-0 p-2 shadow">
-          <div class="card-header pt-4">
-            <p class="category px-3 py-1 mb-3 border-0"><%= tip.tip_category.name %></p>
-            <h2 class="fs-5 mb-1"><%= tip.title %></h2>
-          </div>
-          <div class="card-body py-2">
-            <p class="mb-0"><%= tip.content %></p>
-          </div>
-          <div class="card-footer py-2 mt-3 text-muted border-0">
-            <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <p class="mb-0">
-                  <small>
-                    <% if tip.user.photo %>
-                    <%= image_tag tip.user.photo, alt: tip.user.nickname, width: 50 %> <%= tip.user.nickname %></small>
-                    <% else %>
-                    <%= image_tag "https://cdn3.iconfinder.com/data/icons/web-design-and-development-2-6/512/87-1024.png", alt: tip.user.nickname, width: 20 %> <%= tip.user.nickname %></small>
-                    <% end %>
-                  </small>
-                </p>
-              </div>
-              <div>
-                <p class="mb-0"><small class="d-flex align-items-center"><i class="fa-regular fa-heart me-2"></i> <%= tip.likes %></small></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <% end %>
+    <div data-tips-select-filter-target="tips">
+      <%= render partial: 'tips/tip_list', locals: { tips: @tips} %>
+    </div>
   </div>
 </div>

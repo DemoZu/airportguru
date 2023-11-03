@@ -17,3 +17,6 @@ application.register("search-airports", SearchAirportsController)
 
 import SearchFlightsController from "./search_flights_controller"
 application.register("search-flights", SearchFlightsController)
+
+import TipsSelectFilterController from "./tips_select_filter_controller"
+application.register("tips-select-filter", TipsSelectFilterController)
