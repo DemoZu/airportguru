@@ -1,7 +1,14 @@
 class ChatroomsController < ApplicationController
   def show
+
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new
+    if current_user.present? &&
+      (@chatroom.messages.first.meetup.user_id == current_user.id || @chatroom.messages.first.user_id == current_user.id)
+
+    else
+      redirect_to root_path
+    end
   end
   def new
     @chatroom = Chatroom.new

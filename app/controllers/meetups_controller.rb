@@ -10,6 +10,7 @@ class MeetupsController < ApplicationController
   def create
 
     @meetup = Meetup.new(meetup_params)
+
     if @meetup.save
       redirect_to airport_meetups_path
     end
